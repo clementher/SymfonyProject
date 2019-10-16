@@ -2,26 +2,42 @@
 
 
 namespace App\Controller;
+
+
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-
-class AccueilController
+class AccueilController extends AbstractController
 {
-
     /**
      * @Route("/")
      */
     function bonjour(){
-        return new Response('bonjour M1ESI !');
+        return new Response('Bonjour Mec');
     }
 
     /**
      * @Route("/creneaux/{joker}")
      */
-
-    function affichageCreneau($joker){
-        $message = sprintf("Future page d'Affichage de Créneaux : %s",$joker);
-        return new Response($message);
+    function afficherCreneau($joker){
+        return $this->render('affiche.html.twig',['title'=>ucwords(str_replace('-','',$joker))]);
     }
+
+    /**
+     * @Route("/repartition/{var}")
+     */
+    function repartition($var){
+        $commentaires = [
+            'Je ne pense pas que sa soit intéressant',
+            'Mais si trkil',
+            'ok mdr',
+            ];
+        $tab = array('-','_');
+        return $this->render('affiche.html.twig',
+            ['title'=>ucwords(str_replace('-','',
+            $var)),
+            'comments' => $commentaires]);
+    }
+
 }
