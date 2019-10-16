@@ -14,7 +14,7 @@ class AccueilController extends AbstractController
      * @Route("/")
      */
     function bonjour(){
-        return new Response('Bonjour Mec');
+        return $this->render('affiche.html.twig',['title'=>ucwords(str_replace('-','',$joker))]);
     }
 
     /**
