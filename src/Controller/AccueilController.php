@@ -14,7 +14,7 @@ class AccueilController extends AbstractController
      * @Route("/")
      */
     function bonjour(){
-        return $this->render('base.html.twig');
+        return $this->render('login.html.twig');
     }
 
     /**
