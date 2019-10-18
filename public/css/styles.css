@@ -13,7 +13,7 @@ html {height:100%}
     background-size: 80%;
     margin: 5px;
     background: #484848;
-    border-radius: 5px;
+    border-radius: 18px;
     box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
 }
 
@@ -248,6 +248,13 @@ html {height:100%}
     position: absolute;
 }
 
+#imgContainer{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 50%;
+}
+
 #formLogin{
     background: white;
     width: 71%;
@@ -267,14 +274,44 @@ html {height:100%}
 }
 
 #form {
-    width: 100%;
+    width: 50%;
+    max-width: 600px;
+    min-width: 370px;
     height: 100%;
-    background: white;
     display: flex;
     flex-direction: row;
     align-content: space-around;
     flex-wrap: wrap;
     justify-content: center
+}
+
+@media only screen and (max-width: 1060px) {
+    #formLogin{
+        width: 98%;
+    }
+}
+
+@media only screen and (max-width: 760px) {
+    #formLogin{
+        height: 80%;
+        flex-direction: column-reverse;
+        box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
+        justify-content: center;
+        align-items: center;
+    }
+
+    #form {
+        width: 87%;
+        max-width: 600px;
+        min-width: 370px;
+        height: 100%;
+        max-height: 438px;
+        display: flex;
+        flex-direction: row;
+        align-content: space-around;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
 }
 
 .formGroup{
