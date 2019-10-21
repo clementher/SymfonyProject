@@ -1,20 +1,3 @@
 {# premier template#}
 {% extends 'base.html.twig' %}
 
-{% block body %}
-
-<h1> {{ title }} </h1>
-    <div>
-        <p>Lorem Ipsum Test Test</p>
-        <p>Cléments la plus belle des fille de joie</p>
-    </div>
-
-<h2> Commentaires ({{ comments | length }})</h2>
-
-<ul>
-    {% for c in comments %}
-    <li>{{ c }}</li>
-    {% endfor %}
-</ul>
-
-{% endblock %}

@@ -21,7 +21,7 @@ class AccueilController extends AbstractController
      * @Route("/creneaux/{joker}")
      */
     function afficherCreneau($joker){
-        return $this->render('affiche.html.twig',['title'=>ucwords(str_replace('-','',$joker))]);
+        return $this->render('affiche.html.twig');
     }
 
     /**

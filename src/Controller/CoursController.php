@@ -2,18 +2,13 @@
 
 namespace App\Controller;
 
+use App\Entity\Intervenant;
+use App\Entity\Matiere;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\BrowserKit\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 class CoursController extends AbstractController
 {
-    /**
-     * @Route("/cours", name="cours")
-     */
-    public function index()
-    {
-        return $this->render('cours/index.html.twig', [
-            'controller_name' => 'CoursController',
-        ]);
-    }
+
 }
