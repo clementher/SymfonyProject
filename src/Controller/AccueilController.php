@@ -13,15 +13,15 @@ class AccueilController extends AbstractController
     /**
      * @Route("/")
      */
-    function bonjour(){
+    function index(){
         return $this->render('login.html.twig');
     }
 
     /**
-     * @Route("/creneaux/{joker}")
+     * @Route("/month")
      */
-    function afficherCreneau($joker){
-        return $this->render('affiche.html.twig');
+    function afficherCreneau(){
+        return $this->render('/cours/month.html.twig');
     }
 
     /**
