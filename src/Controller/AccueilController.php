@@ -17,6 +17,15 @@ class AccueilController extends AbstractController
         return $this->render('login.html.twig');
     }
 
+
+    /**
+     * @Route("/adminPanel")
+     */
+    function admin(){
+        return $this->render('admin.html.twig');
+    }
+
+
     /**
      * @Route("/month")
      */
