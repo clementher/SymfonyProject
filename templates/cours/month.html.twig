@@ -31,13 +31,35 @@
 
 <div id="corps">
     <div id="containerNavCalendar">
+<<<<<<< Updated upstream
         <button class="buttonNav" onclick="document.location.href='/week/{{noAnn}}/{{ noSem - 1}}';">◄ Précédent</button>
+=======
+        <button class="buttonNav" onclick="document.location.href='/week/2019/{{ noSem - 1}}';">
+            <i class="material-icons">
+                undo
+            </i>
+            <div>
+                Précédent
+            </div>
+        </button>
+>>>>>>> Stashed changes
         <div id="choice">
             <button class="buttonNav" onclick="document.location.href='/week/'">Semaine</button>
             <button class="buttonNav">Mois</button>
             <button class="buttonNav">Année</button>
         </div>
+<<<<<<< Updated upstream
         <button class="buttonNav" onclick="document.location.href='/week/{{noAnn}}/{{ noSem + 1}}';">Suivant ►</button>
+=======
+        <button class="buttonNav" onclick="document.location.href='/week/2019/{{ noSem + 1}}';">
+            <i class="material-icons">
+                redo
+            </i>
+            <div>
+                Suivant
+            </div>
+        </button>
+>>>>>>> Stashed changes
     </div>
 
 
@@ -75,6 +97,9 @@
         <tr class="column1">
             <th>{{tab[0][0] ~ " " ~ tab[0][1] ~ " " ~ tab[0][2]}}</th>
             <td>
+                <div class="down">
+                    English
+                </div>
                 <div class="up">
                     <div class="professor">
                         Cezera
@@ -82,13 +107,12 @@
                     <div class="salle">
                         C207
                     </div>
-                </div>
-
-                <div class="down">
-                    English
                 </div>
             </td>
             <td>
+                <div class="down">
+                    English
+                </div>
                 <div class="up">
                     <div class="professor">
                         Cezera
@@ -96,10 +120,6 @@
                     <div class="salle">
                         C207
                     </div>
-                </div>
-
-                <div class="down">
-                    English
                 </div>
             </td>
             <td>$50</td>

@@ -461,5 +461,7 @@ td.hour {
     padding: 10px;
     margin: 10px;
     border-radius: 5px;
+    background: white;
+    border: 2px solid #c7c7c7;
 }
 
