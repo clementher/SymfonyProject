@@ -379,10 +379,6 @@ tr.hourColumn {
     border-radius: 0px 0px 0px 15px ;
 }
 
-.table td, .table th {
-    padding: 15px;
-    min-height: 52px;
-}
 
 tbody{
     display: flex;
@@ -398,10 +394,46 @@ th {
     background: #3a3a3a;
     color: white;
     font-size: 17px;
+    max-height: 52px;
+    padding: 15px;
 }
 
-td {
+.table td {
     font-size: 14px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    min-height: 78px;
+    padding: 5px;
 }
 
+.salle {
+    flex-grow: 1;
+    text-align: right;
+}
 
+.professor{
+    flex-grow: 1;
+    text-align: left;
+}
+
+.matiere {
+    flex-grow: 1;
+
+}
+
+.up {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: stretch;
+}
+
+.down {
+    font-size: 17px;
+    font-weight: bold;
+    padding-top: 15px;
+    padding-bottom: 5px;
+    color: #888888;
+}
