@@ -437,3 +437,9 @@ th {
     padding-bottom: 5px;
     color: #888888;
 }
+
+td.hour {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
