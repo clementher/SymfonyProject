@@ -25,14 +25,6 @@ class AccueilController extends AbstractController
         return $this->render('admin.html.twig');
     }
 
-
-    /**
-     * @Route("/month")
-     */
-    function afficherCreneau(){
-        return $this->render('/cours/month.html.twig');
-    }
-
     /**
      * @Route("/repartition/{var}")
      */
