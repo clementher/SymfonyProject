@@ -463,5 +463,6 @@ td.hour {
     border-radius: 5px;
     background: white;
     border: 2px solid #c7c7c7;
+    display: flex;
 }
 
