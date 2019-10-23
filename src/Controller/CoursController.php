@@ -35,7 +35,7 @@ class CoursController extends AbstractController
                     date("j", mktime(0, 0, 0, (new DateTime())->setISODate($noann, $nosem)->format('m'), (new DateTime())->setISODate($noann, $nosem)->format('d') + 4, $noann)),
                     $this->deterMois(date("m", mktime(0, 0, 0, (new DateTime())->setISODate($noann, $nosem)->format('m'), (new DateTime())->setISODate($noann, $nosem)->format('d') + 4, $noann))))
             );
-            return $this->render('/cours/month.html.twig', ['tab' => $tab]);
+            return $this->render('/cours/month.html.twig', ['tab' => $tab, 'noSem' => $nosem,'noAnn' => $noann]);
         }
         else {
             throw $this->createNotFoundException("Ce numéro de semaine n'existe pas.");
