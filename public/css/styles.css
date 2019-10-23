@@ -339,3 +339,31 @@ html {height:100%}
 .formGroup{
     width: 73%;
 }
+
+
+/*Month*/
+
+#corps {
+    width: 100%;
+    height: 100%;
+    padding: 12px;
+}
+
+table.table {
+}
+
+tr.test {
+    display: flex;
+    flex-direction: column;
+    width: auto;
+}
+
+tbody{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: stretch;
+}
+
+
