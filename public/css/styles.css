@@ -466,3 +466,8 @@ td.hour {
     display: flex;
 }
 
+.arrowNav {
+    border-radius: 50px;
+    border: none;
+}
+
