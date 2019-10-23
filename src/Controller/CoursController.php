@@ -37,11 +37,11 @@ class CoursController extends AbstractController
             );
             return $this->render('/cours/month.html.twig', ['tab' => $tab, 'noSem' => $nosem,'noAnn' => $noann]);
         }
-        elseif ($nosem = 1 ||$nosem = 54){
-            if ($nosem =54) {
+        elseif ($nosem == 1 || $nosem == 54){
+            if ($nosem == 54) {
                 return $this->redirectToRoute("creneauDetailSemaine",array('nosem'=>2, 'noann' =>$noann+1));
             }
-            if ($nosem = 1) {
+            if ($nosem == 1) {
                 return $this->redirectToRoute("creneauDetailSemaine", array('nosem' => 53, 'noann' => $noann - 1));
             }
         }

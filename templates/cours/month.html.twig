@@ -31,13 +31,13 @@
 
 <div id="corps">
     <div id="containerNavCalendar">
-        <button class="buttonNav" onclick="document.location.href='/week/2019/{{ noSem - 1}}';">◄ Précédent</button>
+        <button class="buttonNav" onclick="document.location.href='/week/{{noAnn}}/{{ noSem - 1}}';">◄ Précédent</button>
         <div id="choice">
             <button class="buttonNav" onclick="document.location.href='/week/'">Semaine</button>
             <button class="buttonNav">Mois</button>
             <button class="buttonNav">Année</button>
         </div>
-        <button class="buttonNav" onclick="document.location.href='/week/2019/{{ noSem + 1}}';">Suivant ►</button>
+        <button class="buttonNav" onclick="document.location.href='/week/{{noAnn}}/{{ noSem + 1}}';">Suivant ►</button>
     </div>
 
 
