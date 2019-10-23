@@ -17,7 +17,7 @@ class CoursController extends AbstractController
      * @Route("/week/{noann}/{nosem}", name="creneauDetailSemaine")
      */
     function afficherCreneauSemaine($noann,$nosem){
-        if ($nosem <=53) {
+        if ($nosem <=53 && $nosem >1) {
             $tab = array(
                 array($this->deterJour(date("N", mktime(0, 0, 0, (new DateTime())->setISODate($noann, $nosem)->format('m'), (new DateTime())->setISODate($noann, $nosem)->format('d'), $noann))),
                     date("j", mktime(0, 0, 0, (new DateTime())->setISODate($noann, $nosem)->format('m'), (new DateTime())->setISODate($noann, $nosem)->format('d'), $noann)),
@@ -36,6 +36,9 @@ class CoursController extends AbstractController
                     $this->deterMois(date("m", mktime(0, 0, 0, (new DateTime())->setISODate($noann, $nosem)->format('m'), (new DateTime())->setISODate($noann, $nosem)->format('d') + 4, $noann))))
             );
             return $this->render('/cours/month.html.twig', ['tab' => $tab, 'noSem' => $nosem,'noAnn' => $noann]);
+        }
+        else if ($nosem = 1){
+            return $this->redirectToRoute("creneauDetailSemaine",array('nosem'=>53, 'noann' =>$noann-1));
         }
         else {
             throw $this->createNotFoundException("Ce numéro de semaine n'existe pas.");
