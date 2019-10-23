@@ -352,10 +352,18 @@ html {height:100%}
 table.table {
 }
 
-tr.test {
+tr.column {
     display: flex;
     flex-direction: column;
     width: auto;
+    flex-grow: 1;
+}
+
+tr.hourColumn {
+    display: flex;
+    flex-direction: column;
+    width: auto;
+    flex-grow: 0.5;
 }
 
 tbody{
@@ -364,6 +372,11 @@ tbody{
     flex-direction: row;
     justify-content: space-between;
     align-items: stretch;
+}
+
+th {
+    flex-grow: 1;
+    text-align: center;
 }
 
 
