@@ -38,9 +38,15 @@ class Intervenant
      */
     private $matieres;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Cours", mappedBy="fk_intervenant_id")
+     */
+    private $cours;
+
     public function __construct()
     {
         $this->matieres = new ArrayCollection();
+        $this->cours = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -109,6 +115,37 @@ class Intervenant
             // set the owning side to null (unless already changed)
             if ($matiere->getFkIntervenant() === $this) {
                 $matiere->setFkIntervenant(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Cours[]
+     */
+    public function getCours(): Collection
+    {
+        return $this->cours;
+    }
+
+    public function addCour(Cours $cour): self
+    {
+        if (!$this->cours->contains($cour)) {
+            $this->cours[] = $cour;
+            $cour->setFkIntervenantId($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCour(Cours $cour): self
+    {
+        if ($this->cours->contains($cour)) {
+            $this->cours->removeElement($cour);
+            // set the owning side to null (unless already changed)
+            if ($cour->getFkIntervenantId() === $this) {
+                $cour->setFkIntervenantId(null);
             }
         }
 

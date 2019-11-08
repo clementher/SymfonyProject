@@ -32,6 +32,12 @@ class Cours
      */
     private $fk_matiere_id;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Intervenant", inversedBy="cours")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $fk_intervenant_id;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -69,6 +75,18 @@ class Cours
     public function setFkMatiereId(?matiere $fk_matiere_id): self
     {
         $this->fk_matiere_id = $fk_matiere_id;
+
+        return $this;
+    }
+
+    public function getFkIntervenantId(): ?Intervenant
+    {
+        return $this->fk_intervenant_id;
+    }
+
+    public function setFkIntervenantId(?Intervenant $fk_intervenant_id): self
+    {
+        $this->fk_intervenant_id = $fk_intervenant_id;
 
         return $this;
     }

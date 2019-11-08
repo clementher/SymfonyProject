@@ -2,38 +2,54 @@
 
 namespace App\Controller;
 
+use App\Entity\Cours;
 use App\Entity\Intervenant;
 use App\Entity\Matiere;
 use DateTime;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\BrowserKit\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Doctrine\ORM\EntityManager;
 
 class CoursController extends AbstractController
 {
     public $routeDetailSem = 'creneauDetailSemaine';
+    private  $em;
+
+    public function __construct(EntityManager $em) {
+        $this->entityManager = $em;
+
+    }
 
     /**
      * @Route("/week/{noann}/{nosem}", name="creneauDetailSemaine")
      */
     function afficherCreneauSemaine($noann,$nosem){
         if ($nosem <=53 && $nosem >1) {
+            $jour1 = mktime(0, 0, 0, (new DateTime())->setISODate($noann, $nosem)->format('m'), (new DateTime())->setISODate($noann, $nosem)->format('d'), $noann);
+            $jour2 = mktime(0, 0, 0, (new DateTime())->setISODate($noann, $nosem)->format('m'), (new DateTime())->setISODate($noann, $nosem)->format('d')+1, $noann);
+            $jour3 = mktime(0, 0, 0, (new DateTime())->setISODate($noann, $nosem)->format('m'), (new DateTime())->setISODate($noann, $nosem)->format('d')+2, $noann);
+            $jour4 = mktime(0, 0, 0, (new DateTime())->setISODate($noann, $nosem)->format('m'), (new DateTime())->setISODate($noann, $nosem)->format('d')+3, $noann);
+            $jour5 = mktime(0, 0, 0, (new DateTime())->setISODate($noann, $nosem)->format('m'), (new DateTime())->setISODate($noann, $nosem)->format('d')+4, $noann);
+
+            $tabCours = $this->setTabs($jour1, $jour2, $jour3, $jour4, $jour5);
+
             $tab = array(
-                array($this->deterJour(date("N", mktime(0, 0, 0, (new DateTime())->setISODate($noann, $nosem)->format('m'), (new DateTime())->setISODate($noann, $nosem)->format('d'), $noann))),
-                    date("j", mktime(0, 0, 0, (new DateTime())->setISODate($noann, $nosem)->format('m'), (new DateTime())->setISODate($noann, $nosem)->format('d'), $noann)),
-                    $this->deterMois(date("m", mktime(0, 0, 0, (new DateTime())->setISODate($noann, $nosem)->format('m'), (new DateTime())->setISODate($noann, $nosem)->format('d'), $noann)))),
-                array($this->deterJour(date("N", mktime(0, 0, 0, (new DateTime())->setISODate($noann, $nosem)->format('m'), (new DateTime())->setISODate($noann, $nosem)->format('d') + 1, $noann))),
-                    date("j", mktime(0, 0, 0, (new DateTime())->setISODate($noann, $nosem)->format('m'), (new DateTime())->setISODate($noann, $nosem)->format('d') + 1, $noann)),
-                    $this->deterMois(date("m", mktime(0, 0, 0, (new DateTime())->setISODate($noann, $nosem)->format('m'), (new DateTime())->setISODate($noann, $nosem)->format('d') + 1, $noann)))),
-                array($this->deterJour(date("N", mktime(0, 0, 0, (new DateTime())->setISODate($noann, $nosem)->format('m'), (new DateTime())->setISODate($noann, $nosem)->format('d') + 2, $noann))),
-                    date("j", mktime(0, 0, 0, (new DateTime())->setISODate($noann, $nosem)->format('m'), (new DateTime())->setISODate($noann, $nosem)->format('d') + 2, $noann)),
-                    $this->deterMois(date("m", mktime(0, 0, 0, (new DateTime())->setISODate($noann, $nosem)->format('m'), (new DateTime())->setISODate($noann, $nosem)->format('d') + 2, $noann)))),
-                array($this->deterJour(date("N", mktime(0, 0, 0, (new DateTime())->setISODate($noann, $nosem)->format('m'), (new DateTime())->setISODate($noann, $nosem)->format('d') + 3, $noann))),
-                    date("j", mktime(0, 0, 0, (new DateTime())->setISODate($noann, $nosem)->format('m'), (new DateTime())->setISODate($noann, $nosem)->format('d') + 3, $noann)),
-                    $this->deterMois(date("m", mktime(0, 0, 0, (new DateTime())->setISODate($noann, $nosem)->format('m'), (new DateTime())->setISODate($noann, $nosem)->format('d') + 3, $noann)))),
-                array($this->deterJour(date("N", mktime(0, 0, 0, (new DateTime())->setISODate($noann, $nosem)->format('m'), (new DateTime())->setISODate($noann, $nosem)->format('d') + 4, $noann))),
-                    date("j", mktime(0, 0, 0, (new DateTime())->setISODate($noann, $nosem)->format('m'), (new DateTime())->setISODate($noann, $nosem)->format('d') + 4, $noann)),
-                    $this->deterMois(date("m", mktime(0, 0, 0, (new DateTime())->setISODate($noann, $nosem)->format('m'), (new DateTime())->setISODate($noann, $nosem)->format('d') + 4, $noann))))
+                array($this->deterJour(date("N", $jour1)),
+                    date("j",$jour1),
+                    $this->deterMois(date("m",$jour1))),
+                array($this->deterJour(date("N", $jour2)),
+                    date("j", $jour2),
+                    $this->deterMois(date("m", $jour2))),
+                array($this->deterJour(date("N",$jour3)),
+                    date("j",$jour3),
+                    $this->deterMois(date("m", $jour3))),
+                array($this->deterJour(date("N", $jour4)),
+                    date("j", $jour4),
+                    $this->deterMois(date("m", $jour4))),
+                array($this->deterJour(date("N", $jour5)),
+                    date("j", $jour5),
+                    $this->deterMois(date("m", $jour5)))
             );
             return $this->render('/cours/month.html.twig', ['tab' => $tab, 'noSem' => $nosem,'noAnn' => $noann]);
         }
@@ -76,8 +92,9 @@ class CoursController extends AbstractController
         }
     }
 
-    function deterMois($nummois){
-        switch ($nummois){
+    function deterMois($nummois)
+    {
+        switch ($nummois) {
             case 1:
                 return 'Janvier';
             case 2:
@@ -106,6 +123,18 @@ class CoursController extends AbstractController
                 return 'Erreur';
         }
     }
+
+
+        function setTabs($jour1, $jour2, $jour3, $jour4, $jour5){
+
+            $query1 = $this->entityManager ->createQueryBuilder()->select('c')
+                -> from(Cours::class, 'c') -> where('c.fk_intervenant_id_id = 1') -> andWhere('debut > :date1') -> andWhere('debut < :date2')
+                -> setParameter('date1', $jour1) -> setParameter('date2', $jour2) -> getQuery();
+            $tab1 = $query1->getResult();
+
+            return $tab1;
+        }
+
 
 
 }
