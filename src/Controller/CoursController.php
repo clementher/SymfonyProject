@@ -33,6 +33,7 @@ class CoursController extends AbstractController
             $jour5 = mktime(0, 0, 0, (new DateTime())->setISODate($noann, $nosem)->format('m'), (new DateTime())->setISODate($noann, $nosem)->format('d')+4, $noann);
 
             $tabCours = $this->setTabs($jour1, $jour2, $jour3, $jour4, $jour5);
+            $tab1 = $tabCours[0];
 
             $tab = array(
                 array($this->deterJour(date("N", $jour1)),
@@ -51,7 +52,7 @@ class CoursController extends AbstractController
                     date("j", $jour5),
                     $this->deterMois(date("m", $jour5)))
             );
-            return $this->render('/cours/month.html.twig', ['tab' => $tab, 'noSem' => $nosem,'noAnn' => $noann]);
+            return $this->render('/cours/month.html.twig', ['tab' => $tab, 'noSem' => $nosem,'noAnn' => $noann, 'compteur' => $tab1]);
         }
         elseif ($nosem == 1 || $nosem == 54){
             if ($nosem == 54) {
@@ -127,12 +128,35 @@ class CoursController extends AbstractController
 
         function setTabs($jour1, $jour2, $jour3, $jour4, $jour5){
 
-            $query1 = $this->entityManager ->createQueryBuilder()->select('c')
-                -> from(Cours::class, 'c') -> where('c.fk_intervenant_id_id = 1') -> andWhere('debut > :date1') -> andWhere('debut < :date2')
-                -> setParameter('date1', $jour1) -> setParameter('date2', $jour2) -> getQuery();
+            $query1 = $this->entityManager -> createQuery('SELECT m.intitule AS intitule, i.nom as nom, i.prenom as prenom, c.debut as debut, c.fin as fin FROM App\Entity\Matiere m, App\Entity\Intervenant i, App\Entity\Cours c
+                        WHERE m.id = c.fk_matiere_id AND i.id = c.fk_intervenant_id and c.fk_intervenant_id = 1 and c.debut >= '.date('Ymd', $jour1).' AND c.debut < '.date('Ymd',$jour2));
+            /**$this->entityManager ->createQueryBuilder()->select('c')
+                -> from(Cours::class, 'c') -> where('c.fk_intervenant_id = 1') -> andWhere('c.debut >= '.date('Ymd', $jour1)) -> andWhere('c.debut < '.date('Ymd',$jour2))
+                -> getQuery();**/
+
             $tab1 = $query1->getResult();
 
-            return $tab1;
+            $query2 = $this->entityManager ->createQueryBuilder()->select('c')
+                -> from(Cours::class, 'c') -> where('c.fk_intervenant_id = 1') -> andWhere('c.debut > :date1') -> andWhere('c.debut < :date2')
+                -> setParameter(':date1',date('Y-m-d', $jour2)) -> setParameter(':date2', date('Y-m-d',$jour3)) -> getQuery();
+            $tab2 = $query2->getResult();
+
+            $query3 = $this->entityManager ->createQueryBuilder()->select('c')
+                -> from(Cours::class, 'c') -> where('c.fk_intervenant_id = 1') -> andWhere('c.debut > :date1') -> andWhere('c.debut < :date2')
+                -> setParameter(':date1', date('Y-m-d',$jour3)) -> setParameter(':date2', date('Y-m-d',$jour4)) -> getQuery();
+            $tab3 = $query3->getResult();
+
+            $query4 = $this->entityManager ->createQueryBuilder()->select('c')
+                -> from(Cours::class, 'c') -> where('c.fk_intervenant_id = 1') -> andWhere('c.debut > :date1') -> andWhere('c.debut < :date2')
+                -> setParameter(':date1', date('Y-m-d',$jour4)) -> setParameter(':date2', date('Y-m-d',$jour5)) -> getQuery();
+            $tab4 = $query4->getResult();
+
+            $query5 = $this->entityManager ->createQueryBuilder()->select('c')
+                -> from(Cours::class, 'c') -> where('c.fk_intervenant_id = 1') -> andWhere('c.debut >'. date('Y-m-d',$jour5)) -> andWhere('c.debut <'.date('Y-m-d',$jour5+86400))
+                -> getQuery();
+            $tab5 = $query5->getResult();
+
+            return array($tab1, $tab2, $tab3, $tab4, $tab5);
         }
 
 

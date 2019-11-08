@@ -27,7 +27,7 @@ class Cours
     private $fin;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\matiere", inversedBy="cours")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Matiere", inversedBy="cours")
      * @ORM\JoinColumn(nullable=false)
      */
     private $fk_matiere_id;
@@ -67,12 +67,12 @@ class Cours
         return $this;
     }
 
-    public function getFkMatiereId(): ?matiere
+    public function getFkMatiereId(): ?Matiere
     {
         return $this->fk_matiere_id;
     }
 
-    public function setFkMatiereId(?matiere $fk_matiere_id): self
+    public function setFkMatiereId(?Matiere $fk_matiere_id): self
     {
         $this->fk_matiere_id = $fk_matiere_id;
 
