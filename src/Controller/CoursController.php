@@ -129,34 +129,46 @@ class CoursController extends AbstractController
         function setTabs($jour1, $jour2, $jour3, $jour4, $jour5){
 
             $query1 = $this->entityManager -> createQuery('SELECT m.intitule AS intitule, i.nom as nom, i.prenom as prenom, c.debut as debut, c.fin as fin FROM App\Entity\Matiere m, App\Entity\Intervenant i, App\Entity\Cours c
-                        WHERE m.id = c.fk_matiere_id AND i.id = c.fk_intervenant_id and c.fk_intervenant_id = 1 and c.debut >= '.date('Ymd', $jour1).' AND c.debut < '.date('Ymd',$jour2));
+                        WHERE m.id = c.fk_matiere_id AND i.id = c.fk_intervenant_id and c.fk_intervenant_id = 1 and c.debut >= '.date('Ymd', $jour1).' AND c.debut < '.date('Ymd',$jour2).' ORDER BY c.debut');
             /**$this->entityManager ->createQueryBuilder()->select('c')
                 -> from(Cours::class, 'c') -> where('c.fk_intervenant_id = 1') -> andWhere('c.debut >= '.date('Ymd', $jour1)) -> andWhere('c.debut < '.date('Ymd',$jour2))
                 -> getQuery();**/
 
             $tab1 = $query1->getResult();
 
-            $query2 = $this->entityManager ->createQueryBuilder()->select('c')
+            $query2 = $this->entityManager -> createQuery('SELECT m.intitule AS intitule, i.nom as nom, i.prenom as prenom, c.debut as debut, c.fin as fin FROM App\Entity\Matiere m, App\Entity\Intervenant i, App\Entity\Cours c
+                        WHERE m.id = c.fk_matiere_id AND i.id = c.fk_intervenant_id and c.fk_intervenant_id = 1 and c.debut >= '.date('Ymd', $jour2).' AND c.debut < '.date('Ymd',$jour3).' ORDER BY c.debut');
+                /**$this->entityManager ->createQueryBuilder()->select('c')
                 -> from(Cours::class, 'c') -> where('c.fk_intervenant_id = 1') -> andWhere('c.debut > :date1') -> andWhere('c.debut < :date2')
-                -> setParameter(':date1',date('Y-m-d', $jour2)) -> setParameter(':date2', date('Y-m-d',$jour3)) -> getQuery();
+                -> setParameter(':date1',date('Y-m-d', $jour2)) -> setParameter(':date2', date('Y-m-d',$jour3)) -> getQuery();**/
             $tab2 = $query2->getResult();
 
-            $query3 = $this->entityManager ->createQueryBuilder()->select('c')
+            $query3 = $this->entityManager -> createQuery('SELECT m.intitule AS intitule, i.nom as nom, i.prenom as prenom, c.debut as debut, c.fin as fin FROM App\Entity\Matiere m, App\Entity\Intervenant i, App\Entity\Cours c
+                        WHERE m.id = c.fk_matiere_id AND i.id = c.fk_intervenant_id and c.fk_intervenant_id = 1 and c.debut >= '.date('Ymd', $jour3).' AND c.debut < '.date('Ymd',$jour4).' ORDER BY c.debut');
+                /**$this->entityManager ->createQueryBuilder()->select('c')
                 -> from(Cours::class, 'c') -> where('c.fk_intervenant_id = 1') -> andWhere('c.debut > :date1') -> andWhere('c.debut < :date2')
-                -> setParameter(':date1', date('Y-m-d',$jour3)) -> setParameter(':date2', date('Y-m-d',$jour4)) -> getQuery();
+                -> setParameter(':date1', date('Y-m-d',$jour3)) -> setParameter(':date2', date('Y-m-d',$jour4)) -> getQuery();**/
             $tab3 = $query3->getResult();
 
-            $query4 = $this->entityManager ->createQueryBuilder()->select('c')
+            $query4 =  $this->entityManager -> createQuery('SELECT m.intitule AS intitule, i.nom as nom, i.prenom as prenom, c.debut as debut, c.fin as fin FROM App\Entity\Matiere m, App\Entity\Intervenant i, App\Entity\Cours c
+                        WHERE m.id = c.fk_matiere_id AND i.id = c.fk_intervenant_id and c.fk_intervenant_id = 1 and c.debut >= '.date('Ymd', $jour4).' AND c.debut < '.date('Ymd',$jour5).' ORDER BY c.debut');
+                /**$this->entityManager ->createQueryBuilder()->select('c')
                 -> from(Cours::class, 'c') -> where('c.fk_intervenant_id = 1') -> andWhere('c.debut > :date1') -> andWhere('c.debut < :date2')
-                -> setParameter(':date1', date('Y-m-d',$jour4)) -> setParameter(':date2', date('Y-m-d',$jour5)) -> getQuery();
+                -> setParameter(':date1', date('Y-m-d',$jour4)) -> setParameter(':date2', date('Y-m-d',$jour5)) -> getQuery();**/
             $tab4 = $query4->getResult();
 
-            $query5 = $this->entityManager ->createQueryBuilder()->select('c')
+            $query5 = $this->entityManager -> createQuery('SELECT m.intitule AS intitule, i.nom as nom, i.prenom as prenom, c.debut as debut, c.fin as fin FROM App\Entity\Matiere m, App\Entity\Intervenant i, App\Entity\Cours c
+                        WHERE m.id = c.fk_matiere_id AND i.id = c.fk_intervenant_id and c.fk_intervenant_id = 1 and c.debut >= '.date('Ymd', $jour5).' AND c.debut < '.date('Ymd',$jour5 + 86400).' ORDER BY c.debut');
+                /**$this->entityManager ->createQueryBuilder()->select('c')
                 -> from(Cours::class, 'c') -> where('c.fk_intervenant_id = 1') -> andWhere('c.debut >'. date('Y-m-d',$jour5)) -> andWhere('c.debut <'.date('Y-m-d',$jour5+86400))
-                -> getQuery();
+                -> getQuery();**/
             $tab5 = $query5->getResult();
 
             return array($tab1, $tab2, $tab3, $tab4, $tab5);
+        }
+
+        function initTabs($tab){
+
         }
 
 
