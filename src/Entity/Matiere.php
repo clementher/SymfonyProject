@@ -38,6 +38,11 @@ class Matiere
      */
     private $cours;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $isSpecialite;
+
     public function __construct()
     {
         $this->cours = new ArrayCollection();
@@ -111,6 +116,18 @@ class Matiere
                 $cour->setFkMatiereId(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getIsSpecialite(): ?bool
+    {
+        return $this->isSpecialite;
+    }
+
+    public function setIsSpecialite(bool $isSpecialite): self
+    {
+        $this->isSpecialite = $isSpecialite;
 
         return $this;
     }
