@@ -92,11 +92,11 @@
             <th>{{tab[0][0] ~ " " ~ tab[0][1] ~ " " ~ tab[0][2]}}</th>
             <td>
                 <div class="down">
-                    {{compteur[0].intitule }}
+                    {{compteur[0]['intitule']}}
                 </div>
                 <div class="up">
                     <div class="professor">
-                        {{compteur[0].nom ~ " " ~ compteur[0].prenom }}
+                        {#compteur[0].nom ~ " " ~ compteur[0].prenom #}
                     </div>
                     <!--<div class="salle">
                         C207
@@ -105,48 +105,48 @@
             </td>
             <td>
                 <div class="down">
-                    Base de Données
+                    {{compteur[1]['intitule']}}
                 </div>
-                <div class="up">
+                <!--<div class="up">
                     <div class="professor">
                         Cezera
                     </div>
                     <div class="salle">
                         C207
                     </div>
-                </div>
+                </div>-->
             </td>
             <td>
                 <div class="down">
-                    Gestion de Projet
+                    {{compteur[2]['intitule']}}
                 </div>
-                <div class="up">
+                <!--<div class="up">
                     <div class="professor">
                         Belkacem
                     </div>
                     <div class="salle">
                         E122
                     </div>
-                </div>
+                </div>-->
             </td>
             <td>
                 <div class="down">
-                    Gestion de Projet
+                    {{compteur[3]['intitule']}}
                 </div>
-                <div class="up">
+               <!-- <div class="up">
                     <div class="professor">
                         Belkacem
                     </div>
                     <div class="salle">
                         E122
                     </div>
-                </div>
+                </div>-->
             </td>
-            <td></td>
-            <td></td>
-            <td>BDD</td>
-            <td>BDD</td>
-            <td>English</td>
+            <td> {{compteur[4]['intitule']}}</td>
+            <td> {{compteur[5]['intitule']}}</td>
+            <td> {{compteur[6]['intitule']}}</td>
+            <td> {{compteur[7]['intitule']}}</td>
+            <td> {{compteur[8]['intitule']}}</td>
         </tr>
 
         <tr class="column2">
