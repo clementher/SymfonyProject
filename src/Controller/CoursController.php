@@ -170,8 +170,7 @@ class CoursController extends AbstractController
         function initTabs($tab){
             $tabJour1 = $tab[0];
             $tabRet1 = array();
-            //$coursMidi = new Cours();
-            for ($i=0; $i<count($tabJour1); $i++) {
+            for ($i=0; $i<=count($tabJour1); $i++) {
                 if (count($tabJour1)==2)
                 {
                     $duree1 = date_diff($tabJour1[0]['debut'],$tabJour1[0]['fin'])->format('%h');
@@ -217,7 +216,203 @@ class CoursController extends AbstractController
                     }
                 }
             }
-            return $tabRet1;
+
+            $tabJour2 = $tab[1];
+            $tabRet2 = array();
+            for ($i=0; $i<=count($tabJour2); $i++) {
+                if (count($tabJour2)==2)
+                {
+                    $duree1 = date_diff($tabJour2[0]['debut'],$tabJour2[0]['fin'])->format('%h');
+                    $duree2 = date_diff($tabJour2[1]['debut'],$tabJour2[1]['fin'])->format('%h');
+                    for($j=1;$j<=$duree1;$j++){
+                        array_push($tabRet2,array('intitule' => $tabJour2[0]['intitule'], 'intervenant' => $tabJour2[0]['nom'].' '.$tabJour2[0]['prenom']));
+                    }
+                    for($j=1;$j<=2+(4-$duree1);$j++){
+                        array_push($tabRet2,array('intitule' => ' ', 'intervenant' => ' '));
+                    }
+                    for($j=1;$j<=$duree2;$j++){
+                        array_push($tabRet2,array('intitule' => $tabJour2[1]['intitule'], 'intervenant' =>$tabJour2[1]['nom'].' '.$tabJour2[1]['prenom']));
+                    }
+                    for($j=1;$j<=3-$duree2;$j++){
+                        array_push($tabRet2,array('intitule' => ' ', 'intervenant' => ' '));
+                    }
+                } elseif (count($tabJour2)==1){
+                    $duree1 = date_diff($tabJour2[0]['debut'],$tabJour2[0]['fin'])->format('%h');
+                    $this->console_log($tabJour2[0]['debut']->format('H'));
+                    if($tabJour2[0]['debut']->format('H') == '09'){
+                        $this->console_log('il est 9h');
+                        for($j=1;$j<=$duree1;$j++){
+                            array_push($tabRet2,array('intitule' => $tabJour2[0]['intitule'], 'intervenant' => $tabJour2[0]['nom'].' '.$tabJour2[0]['prenom']));
+                        }
+                        for($j=1;$j<=5+(4-$duree1);$j++){
+                            array_push($tabRet2,array('intitule' => ' ', 'intervenant' => ' '));
+                        }
+                    }elseif ($tabJour2[0]['debut']->format('H') == '15'){
+                        $this->console_log('il est 15h');
+                        for($j=1;$j<=6;$j++){
+                            array_push($tabRet2,array('intitule' => ' ', 'intervenant' => ' '));
+                        }
+                        for($j=1;$j<=$duree1;$j++){
+                            array_push($tabRet2,array('intitule' => $tabJour2[0]['intitule'], 'intervenant' => $tabJour2[0]['nom'].' '.$tabJour2[0]['prenom']));
+                        }
+                        for($j=1;$j<=3-$duree1;$j++){
+                            array_push($tabRet2,array('intitule' => ' ', 'intervenant' => ' '));
+                        }
+                    }
+                } else {
+                    for($j=1;$j<=9;$j++){
+                        array_push($tabRet2,array('intitule' => ' ', 'intervenant' => ' '));
+                    }
+                }
+            }
+
+            $tabjour3 = $tab[2];
+            $tabret3 = array();
+            for ($i=0; $i<=count($tabjour3); $i++) {
+                if (count($tabjour3)==2)
+                {
+                    $duree1 = date_diff($tabjour3[0]['debut'],$tabjour3[0]['fin'])->format('%h');
+                    $duree2 = date_diff($tabjour3[1]['debut'],$tabjour3[1]['fin'])->format('%h');
+                    for($j=1;$j<=$duree1;$j++){
+                        array_push($tabret3,array('intitule' => $tabjour3[0]['intitule'], 'intervenant' => $tabjour3[0]['nom'].' '.$tabjour3[0]['prenom']));
+                    }
+                    for($j=1;$j<=2+(4-$duree1);$j++){
+                        array_push($tabret3,array('intitule' => ' ', 'intervenant' => ' '));
+                    }
+                    for($j=1;$j<=$duree2;$j++){
+                        array_push($tabret3,array('intitule' => $tabjour3[1]['intitule'], 'intervenant' =>$tabjour3[1]['nom'].' '.$tabjour3[1]['prenom']));
+                    }
+                    for($j=1;$j<=3-$duree2;$j++){
+                        array_push($tabret3,array('intitule' => ' ', 'intervenant' => ' '));
+                    }
+                } elseif (count($tabjour3)==1){
+                    $duree1 = date_diff($tabjour3[0]['debut'],$tabjour3[0]['fin'])->format('%h');
+                    $this->console_log($tabjour3[0]['debut']->format('H'));
+                    if($tabjour3[0]['debut']->format('H') == '09'){
+                        $this->console_log('il est 9h');
+                        for($j=1;$j<=$duree1;$j++){
+                            array_push($tabret3,array('intitule' => $tabjour3[0]['intitule'], 'intervenant' => $tabjour3[0]['nom'].' '.$tabjour3[0]['prenom']));
+                        }
+                        for($j=1;$j<=5+(4-$duree1);$j++){
+                            array_push($tabret3,array('intitule' => ' ', 'intervenant' => ' '));
+                        }
+                    }elseif ($tabjour3[0]['debut']->format('H') == '15'){
+                        $this->console_log('il est 15h');
+                        for($j=1;$j<=6;$j++){
+                            array_push($tabret3,array('intitule' => ' ', 'intervenant' => ' '));
+                        }
+                        for($j=1;$j<=$duree1;$j++){
+                            array_push($tabret3,array('intitule' => $tabjour3[0]['intitule'], 'intervenant' => $tabjour3[0]['nom'].' '.$tabjour3[0]['prenom']));
+                        }
+                        for($j=1;$j<=3-$duree1;$j++){
+                            array_push($tabret3,array('intitule' => ' ', 'intervenant' => ' '));
+                        }
+                    }
+                } else {
+                    for($j=1;$j<=9;$j++){
+                        array_push($tabret3,array('intitule' => ' ', 'intervenant' => ' '));
+                    }
+                }
+            }
+
+            $tabjour4 = $tab[3];
+            $tabret4 = array();
+            for ($i=0; $i<=count($tabjour4); $i++) {
+                if (count($tabjour4)==2)
+                {
+                    $duree1 = date_diff($tabjour4[0]['debut'],$tabjour4[0]['fin'])->format('%h');
+                    $duree2 = date_diff($tabjour4[1]['debut'],$tabjour4[1]['fin'])->format('%h');
+                    for($j=1;$j<=$duree1;$j++){
+                        array_push($tabret4,array('intitule' => $tabjour4[0]['intitule'], 'intervenant' => $tabjour4[0]['nom'].' '.$tabjour4[0]['prenom']));
+                    }
+                    for($j=1;$j<=2+(4-$duree1);$j++){
+                        array_push($tabret4,array('intitule' => ' ', 'intervenant' => ' '));
+                    }
+                    for($j=1;$j<=$duree2;$j++){
+                        array_push($tabret4,array('intitule' => $tabjour4[1]['intitule'], 'intervenant' =>$tabjour4[1]['nom'].' '.$tabjour4[1]['prenom']));
+                    }
+                    for($j=1;$j<=3-$duree2;$j++){
+                        array_push($tabret4,array('intitule' => ' ', 'intervenant' => ' '));
+                    }
+                } elseif (count($tabjour4)==1){
+                    $duree1 = date_diff($tabjour4[0]['debut'],$tabjour4[0]['fin'])->format('%h');
+                    $this->console_log($tabjour4[0]['debut']->format('H'));
+                    if($tabjour4[0]['debut']->format('H') == '09'){
+                        $this->console_log('il est 9h');
+                        for($j=1;$j<=$duree1;$j++){
+                            array_push($tabret4,array('intitule' => $tabjour4[0]['intitule'], 'intervenant' => $tabjour4[0]['nom'].' '.$tabjour4[0]['prenom']));
+                        }
+                        for($j=1;$j<=5+(4-$duree1);$j++){
+                            array_push($tabret4,array('intitule' => ' ', 'intervenant' => ' '));
+                        }
+                    }elseif ($tabjour4[0]['debut']->format('H') == '15'){
+                        $this->console_log('il est 15h');
+                        for($j=1;$j<=6;$j++){
+                            array_push($tabret4,array('intitule' => ' ', 'intervenant' => ' '));
+                        }
+                        for($j=1;$j<=$duree1;$j++){
+                            array_push($tabret4,array('intitule' => $tabjour4[0]['intitule'], 'intervenant' => $tabjour4[0]['nom'].' '.$tabjour4[0]['prenom']));
+                        }
+                        for($j=1;$j<=3-$duree1;$j++){
+                            array_push($tabret4,array('intitule' => ' ', 'intervenant' => ' '));
+                        }
+                    }
+                } else {
+                    for($j=1;$j<=9;$j++){
+                        array_push($tabret4,array('intitule' => ' ', 'intervenant' => ' '));
+                    }
+                }
+            }
+
+            $tabjour5 = $tab[4];
+            $tabret5 = array();
+            for ($i=0; $i<=count($tabjour5); $i++) {
+                if (count($tabjour5)==2)
+                {
+                    $duree1 = date_diff($tabjour5[0]['debut'],$tabjour5[0]['fin'])->format('%h');
+                    $duree2 = date_diff($tabjour5[1]['debut'],$tabjour5[1]['fin'])->format('%h');
+                    for($j=1;$j<=$duree1;$j++){
+                        array_push($tabret5,array('intitule' => $tabjour5[0]['intitule'], 'intervenant' => $tabjour5[0]['nom'].' '.$tabjour5[0]['prenom']));
+                    }
+                    for($j=1;$j<=2+(4-$duree1);$j++){
+                        array_push($tabret5,array('intitule' => ' ', 'intervenant' => ' '));
+                    }
+                    for($j=1;$j<=$duree2;$j++){
+                        array_push($tabret5,array('intitule' => $tabjour5[1]['intitule'], 'intervenant' =>$tabjour5[1]['nom'].' '.$tabjour5[1]['prenom']));
+                    }
+                    for($j=1;$j<=3-$duree2;$j++){
+                        array_push($tabret5,array('intitule' => ' ', 'intervenant' => ' '));
+                    }
+                } elseif (count($tabjour5)==1){
+                    $duree1 = date_diff($tabjour5[0]['debut'],$tabjour5[0]['fin'])->format('%h');
+                    $this->console_log($tabjour5[0]['debut']->format('H'));
+                    if($tabjour5[0]['debut']->format('H') == '09'){
+                        $this->console_log('il est 9h');
+                        for($j=1;$j<=$duree1;$j++){
+                            array_push($tabret5,array('intitule' => $tabjour5[0]['intitule'], 'intervenant' => $tabjour5[0]['nom'].' '.$tabjour5[0]['prenom']));
+                        }
+                        for($j=1;$j<=5+(4-$duree1);$j++){
+                            array_push($tabret5,array('intitule' => ' ', 'intervenant' => ' '));
+                        }
+                    }elseif ($tabjour5[0]['debut']->format('H') == '15'){
+                        $this->console_log('il est 15h');
+                        for($j=1;$j<=6;$j++){
+                            array_push($tabret5,array('intitule' => ' ', 'intervenant' => ' '));
+                        }
+                        for($j=1;$j<=$duree1;$j++){
+                            array_push($tabret5,array('intitule' => $tabjour5[0]['intitule'], 'intervenant' => $tabjour5[0]['nom'].' '.$tabjour5[0]['prenom']));
+                        }
+                        for($j=1;$j<=3-$duree1;$j++){
+                            array_push($tabret5,array('intitule' => ' ', 'intervenant' => ' '));
+                        }
+                    }
+                } else {
+                    for($j=1;$j<=9;$j++){
+                        array_push($tabret5,array('intitule' => ' ', 'intervenant' => ' '));
+                    }
+                }
+            }
+            return array($tabRet1,$tabRet2,$tabret3,$tabret4,$tabret5);
         }
 
     function console_log( $data ){
