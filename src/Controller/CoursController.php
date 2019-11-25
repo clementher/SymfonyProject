@@ -68,6 +68,14 @@ class CoursController extends AbstractController
     }
 
     /**
+     * @Route("/month")
+     */
+    function afficherJours()
+    {
+        return $this->render('/cours/month.html.twig');
+    }
+
+    /**
      * @Route("/week")
      */
     function afficherCreneau()
