@@ -377,7 +377,7 @@ tr.hourColumn {
     flex-grow: 0.3;
     background: #e0e0e0;
     font-weight: bold;
-    border-radius: 0px 0px 0px 15px ;
+    border-radius: 15px 0px 0px 15px ;
 }
 
 
@@ -387,6 +387,22 @@ tbody{
     flex-direction: row;
     justify-content: space-between;
     align-items: stretch;
+}
+
+.monthDays{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.TopMonth{
+    font-size: 15px;
+    font-weight: bold;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: #888888;
 }
 
 th {
