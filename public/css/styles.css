@@ -471,6 +471,9 @@ td.hour {
     display: flex;
     flex-wrap: nowrap;
     justify-content: space-between;
+    height: 40px;
+    margin: 12px;
+    cursor: pointer;
 }
 
 .buttonNav {

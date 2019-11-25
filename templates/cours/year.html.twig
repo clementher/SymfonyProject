@@ -41,9 +41,11 @@
                 </div>
             </button>
             <div id="choice">
-                <button class="buttonNav" onclick="document.location.href='/week/'">Semaine</button>
-                <button class="buttonNav" onclick="document.location.href='/month/'">Mois</button>
-                <button class="buttonNav" onclick="document.location.href='/year/'">Année</button>
+                <nav class="nav nav-pills nav-fill">
+                    <a class="nav-item nav-link" onclick="document.location.href='/week/'">Semaine</a>
+                    <a class="nav-item nav-link" onclick="document.location.href='/month/'">Mois</a>
+                    <a class="nav-item nav-link active" onclick="document.location.href='/year/'">Année</a>
+                </nav>
             </div>
 
             <button class="buttonNav arrowNav" onclick="document.location.href='/month/';">
