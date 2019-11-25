@@ -8,6 +8,7 @@ use App\Entity\Matiere;
 use DateTime;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\BrowserKit\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\ORM\EntityManager;
 
@@ -52,7 +53,7 @@ class CoursController extends AbstractController
                     date("j", $jour5),
                     $this->deterMois(date("m", $jour5)))
             );
-            return $this->render('/cours/month.html.twig', ['tab' => $tab, 'noSem' => $nosem,'noAnn' => $noann, 'compteur' => $tabCours]);
+            return $this->render('/cours/week.html.twig', ['tab' => $tab, 'noSem' => $nosem,'noAnn' => $noann, 'compteur' => $tabCours]);
         }
         elseif ($nosem == 1 || $nosem == 54){
             if ($nosem == 54) {
@@ -65,6 +66,13 @@ class CoursController extends AbstractController
         else {
             throw $this->createNotFoundException("Ce numéro de semaine n'existe pas.");
         }
+    }
+
+    /**
+     * @Route("/month")
+     */
+    function afficher(){
+        return $this->render('/cours/month.html.twig');
     }
 
     /**
