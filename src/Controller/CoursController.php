@@ -68,11 +68,19 @@ class CoursController extends AbstractController
     }
 
     /**
-     * @Route("/month")
-     */
-    function afficherJours()
+ * @Route("/month")
+ */
+    function afficherMois()
     {
         return $this->render('/cours/month.html.twig');
+    }
+
+    /**
+     * @Route("/year")
+     */
+    function afficherAnnee()
+    {
+        return $this->render('/cours/year.html.twig');
     }
 
     /**
