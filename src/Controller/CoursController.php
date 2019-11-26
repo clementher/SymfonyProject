@@ -72,6 +72,15 @@ class CoursController extends AbstractController
  */
     function afficherMois()
     {
+        $nomon = date("m");
+        $noann = date("Y");
+        return $this->redirectToRoute("creneauDetailMois", array('nomon' => $nomon, 'noann' => $noann));
+    }
+
+    /**
+     * @Route("/month/{noann}/{nomon}", name="creneauDetailMois")
+     */
+    function afficherCreneauMois($noann, $nomon){
         return $this->render('/cours/month.html.twig');
     }
 
@@ -80,6 +89,14 @@ class CoursController extends AbstractController
      */
     function afficherAnnee()
     {
+        $noann = date("Y");
+        return $this->redirectToRoute("creneauDetailAnnee", array('noann' => $noann));
+    }
+
+    /**
+     * @Route("/year/{noann}", name="creneauDetailAnnee")
+     */
+    function afficherCreneauAnnee($noann){
         return $this->render('/cours/year.html.twig');
     }
 
