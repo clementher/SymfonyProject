@@ -54,7 +54,7 @@ class CoursController extends AbstractController
                     date("j", $jour5),
                     $this->deterMois(date("m", $jour5)))
             );
-            return $this->render('/cours/week.html.twig', ['tab' => $tab, 'noSem' => $nosem, 'noAnn' => $noann, 'compteur' => $tabCours]);
+            return $this->render('/cours/week.html.twig', ['tab' => $tab, 'noSem' => $nosem, 'noAnn' => $noann, 'cours' => $tabCours]);
         } elseif ($nosem == 1 || $nosem == 54) {
             if ($nosem == 54) {
                 return $this->redirectToRoute("creneauDetailSemaine", array('nosem' => 2, 'noann' => $noann + 1));
@@ -81,7 +81,63 @@ class CoursController extends AbstractController
      * @Route("/month/{noann}/{nomon}", name="creneauDetailMois")
      */
     function afficherCreneauMois($noann, $nomon){
-        return $this->render('/cours/month.html.twig');
+        if ($nomon >=1 && $nomon<=12) {
+            $jour = mktime(0, 0, 0, $nomon, 1, $noann);
+            $nb = 0;
+            $jourASauter = 0;
+            $sem = date("W", $jour);
+            $nbSem = $this->weeksPerMonth($nomon, $noann);
+            $tabJours = array(array(), array(), array(), array(), array(), array());
+            if (date("N", $jour) < 6) {
+                array_push($tabJours[$nb], "Semaine " . $sem);
+            } else {
+                switch (date("N", $jour)) {
+                    case 6:
+                        $jour += 86400 * 2;
+                        $sem++;
+                        array_push($tabJours[$nb], "Semaine " . $sem);
+                        $jourASauter = 2;
+                        break;
+                    case 7:
+                        $jour += 86400;
+                        $sem++;
+                        array_push($tabJours[$nb], "Semaine " . $sem);
+                        $jourASauter = 1;
+                        break;
+                }
+            }
+            for ($j = 1; $j < date("N", $jour); $j++) {
+                array_push($tabJours[$nb], " ");
+            }
+            $nbjour = date("t", $jour);
+            for ($j = 1; $j <= $nbjour - $jourASauter; $j++) {
+                if (date("W", $jour) != $sem) {
+                    $nb = $nb + 1;
+                    $sem = date("W", $jour);
+                    array_push($tabJours[$nb], "Semaine " . $sem);
+                }
+                if (date("N", $jour) < 6) {
+                    array_push($tabJours[$nb], date("j", $jour) . " " . $this->deterMois(date("n", $jour)) . " " . date("Y", $jour));
+                }
+                $jour += 86400;
+            }
+            for ($nbTab = $nb; $nbTab < 6; $nbTab++) {
+                for ($posTab = count($tabJours[$nbTab]); $posTab < 6; $posTab++) {
+                    array_push($tabJours[$nbTab], " ");
+                }
+            }
+            $this->console_log($tabJours);
+            return $this->render('/cours/month.html.twig', ['tabJours' => $tabJours, 'nomon' => $nomon, 'noann' => $noann]);
+        }elseif($nomon == 13 || $nomon == 0) {
+            if($nomon == 13){
+                return $this->redirectToRoute("creneauDetailMois", array('nomon' => 1, 'noann' => $noann + 1));
+            }
+            if($nomon == 0){
+                return $this->redirectToRoute("creneauDetailMois", array('nomon' => 12, 'noann' => $noann - 1));
+            }
+        }else{
+            throw $this->createNotFoundException("Ce numéro de semaine n'existe pas.");
+        }
     }
 
     /**
@@ -232,6 +288,18 @@ class CoursController extends AbstractController
         echo '<script>';
         echo 'console.log(' . json_encode($data) . ')';
         echo '</script>';
+    }
+
+    function weeksPerMonth($month, $year) {
+        $day = mktime(1, 1, 1, $month, 1, $year);
+        $nday = mktime(1, 1, 1, $month, date('t', $day), $year);
+        $week = date('W', $day);
+        $nweek = date('W', $nday);
+        $lweek = date('W', mktime(1, 1, 1, 12, 28, $year));
+        if ($nweek > $week) $res = $nweek - $week;
+        else if ($lweek > $week) $res = $nweek + $lweek - $week;
+        else $res = (int)$nweek;
+        return $res + 1;
     }
 
 

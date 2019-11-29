@@ -32,7 +32,7 @@
     <div id="corps">
         <div id="containerNavCalendar">
 
-            <button class="buttonNav arrowNav" onclick="document.location.href='/month/';">
+            <button class="buttonNav arrowNav" onclick="document.location.href='/month/{{ noann }}/{{ nomon - 1}}';">
                 <i class="material-icons">
                     undo
                 </i>
@@ -50,7 +50,7 @@
 
 
 
-            <button class="buttonNav arrowNav" onclick="document.location.href='/month/';">
+            <button class="buttonNav arrowNav" onclick="document.location.href='/month/{{ noann }}/{{ nomon + 1}}';">
                 <div>
                     Suivant &nbsp;
                 </div>
@@ -65,29 +65,29 @@
             <tr class="hourColumn">
                 <th>2019</th>
                 <td class="hour">
-                    <div>Sem. 43</div>
+                    <div>{{ tabJours[0][0] }}</div>
                 </td>
                 <td class="hour">
-                    <div>Sem. 44</div>
+                    <div>{{ tabJours[1][0]}}</div>
                 </td>
                 <td class="hour">
-                    <div>Sem. 45</div>
+                    <div>{{ tabJours[2][0]}}</div>
                 </td>
                 <td class="hour">
-                    <div>Sem. 46</div>
+                    <div>{{ tabJours[3][0]}}</div>
                 </td>
                 <td class="hour">
-                    <div>Sem. 47</div>
+                    <div>{{ tabJours[4][0]}}</div>
                 </td>
                 <td class="hour">
-                    <div>Sem. 48</div>
+                    <div>{{ tabJours[5][0]}}</div>
                 </td>
             </tr>
 
             <tr class="column1">
                 <th>Lundi</th>
                 <td>
-                    <div class="TopMonth">2 Sept. 2019</div>
+                    <div class="TopMonth">{{ tabJours[0][1] }}</div>
                     <div class="monthDays">
                         ENTREPRISE &nbsp;&nbsp;
                         {%  if  "ENTREPRISE"=="ENTREPRISE" %}
@@ -102,7 +102,7 @@
                     </div>
                 </td>
                 <td>
-                    <div class="TopMonth">9 Sept. 2019</div>
+                    <div class="TopMonth">{{ tabJours[1][1] }}</div>
                     <div class="monthDays">
                         ECOLE &nbsp;&nbsp;
                         {%  if  "ENTREPRISE"=="ENTREPRISE" %}
@@ -117,18 +117,22 @@
                     </div>
                 </td>
                 <td>
+                    <div class="TopMonth">{{ tabJours[2][1] }}</div>
                     <div class="down"></div>
                     ECOLE
                 </td>
                 <td>
+                    <div class="TopMonth">{{ tabJours[3][1] }}</div>
                     <div class="down"></div>
                     ECOLE
                 </td>
                 <td>
+                    <div class="TopMonth">{{ tabJours[4][1] }}</div>
                     <div class="down"></div>
                     ENTREPRISE
                 </td>
                 <td>
+                    <div class="TopMonth">{{ tabJours[5][1] }}</div>
                     <div class="down"></div>
                 </td>
             </tr>
@@ -136,7 +140,7 @@
             <tr class="column2">
                 <th>Mardi</th>
                 <td>
-                    <div class="TopMonth">3 Sept. 2019</div>
+                    <div class="TopMonth">{{ tabJours[0][2] }}</div>
                     <div class="monthDays">
                         ENTREPRISE &nbsp;&nbsp;
                         {%  if  "ENTREPRISE"=="ENTREPRISE" %}
@@ -151,18 +155,23 @@
                     </div>
                 </td>
                 <td>
+                    <div class="TopMonth">{{ tabJours[1][2] }}</div>
                     <div class="down"></div>
                 </td>
                 <td>
+                    <div class="TopMonth">{{ tabJours[2][2] }}</div>
                     <div class="down"></div>
                 </td>
                 <td>
+                    <div class="TopMonth">{{ tabJours[3][2] }}</div>
                     <div class="down"></div>
                 </td>
                 <td>
+                    <div class="TopMonth">{{ tabJours[4][2] }}</div>
                     <div class="down"></div>
                 </td>
                 <td>
+                    <div class="TopMonth">{{ tabJours[5][2] }}</div>
                     <div class="down"></div>
                 </td>
             </tr>
@@ -170,7 +179,7 @@
             <tr class="column1">
                 <th>Mercredi</th>
                 <td>
-                    <div class="TopMonth">4 Sept. 2019</div>
+                    <div class="TopMonth">{{ tabJours[0][3] }}</div>
                     <div class="monthDays">
                         ENTREPRISE &nbsp;&nbsp;
                         {%  if  "ENTREPRISE"=="ENTREPRISE" %}
@@ -185,18 +194,22 @@
                     </div>
                 </td>
                 <td>
+                    <div class="TopMonth">{{ tabJours[1][3] }}</div>
                     <div class="down"></div>
                 </td>
                 <td>
+                    <div class="TopMonth">{{ tabJours[2][3] }}</div>
                     <div class="down"></div>
                 </td>
                 <td>
+                    <div class="TopMonth">{{ tabJours[3][3] }}</div>
                     <div class="down"></div>
                 </td>
                 <td>
-                    <div class="down"></div>
+                    <div class="TopMonth">{{ tabJours[4][3] }}</div>
                 </td>
                 <td>
+                    <div class="TopMonth">{{ tabJours[5][3] }}</div>
                     <div class="down"></div>
                 </td>
             </tr>
@@ -204,7 +217,7 @@
             <tr class="column2">
                 <th>Jeudi</th>
                 <td>
-                    <div class="TopMonth">5 Sept. 2019</div>
+                    <div class="TopMonth">{{ tabJours[0][4] }}</div>
                     <div class="monthDays">
                         ENTREPRISE &nbsp;&nbsp;
                         {%  if  "ENTREPRISE"=="ENTREPRISE" %}
@@ -219,18 +232,23 @@
                     </div>
                 </td>
                 <td>
+                    <div class="TopMonth">{{ tabJours[1][4] }}</div>
                     <div class="down"></div>
                 </td>
                 <td>
+                    <div class="TopMonth">{{ tabJours[2][4] }}</div>
                     <div class="down"></div>
                 </td>
                 <td>
+                    <div class="TopMonth">{{ tabJours[3][4] }}</div>
                     <div class="down"></div>
                 </td>
                 <td>
+                    <div class="TopMonth">{{ tabJours[4][4] }}</div>
                     <div class="down"></div>
                 </td>
                 <td>
+                    <div class="TopMonth">{{ tabJours[5][4] }}</div>
                     <div class="down"></div>
                 </td>
             </tr>
@@ -238,7 +256,7 @@
             <tr class="column1">
                 <th>Vendredi</th>
                 <td>
-                    <div class="TopMonth">6 Sept. 2019</div>
+                    <div class="TopMonth">{{ tabJours[0][5] }}</div>
                     <div class="monthDays">
                         ENTREPRISE &nbsp;&nbsp;
                         {%  if  "ENTREPRISE"=="ENTREPRISE" %}
@@ -253,18 +271,23 @@
                     </div>
                 </td>
                 <td>
+                    <div class="TopMonth">{{ tabJours[1][5] }}</div>
                     <div class="down"></div>
                 </td>
                 <td>
+                    <div class="TopMonth">{{ tabJours[2][5] }}</div>
                     <div class="down"></div>
                 </td>
                 <td>
+                    <div class="TopMonth">{{ tabJours[3][5] }}</div>
                     <div class="down"></div>
                 </td>
                 <td>
+                    <div class="TopMonth">{{ tabJours[4][5] }}</div>
                     <div class="down"></div>
                 </td>
                 <td>
+                    <div class="TopMonth">{{ tabJours[5][5] }}</div>
                     <div class="down"></div>
                 </td>
             </tr>
