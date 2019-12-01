@@ -502,13 +502,14 @@ td.intitule {
     flex-wrap: nowrap;
     justify-content: space-between;
     flex-direction: row;
+    border-left: 1px solid #b2b2b2;
 }
 
 th.month {
     font-size: 12px;
 }
 
-.test1 {
+.schoolNumber {
     font-size: 10px;
     flex-grow: 1;
     font-weight: bold;
@@ -519,7 +520,7 @@ th.month {
     max-width: 17px;
 }
 
-.test3 {
+.enterpriseNumber {
     font-size: 10px;
     flex-grow: 1;
     font-weight: bold;
@@ -530,7 +531,12 @@ th.month {
     max-width: 17px;
 }
 
-.test2 {
+.matiereCat {
     font-size: 10px;
     flex-grow: 1;
+    text-align: center;
+}
+
+.jour {
+
 }
