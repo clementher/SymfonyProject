@@ -60,212 +60,126 @@
 
 
         <table class="table">
-            <tr class="hourColumn">
+            <!-- <tr class="hourColumn">
                 <th>2019</th>
-                <td class="hour">
-                    <div>Sem. 43</div>
-                </td>
-                <td class="hour">
-                    <div>Sem. 44</div>
-                </td>
-                <td class="hour">
-                    <div>Sem. 45</div>
-                </td>
-                <td class="hour">
-                    <div>Sem. 46</div>
-                </td>
-                <td class="hour">
-                    <div>Sem. 47</div>
-                </td>
-                <td class="hour">
-                    <div>Sem. 48</div>
-                </td>
-            </tr>
+                {% for i in 0..31 %}
+                    <td class="hour days">
+                        <div>{{ i }}</div>
+                    </td>
+                {% endfor %}
+            </tr> -->
 
             <tr class="column1">
-                <th>Lundi</th>
-                <td>
-                    <div class="TopMonth">2 Sept. 2019</div>
-                    <div class="monthDays">
-                        ENTREPRISE &nbsp;&nbsp;
-                        {%  if  "ENTREPRISE"=="ENTREPRISE" %}
-                        <i class="material-icons">
-                            business
-                        </i>
-                        {%  else %}
-                        <i class="material-icons">
-                            school
-                        </i>
-                        {%  endif %}
-                    </div>
-                </td>
-                <td>
-                    <div class="TopMonth">9 Sept. 2019</div>
-                    <div class="monthDays">
-                        ECOLE &nbsp;&nbsp;
-                        {%  if  "ENTREPRISE"=="ENTREPRISE" %}
-                            <i class="material-icons">
-                                school
-                            </i>
-                        {%  else %}
-                            <i class="material-icons">
-                                business
-                            </i>
-                        {%  endif %}
-                    </div>
-                </td>
-                <td>
-                    <div class="down"></div>
-                    ECOLE
-                </td>
-                <td>
-                    <div class="down"></div>
-                    ECOLE
-                </td>
-                <td>
-                    <div class="down"></div>
-                    ENTREPRISE
-                </td>
-                <td>
-                    <div class="down"></div>
-                </td>
+                <th class="month">Janvier</th>
+                {% for i in 0..31 %}
+                    <td class="intitule">
+                        <div>{{ i }}</div>
+                        <div>ENTREPRISE</div>
+                    </td>
+                {% endfor %}
             </tr>
-
             <tr class="column2">
-                <th>Mardi</th>
-                <td>
-                    <div class="TopMonth">3 Sept. 2019</div>
-                    <div class="monthDays">
-                        ENTREPRISE &nbsp;&nbsp;
-                        {%  if  "ENTREPRISE"=="ENTREPRISE" %}
-                            <i class="material-icons">
-                                business
-                            </i>
-                        {%  else %}
-                            <i class="material-icons">
-                                school
-                            </i>
-                        {%  endif %}
-                    </div>
-                </td>
-                <td>
-                    <div class="down"></div>
-                </td>
-                <td>
-                    <div class="down"></div>
-                </td>
-                <td>
-                    <div class="down"></div>
-                </td>
-                <td>
-                    <div class="down"></div>
-                </td>
-                <td>
-                    <div class="down"></div>
-                </td>
+                <th class="month">Février</th>
+                {% for i in 0..31 %}
+                    <td class="intitule">
+                        <div>{{ i }}</div>
+                        <div>ENTREPRISE</div>
+                    </td>
+                {% endfor %}
             </tr>
-
             <tr class="column1">
-                <th>Mercredi</th>
-                <td>
-                    <div class="TopMonth">4 Sept. 2019</div>
-                    <div class="monthDays">
-                        ENTREPRISE &nbsp;&nbsp;
-                        {%  if  "ENTREPRISE"=="ENTREPRISE" %}
-                            <i class="material-icons">
-                                business
-                            </i>
-                        {%  else %}
-                            <i class="material-icons">
-                                school
-                            </i>
-                        {%  endif %}
-                    </div>
-                </td>
-                <td>
-                    <div class="down"></div>
-                </td>
-                <td>
-                    <div class="down"></div>
-                </td>
-                <td>
-                    <div class="down"></div>
-                </td>
-                <td>
-                    <div class="down"></div>
-                </td>
-                <td>
-                    <div class="down"></div>
-                </td>
+                <th class="month">Mars</th>
+                {% for i in 0..31 %}
+                    <td class="intitule">
+                        <div>{{ i }}</div>
+                        <div>ENTREPRISE</div>
+                    </td>
+                {% endfor %}
             </tr>
-
             <tr class="column2">
-                <th>Jeudi</th>
-                <td>
-                    <div class="TopMonth">5 Sept. 2019</div>
-                    <div class="monthDays">
-                        ENTREPRISE &nbsp;&nbsp;
-                        {%  if  "ENTREPRISE"=="ENTREPRISE" %}
-                            <i class="material-icons">
-                                business
-                            </i>
-                        {%  else %}
-                            <i class="material-icons">
-                                school
-                            </i>
-                        {%  endif %}
-                    </div>
-                </td>
-                <td>
-                    <div class="down"></div>
-                </td>
-                <td>
-                    <div class="down"></div>
-                </td>
-                <td>
-                    <div class="down"></div>
-                </td>
-                <td>
-                    <div class="down"></div>
-                </td>
-                <td>
-                    <div class="down"></div>
-                </td>
+                <th class="month">Avril</th>
+                {% for i in 0..31 %}
+                    <td class="intitule">
+                        <div>{{ i }}</div>
+                        <div>ENTREPRISE</div>
+                    </td>
+                {% endfor %}
+            </tr>
+            <tr class="column1">
+                <th class="month">Mai</th>
+                {% for i in 0..31 %}
+                    <td class="intitule">
+                        <div>{{ i }}</div>
+                        <div>ENTREPRISE</div>
+                    </td>
+                {% endfor %}
+            </tr>
+            <tr class="column2">
+                <th class="month">Juin</th>
+                {% for i in 0..31 %}
+                    <td class="intitule">
+                        <div>{{ i }}</div>
+                        <div>ENTREPRISE</div>
+                    </td>
+                {% endfor %}
+            </tr>
+            <tr class="column1">
+                <th class="month">Juillet</th>
+                {% for i in 0..31 %}
+                    <td class="intitule">
+                        <div>{{ i }}</div>
+                        <div>ENTREPRISE</div>
+                    </td>
+                {% endfor %}
+            </tr>
+            <tr class="column2">
+                <th class="month">Aout</th>
+                {% for i in 0..31 %}
+                    <td class="intitule">
+                        <div>{{ i }}</div>
+                        <div>ENTREPRISE</div>
+                    </td>
+                {% endfor %}
+            </tr>
+            <tr class="column1">
+                <th class="month">Septembre</th>
+                {% for i in 0..31 %}
+                    <td class="intitule">
+                        <div class="test3">{{ i }}</div>
+                        <div class="test2">ECOLE</div>
+                    </td>
+                {% endfor %}
+            </tr>
+            <tr class="column2">
+                <th class="month">Octobre</th>
+                {% for i in 0..31 %}
+                    <td class="intitule">
+                        <div class="test1">{{ i }}</div>
+                        <div class="test2">ENTREPRISE</div>
+                    </td>
+                {% endfor %}
+            </tr>
+            <tr class="column1">
+                <th class="month">Novembre</th>
+                {% for i in 0..31 %}
+                    <td class="intitule">
+                        <div>{{ i }}</div>
+                        <div>ENTREPRISE</div>
+                    </td>
+                {% endfor %}
+            </tr>
+            <tr class="column2">
+                <th class="month">Decembre</th>
+                {% for i in 0..31 %}
+                    <td class="intitule">
+                        <div>{{ i }}</div>
+                        <div>ENTREPRISE</div>
+                    </td>
+                {% endfor %}
             </tr>
 
-            <tr class="column1">
-                <th>Vendredi</th>
-                <td>
-                    <div class="TopMonth">6 Sept. 2019</div>
-                    <div class="monthDays">
-                        ENTREPRISE &nbsp;&nbsp;
-                        {%  if  "ENTREPRISE"=="ENTREPRISE" %}
-                            <i class="material-icons">
-                                business
-                            </i>
-                        {%  else %}
-                            <i class="material-icons">
-                                school
-                            </i>
-                        {%  endif %}
-                    </div>
-                </td>
-                <td>
-                    <div class="down"></div>
-                </td>
-                <td>
-                    <div class="down"></div>
-                </td>
-                <td>
-                    <div class="down"></div>
-                </td>
-                <td>
-                    <div class="down"></div>
-                </td>
-                <td>
-                    <div class="down"></div>
-                </td>
-            </tr>
+
+
         </table>
     </div>
 {% endblock %}
