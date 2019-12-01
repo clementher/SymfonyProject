@@ -298,7 +298,7 @@ class CoursController extends AbstractController
             if (date("N", $jour) < 6) {
                 //array_push($tabJours[$nb], date("j", $jour) . " " . $this->deterMois(date("n", $jour)) . " " . date("Y", $jour));
                 $query1 = $this->entityManager->createQuery('SELECT m.intitule AS intitule FROM App\Entity\Matiere m, App\Entity\Cours c
-                        WHERE m.id = c.fk_matiere_id and c.fk_intervenant_id = 1 and c.debut >= ' . date('Ymd', $jour) . ' AND c.debut < ' . date('Ymd', $jour + 86400) . ' ORDER BY c.debut');
+                        WHERE m.id = c.fk_matiere_id and (c.fk_intervenant_id = 3 or c.fk_intervenant_id = 1) and c.debut >= ' . date('Ymd', $jour) . ' AND c.debut < ' . date('Ymd', $jour + 86400) . ' ORDER BY c.debut');
                 $tabRetQuery = $query1->getResult();
                 if (count($tabRetQuery) >0) {
                     if ($tabRetQuery[0]['intitule'] == "ENTREPRISE") {
