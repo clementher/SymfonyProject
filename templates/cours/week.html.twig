@@ -98,7 +98,7 @@
                 </div>
                 <div class="up">
                     <div class="professor">
-                        {#cours[0].nom ~ " " ~ cours[0].prenom #}
+                        {{ cours[0][0]['intervenant']}}
                     </div>
                     <!--<div class="salle">
                         C207
@@ -109,46 +109,87 @@
                 <div class="down">
                     {{cours[0][1]['intitule']}}
                 </div>
-                <!--<div class="up">
+                <div class="up">
                     <div class="professor">
-                        Cezera
+                        {{ cours[0][1]['intervenant']}}
                     </div>
-                    <div class="salle">
+                    <!--<div class="salle">
                         C207
-                    </div>
-                </div>-->
+                    </div>-->
+                </div>
             </td>
             <td>
                 <div class="down">
                     {{cours[0][2]['intitule']}}
                 </div>
-                <!--<div class="up">
+                <div class="up">
                     <div class="professor">
-                        Belkacem
+                        {{ cours[0][2]['intervenant']}}
                     </div>
-                    <div class="salle">
-                        E122
-                    </div>
-                </div>-->
+
             </td>
             <td>
                 <div class="down">
                     {{cours[0][3]['intitule']}}
                 </div>
-               <!-- <div class="up">
+               <div class="up">
                     <div class="professor">
-                        Belkacem
+                        {{ cours[0][3]['intervenant']}}
                     </div>
-                    <div class="salle">
-                        E122
-                    </div>
-                </div>-->
+
+                </div>
             </td>
-            <td> {{cours[0][4]['intitule']}}</td>
-            <td> {{cours[0][5]['intitule']}}</td>
-            <td> {{cours[0][6]['intitule']}}</td>
-            <td> {{cours[0][7]['intitule']}}</td>
-            <td> {{cours[0][8]['intitule']}}</td>
+            <td>
+                <div class="down">
+                    {{cours[0][4]['intitule']}}
+                </div>
+                <div class="up">
+                    <div class="professor">
+                        {{ cours[0][4]['intervenant']}}
+                    </div>
+
+                </div>
+            </td><td>
+                <div class="down">
+                    {{cours[0][5]['intitule']}}
+                </div>
+                <div class="up">
+                    <div class="professor">
+                        {{ cours[0][5]['intervenant']}}
+                    </div>
+
+                </div>
+            </td><td>
+                <div class="down">
+                    {{cours[0][6]['intitule']}}
+                </div>
+                <div class="up">
+                    <div class="professor">
+                        {{ cours[0][6]['intervenant']}}
+                    </div>
+
+                </div>
+            </td><td>
+                <div class="down">
+                    {{cours[0][7]['intitule']}}
+                </div>
+                <div class="up">
+                    <div class="professor">
+                        {{ cours[0][7]['intervenant']}}
+                    </div>
+
+                </div>
+            </td><td>
+                <div class="down">
+                    {{cours[0][8]['intitule']}}
+                </div>
+                <div class="up">
+                    <div class="professor">
+                        {{ cours[0][8]['intervenant']}}
+                    </div>
+
+                </div>
+            </td>
         </tr>
 
         <tr class="column2">
@@ -157,110 +198,92 @@
                 <div class="down">
                     {{cours[1][0]['intitule']}}
                 </div>
-                <!--<div class="up">
+                <div class="up">
                     <div class="professor">
-                        Cezera
+                        {{ cours[1][0]['intervenant']}}
                     </div>
-                    <div class="salle">
-                        C207
-                    </div>
-                </div>-->
+
+                </div>
             </td> <td>
                 <div class="down">
                     {{cours[1][1]['intitule']}}
                 </div>
-                <!--<div class="up">
+                <div class="up">
                     <div class="professor">
-                        Cezera
+                        {{ cours[1][1]['intervenant']}}
                     </div>
-                    <div class="salle">
-                        C207
-                    </div>
-                </div>-->
+
+                </div>
             </td> <td>
                 <div class="down">
                     {{cours[1][2]['intitule']}}
                 </div>
-                <!--<div class="up">
+                <div class="up">
                     <div class="professor">
-                        Cezera
+                        {{ cours[1][2]['intervenant']}}
                     </div>
-                    <div class="salle">
-                        C207
-                    </div>
-                </div>-->
+
+                </div>
             </td> <td>
                 <div class="down">
                     {{cours[1][3]['intitule']}}
                 </div>
-                <!--<div class="up">
+                <div class="up">
                     <div class="professor">
-                        Cezera
+                        {{ cours[1][3]['intervenant']}}
                     </div>
-                    <div class="salle">
-                        C207
-                    </div>
-                </div>-->
+
+                </div>
             </td> <td>
                 <div class="down">
                     {{cours[1][4]['intitule']}}
                 </div>
-                <!--<div class="up">
+                <div class="up">
                     <div class="professor">
-                        Cezera
+                        {{ cours[1][4]['intervenant']}}
                     </div>
-                    <div class="salle">
-                        C207
-                    </div>
-                </div>-->
+
+                </div>
             </td> <td>
                 <div class="down">
                     {{cours[1][5]['intitule']}}
                 </div>
-                <!--<div class="up">
+                <div class="up">
                     <div class="professor">
-                        Cezera
+                        {{ cours[1][5]['intervenant']}}
                     </div>
-                    <div class="salle">
-                        C207
-                    </div>
-                </div>-->
+
+                </div>
             </td> <td>
                 <div class="down">
                     {{cours[1][6]['intitule']}}
                 </div>
-                <!--<div class="up">
+                <div class="up">
                     <div class="professor">
-                        Cezera
+                        {{ cours[1][6]['intervenant']}}
                     </div>
-                    <div class="salle">
-                        C207
-                    </div>
-                </div>-->
+
+                </div>
             </td> <td>
                 <div class="down">
                     {{cours[1][7]['intitule']}}
                 </div>
-                <!--<div class="up">
+                <div class="up">
                     <div class="professor">
-                        Cezera
+                        {{ cours[1][7]['intervenant']}}
                     </div>
-                    <div class="salle">
-                        C207
-                    </div>
-                </div>-->
+
+                </div>
             </td> <td>
                 <div class="down">
                     {{cours[1][8]['intitule']}}
                 </div>
-                <!--<div class="up">
+                <div class="up">
                     <div class="professor">
-                        Cezera
+                        {{ cours[1][8]['intervenant']}}
                     </div>
-                    <div class="salle">
-                        C207
-                    </div>
-                </div>-->
+
+                </div>
             </td>
         </tr>
 
@@ -270,110 +293,92 @@
                 <div class="down">
                     {{cours[2][0]['intitule']}}
                 </div>
-                <!--<div class="up">
+                <div class="up">
                     <div class="professor">
-                        Cezera
+                        {{ cours[2][0]['intervenant']}}
                     </div>
-                    <div class="salle">
-                        C207
-                    </div>
-                </div>-->
+
+                </div>
             </td> <td>
                 <div class="down">
                     {{cours[2][1]['intitule']}}
                 </div>
-                <!--<div class="up">
+                <div class="up">
                     <div class="professor">
-                        Cezera
+                        {{ cours[2][1]['intervenant']}}
                     </div>
-                    <div class="salle">
-                        C207
-                    </div>
-                </div>-->
+
+                </div>
             </td> <td>
                 <div class="down">
                     {{cours[2][2]['intitule']}}
                 </div>
-                <!--<div class="up">
+                <div class="up">
                     <div class="professor">
-                        Cezera
+                        {{ cours[2][2]['intervenant']}}
                     </div>
-                    <div class="salle">
-                        C207
-                    </div>
-                </div>-->
+
+                </div>
             </td> <td>
                 <div class="down">
                     {{cours[2][3]['intitule']}}
                 </div>
-                <!--<div class="up">
+                <div class="up">
                     <div class="professor">
-                        Cezera
+                        {{ cours[2][3]['intervenant']}}
                     </div>
-                    <div class="salle">
-                        C207
-                    </div>
-                </div>-->
+
+                </div>
             </td> <td>
                 <div class="down">
                     {{cours[2][4]['intitule']}}
                 </div>
-                <!--<div class="up">
+                <div class="up">
                     <div class="professor">
-                        Cezera
+                        {{ cours[2][4]['intervenant']}}
                     </div>
-                    <div class="salle">
-                        C207
-                    </div>
-                </div>-->
+
+                </div>
             </td> <td>
                 <div class="down">
                     {{cours[2][5]['intitule']}}
                 </div>
-                <!--<div class="up">
+                <div class="up">
                     <div class="professor">
-                        Cezera
+                        {{ cours[2][5]['intervenant']}}
                     </div>
-                    <div class="salle">
-                        C207
-                    </div>
-                </div>-->
+
+                </div>
             </td> <td>
                 <div class="down">
                     {{cours[2][6]['intitule']}}
                 </div>
-                <!--<div class="up">
+                <div class="up">
                     <div class="professor">
-                        Cezera
+                        {{ cours[2][6]['intervenant']}}
                     </div>
-                    <div class="salle">
-                        C207
-                    </div>
-                </div>-->
+
+                </div>
             </td> <td>
                 <div class="down">
                     {{cours[2][7]['intitule']}}
                 </div>
-                <!--<div class="up">
+                <div class="up">
                     <div class="professor">
-                        Cezera
+                        {{ cours[2][7]['intervenant']}}
                     </div>
-                    <div class="salle">
-                        C207
-                    </div>
-                </div>-->
+
+                </div>
             </td> <td>
                 <div class="down">
                     {{cours[2][8]['intitule']}}
                 </div>
-                <!--<div class="up">
+                <div class="up">
                     <div class="professor">
-                        Cezera
+                        {{ cours[2][8]['intervenant']}}
                     </div>
-                    <div class="salle">
-                        C207
-                    </div>
-                </div>-->
+
+                </div>
             </td>
         </tr>
 
@@ -383,110 +388,92 @@
                 <div class="down">
                     {{cours[3][0]['intitule']}}
                 </div>
-                <!--<div class="up">
+                <div class="up">
                     <div class="professor">
-                        Cezera
+                        {{ cours[3][0]['intervenant']}}
                     </div>
-                    <div class="salle">
-                        C207
-                    </div>
-                </div>-->
+
+                </div>
             </td> <td>
                 <div class="down">
                     {{cours[3][1]['intitule']}}
                 </div>
-                <!--<div class="up">
+                <div class="up">
                     <div class="professor">
-                        Cezera
+                        {{ cours[3][1]['intervenant']}}
                     </div>
-                    <div class="salle">
-                        C207
-                    </div>
-                </div>-->
+
+                </div>
             </td> <td>
                 <div class="down">
                     {{cours[3][2]['intitule']}}
                 </div>
-                <!--<div class="up">
+                <div class="up">
                     <div class="professor">
-                        Cezera
+                        {{ cours[3][2]['intervenant']}}
                     </div>
-                    <div class="salle">
-                        C207
-                    </div>
-                </div>-->
+
+                </div>
             </td> <td>
                 <div class="down">
                     {{cours[3][3]['intitule']}}
                 </div>
-                <!--<div class="up">
+                <div class="up">
                     <div class="professor">
-                        Cezera
+                        {{ cours[3][3]['intervenant']}}
                     </div>
-                    <div class="salle">
-                        C207
-                    </div>
-                </div>-->
+
+                </div>
             </td> <td>
                 <div class="down">
                     {{cours[3][4]['intitule']}}
                 </div>
-                <!--<div class="up">
+                <div class="up">
                     <div class="professor">
-                        Cezera
+                        {{ cours[3][4]['intervenant']}}
                     </div>
-                    <div class="salle">
-                        C207
-                    </div>
-                </div>-->
+
+                </div>
             </td> <td>
                 <div class="down">
                     {{cours[3][5]['intitule']}}
                 </div>
-                <!--<div class="up">
+                <div class="up">
                     <div class="professor">
-                        Cezera
+                        {{ cours[3][5]['intervenant']}}
                     </div>
-                    <div class="salle">
-                        C207
-                    </div>
-                </div>-->
+
+                </div>
             </td> <td>
                 <div class="down">
                     {{cours[3][6]['intitule']}}
                 </div>
-                <!--<div class="up">
+                <div class="up">
                     <div class="professor">
-                        Cezera
+                        {{ cours[3][6]['intervenant']}}
                     </div>
-                    <div class="salle">
-                        C207
-                    </div>
-                </div>-->
+
+                </div>
             </td> <td>
                 <div class="down">
                     {{cours[3][7]['intitule']}}
                 </div>
-                <!--<div class="up">
+                <div class="up">
                     <div class="professor">
-                        Cezera
+                        {{ cours[3][7]['intervenant']}}
                     </div>
-                    <div class="salle">
-                        C207
-                    </div>
-                </div>-->
+
+                </div>
             </td> <td>
                 <div class="down">
                     {{cours[3][8]['intitule']}}
                 </div>
-                <!--<div class="up">
+                <div class="up">
                     <div class="professor">
-                        Cezera
+                        {{ cours[3][8]['intervenant']}}
                     </div>
-                    <div class="salle">
-                        C207
-                    </div>
-                </div>-->
+
+                </div>
             </td>
         </tr>
 
@@ -496,110 +483,92 @@
                 <div class="down">
                     {{cours[4][0]['intitule']}}
                 </div>
-                <!--<div class="up">
+                <div class="up">
                     <div class="professor">
-                        Cezera
+                        {{ cours[4][0]['intervenant']}}
                     </div>
-                    <div class="salle">
-                        C207
-                    </div>
-                </div>-->
+
+                </div>
             </td> <td>
                 <div class="down">
                     {{cours[4][1]['intitule']}}
                 </div>
-                <!--<div class="up">
+                <div class="up">
                     <div class="professor">
-                        Cezera
+                        {{ cours[4][1]['intervenant']}}
                     </div>
-                    <div class="salle">
-                        C207
-                    </div>
-                </div>-->
+
+                </div>
             </td> <td>
                 <div class="down">
                     {{cours[4][2]['intitule']}}
                 </div>
-                <!--<div class="up">
+                <div class="up">
                     <div class="professor">
-                        Cezera
+                        {{ cours[4][2]['intervenant']}}
                     </div>
-                    <div class="salle">
-                        C207
-                    </div>
-                </div>-->
+
+                </div>
             </td> <td>
                 <div class="down">
                     {{cours[4][3]['intitule']}}
                 </div>
-                <!--<div class="up">
+                <div class="up">
                     <div class="professor">
-                        Cezera
+                        {{ cours[4][3]['intervenant']}}
                     </div>
-                    <div class="salle">
-                        C207
-                    </div>
-                </div>-->
+
+                </div>
             </td> <td>
                 <div class="down">
                     {{cours[4][4]['intitule']}}
                 </div>
-                <!--<div class="up">
+                <div class="up">
                     <div class="professor">
-                        Cezera
+                        {{ cours[4][4]['intervenant']}}
                     </div>
-                    <div class="salle">
-                        C207
-                    </div>
-                </div>-->
+
+                </div>
             </td> <td>
                 <div class="down">
                     {{cours[4][5]['intitule']}}
                 </div>
-                <!--<div class="up">
+                <div class="up">
                     <div class="professor">
-                        Cezera
+                        {{ cours[4][5]['intervenant']}}
                     </div>
-                    <div class="salle">
-                        C207
-                    </div>
-                </div>-->
+
+                </div>
             </td> <td>
                 <div class="down">
                     {{cours[4][6]['intitule']}}
                 </div>
-                <!--<div class="up">
+                <div class="up">
                     <div class="professor">
-                        Cezera
+                        {{ cours[4][6]['intervenant']}}
                     </div>
-                    <div class="salle">
-                        C207
-                    </div>
-                </div>-->
+
+                </div>
             </td> <td>
                 <div class="down">
                     {{cours[4][7]['intitule']}}
                 </div>
-                <!--<div class="up">
+                <div class="up">
                     <div class="professor">
-                        Cezera
+                        {{ cours[4][7]['intervenant']}}
                     </div>
-                    <div class="salle">
-                        C207
-                    </div>
-                </div>-->
+
+                </div>
             </td> <td>
                 <div class="down">
                     {{cours[4][8]['intitule']}}
                 </div>
-                <!--<div class="up">
+                <div class="up">
                     <div class="professor">
-                        Cezera
+                        {{ cours[4][8]['intervenant']}}
                     </div>
-                    <div class="salle">
-                        C207
-                    </div>
-                </div>-->
+
+                </div>
             </td>
         </tr>
 
