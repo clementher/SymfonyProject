@@ -266,7 +266,7 @@ class CoursController extends AbstractController
         $jourASauter = 0;
         $sem = date("W", $jour);
         $nbSem = $this->weeksPerMonth($nomon, $noann);
-        $tabJours = array(array(), array(), array(), array(), array(), array());
+        $tabJours = array(array(), array(), array(), array(), array());
         if (date("N", $jour) < 6) {
             array_push($tabJours[$nb], array("Semaine " . $sem," "));
         } else {
@@ -312,7 +312,7 @@ class CoursController extends AbstractController
             }
             $jour += 86400;
         }
-        for ($nbTab = $nb; $nbTab < 6; $nbTab++) {
+        for ($nbTab = $nb; $nbTab < 5; $nbTab++) {
             for ($posTab = count($tabJours[$nbTab]); $posTab < 6; $posTab++) {
                 array_push($tabJours[$nbTab], array(" "," "));
             }
@@ -320,37 +320,7 @@ class CoursController extends AbstractController
         return $tabJours;
     }
 
-    /*function setTabsMonth($jour)
-    {
-        $nb = 0;
-        $tabRet = array(array(),array(),array(),array(),array(),array());
-        if(date("N", $jour)>5){
-            switch (date("N", $jour)) {
-                case 6:
-                    $jour += 86400 * 2;
-                    $jourASauter = 2;
-                    break;
-                case 7:
-                    $jour += 86400;
-                    $jourASauter = 1;
-                    break;
-            }
-        }
-        for ($j = 1; $j < date("N", $jour); $j++) {
-            array_push($tabRet[$nb], " ");
-        }
-        for ($i = 0; $i <= 4; $i++) {
-            $query1 = $this->entityManager->createQuery('SELECT m.intitule AS intitule FROM App\Entity\Matiere m, App\Entity\Cours c
-                        WHERE m.id = c.fk_matiere_id and c.fk_intervenant_id = 1 and c.debut >= ' . date('Ymd', $jour) . ' AND c.debut < ' . date('Ymd', $jour + 86400) . ' ORDER BY c.debut');
-            $tabRetQuery = $query1->getResult();
-            if ($tabRetQuery[0]['intitule'] == "ENTREPRISE"){
-                array_push($tabRet,"E");
-            }else {
-                array_push($tabRet,"C");
-            }
-        }
-        return $tabRet;
-    }*/
+
 
 
 }
