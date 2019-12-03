@@ -476,6 +476,10 @@ td.hour {
     cursor: pointer;
 }
 
+td.days {
+    min-height: 31px;
+}
+
 .buttonNav {
     padding: 10px;
     margin: 10px;
@@ -490,3 +494,49 @@ td.hour {
     border: none;
 }
 
+td.intitule {
+    min-height: 27px;
+    font-size: 10px;
+    text-align: right;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    flex-direction: row;
+    border-left: 1px solid #b2b2b2;
+}
+
+th.month {
+    font-size: 12px;
+}
+
+.schoolNumber {
+    font-size: 10px;
+    flex-grow: 1;
+    font-weight: bold;
+    background-color: #0095ff;
+    color: white;
+    text-align: center;
+    border-radius: 200px;
+    max-width: 17px;
+}
+
+.enterpriseNumber {
+    font-size: 10px;
+    flex-grow: 1;
+    font-weight: bold;
+    background-color: #ff8100;
+    color: white;
+    text-align: center;
+    border-radius: 200px;
+    max-width: 17px;
+}
+
+.matiereCat {
+    font-size: 10px;
+    flex-grow: 1;
+    text-align: center;
+}
+
+.jour {
+
+}
