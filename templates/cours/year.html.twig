@@ -82,13 +82,13 @@
             <tr class="column2">
                 <th class="month">Février</th>
                 {% if bisex == 1 %}
-                {% for i in 1..29 %}
-                    <td class="intitule">
-                        <div>{{ i }}</div>
-                        <b>&nbsp;{{ tabCours[1][i-1][0] }}</b>
-                        <div>{{tabCours[1][i-1][1]}}</div>
-                    </td>
-                {% endfor %}
+                    {% for i in 1..29 %}
+                        <td class="intitule">
+                            <div>{{ i }}</div>
+                            <b>&nbsp;{{ tabCours[1][i-1][0] }}</b>
+                            <div>{{tabCours[1][i-1][1]}}</div>
+                        </td>
+                    {% endfor %}
                 {% else %}
                     {% for i in 1..28 %}
                         <td class="intitule">
@@ -97,7 +97,10 @@
                             <div>{{tabCours[1][i-1][1]}}</div>
                         </td>
                     {% endfor %}
+                    <td class="intitule"></td>
                 {% endif %}
+                <td class="intitule"></td>
+                <td class="intitule"></td>
             </tr>
             <tr class="column1">
                 <th class="month">Mars</th>
@@ -118,6 +121,7 @@
                         <div class="matiereCat">{{tabCours[3][i-1][1]}}</div>
                     </td>
                 {% endfor %}
+                <td class="intitule"></td>
             </tr>
             <tr class="column1">
                 <th class="month">Mai</th>
@@ -138,6 +142,7 @@
                         <div class="matiereCat">{{tabCours[5][i-1][1]}}</div>
                     </td>
                 {% endfor %}
+                <td class="intitule"></td>
             </tr>
             <tr class="column1">
                 <th class="month">Juillet</th>
@@ -169,6 +174,7 @@
                         <div class="matiereCat">{{tabCours[8][i-1][1]}}</div>
                     </td>
                 {% endfor %}
+                <td class="intitule"></td>
             </tr>
             <tr class="column2">
                 <th class="month">Octobre</th>
@@ -189,6 +195,7 @@
                         <div class="matiereCat">{{tabCours[10][i-1][1]}}</div>
                     </td>
                 {% endfor %}
+                <td class="intitule"></td>
             </tr>
             <tr class="column2">
                 <th class="month">Decembre</th>
