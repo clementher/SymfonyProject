@@ -140,6 +140,10 @@ class CoursController extends AbstractController
                 return 'Jeudi';
             case 5:
                 return 'Vendredi';
+            case 6:
+                return "Samedi";
+            case 7:
+                return "Dimanche";
             default:
                 return 'Erreur';
         }
@@ -334,15 +338,15 @@ class CoursController extends AbstractController
                     $tabRetQuery = $query1->getResult();
                     if (count($tabRetQuery) >0) {
                         if ($tabRetQuery[0]['intitule'] == "ENTREPRISE") {
-                            array_push($tabRet[$i],  "ENTREPRISE");
+                            array_push($tabRet[$i],array(substr($this->deterJour(date("N",$jour)),0,3) , "ENTREPRISE"));
                         } else {
-                            array_push($tabRet[$i], "ECOLE");
+                            array_push($tabRet[$i], array(substr($this->deterJour(date("N",$jour)),0,3),"ECOLE"));
                         }
                     }else {
-                        array_push($tabRet[$i], " ");
+                        array_push($tabRet[$i],array(substr($this->deterJour(date("N",$jour)),0,3), " "));
                     }
                 }else {
-                    array_push($tabRet[$i], " ");
+                    array_push($tabRet[$i], array(substr($this->deterJour(date("N",$jour)),0,3)," "));
                 }
                 $jour += 86400;
             }
