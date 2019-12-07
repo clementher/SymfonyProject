@@ -531,6 +531,17 @@ th.month {
     max-width: 17px;
 }
 
+.noneNumber {
+    font-size: 10px;
+    flex-grow: 1;
+    font-weight: bold;
+    background-color: #ff8100;
+    color: white;
+    text-align: center;
+    border-radius: 200px;
+    max-width: 17px;
+}
+
 .matiereCat {
     font-size: 10px;
     flex-grow: 1;
