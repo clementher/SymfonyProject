@@ -111,7 +111,10 @@ class CoursController extends AbstractController
      * @Route("/year/{noann}", name="creneauDetailAnnee")
      */
     function afficherCreneauAnnee($noann){
-        return $this->render('/cours/year.html.twig');
+        $this->console_log($noann);
+        $bisex = date("L", mktime(0, 0, 0, 1, 1, $noann));
+        $tabCours = $this->setTabYear($noann);
+        return $this->render('/cours/year.html.twig',array('bisex' => $bisex, 'noann'=> $noann, 'tabCours'=> $tabCours));
     }
 
     /**
@@ -318,6 +321,33 @@ class CoursController extends AbstractController
             }
         }
         return $tabJours;
+    }
+
+    function setTabYear($noann){
+        $tabRet = array(array(), array(), array(), array(), array(),array(),array(),array(),array(),array(),array(),array());
+        for($i=0;$i<12;$i++){
+            $jour = mktime(0, 0, 0, $i+1, 1, $noann);
+            for($j=1;$j<=date("t",$jour);$j++){
+                if (date("N", $jour) < 6) {
+                    $query1 = $this->entityManager->createQuery('SELECT m.intitule AS intitule FROM App\Entity\Matiere m, App\Entity\Cours c
+                        WHERE m.id = c.fk_matiere_id and (c.fk_intervenant_id = 3 or c.fk_intervenant_id = 1) and c.debut >= ' . date('Ymd', $jour) . ' AND c.debut < ' . date('Ymd', $jour + 86400) . ' ORDER BY c.debut');
+                    $tabRetQuery = $query1->getResult();
+                    if (count($tabRetQuery) >0) {
+                        if ($tabRetQuery[0]['intitule'] == "ENTREPRISE") {
+                            array_push($tabRet[$i],  "ENTREPRISE");
+                        } else {
+                            array_push($tabRet[$i], "ECOLE");
+                        }
+                    }else {
+                        array_push($tabRet[$i], " ");
+                    }
+                }else {
+                    array_push($tabRet[$i], " ");
+                }
+                $jour += 86400;
+            }
+        }
+        return $tabRet;
     }
 
 
