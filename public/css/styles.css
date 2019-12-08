@@ -289,6 +289,101 @@ html {height:100%}
     justify-content: space-between;*/
     box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
     padding: 21px;
+    text-align: center;
+}
+
+.listDispo{
+    padding: 10px;
+    border-radius: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    border: #c6c6c6 1px solid;
+    width: 50%;
+    margin: auto;
+    margin-bottom: 10px;
+}
+
+.addDispo{
+    border-radius: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: white;
+    border: #c6c6c6 1px solid;
+    width: 70%;
+    margin: auto;
+    margin-bottom: 50px;
+}
+
+.chooseDispo{
+    border-radius: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: white;
+}
+
+.end{
+    padding: 4px 20px 4px 20px;
+}
+
+.begin{
+    padding: 4px 20px 4px 20px;
+}
+
+.delete{
+    margin-right: 5px;
+    background-color: #e69000;
+    border-radius: 24px;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 4px 23px;
+    font-weight: bold;
+}
+
+.deleteIcon {
+    background-color: white;
+    color: #e69000;
+    border-radius: 50px;
+    padding: 4px;
+    margin-left: 6px;
+}
+
+.ajouter{
+    margin-right: 5px;
+    background-color: #0073e0;
+    border-radius: 24px;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 4px 23px;
+    font-weight: bold;
+}
+
+.ajouterIcon {
+    background-color: white;
+    color: #0073e0;
+    border-radius: 50px;
+    padding: 4px;
+    margin-left: 6px;
+}
+
+.titleAdmin {
+    padding: 0px 2px 13px 2px;
+
 }
 
 #imageLogin{

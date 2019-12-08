@@ -12,6 +12,8 @@
               crossorigin="anonymous">
         <link rel="stylesheet" href="/css/font-awesome.css">
         <link rel="stylesheet" href="/css/styles.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+              rel="stylesheet">
     {% endblock %}
 </head>
 
@@ -20,21 +22,105 @@
 
 <div id="containerAdmin">
     <div id="formAdmin">
-        <h2>Ajouter une plage de disponibilité</h2>
-        <h2>Mes disponibilité</h2>
-        <div>
+        <h2 class="titleAdmin">Ajouter une plage de disponibilité</h2>
+        <div class="addDispo">
+            <div class="chooseDispo">
+            Du
+            <div class="begin">
+            <select name="Jours" id="pet-select">
+                {% for i in 1..31 %}
+                    <option value="{{ i }}">{{ i }}</option>
+                {% endfor %}
+            </select>
+            &nbsp;/&nbsp;
+            <select name="Mois" id="pet-select">
+                {% for i in 1..12 %}
+                    <option value="{{ i }}">{{ i }}</option>
+                {% endfor %}
+            </select>
+            &nbsp;/&nbsp;
+            <select name="Mois" id="pet-select">
+                {% for i in 2019..2022 %}
+                    <option value="{{ i }}">{{ i }}</option>
+                {% endfor %}
+            </select>
+            </div>
+            au
+            <div class="end">
+            <select name="Jours" id="pet-select">
+                {% for i in 1..31 %}
+                    <option value="{{ i }}">{{ i }}</option>
+                {% endfor %}
+            </select>
+            &nbsp;/&nbsp;
+            <select name="Mois" id="pet-select">
+                {% for i in 1..12 %}
+                    <option value="{{ i }}">{{ i }}</option>
+                {% endfor %}
+            </select>
+            &nbsp;/&nbsp;
+            <select name="Mois" id="pet-select">
+                {% for i in 2019..2022 %}
+                    <option value="{{ i }}">{{ i }}</option>
+                {% endfor %}
+            </select>
+            </div>
 
+            </div>
+            <div class="ajouter">
+                <div>Ajouter&nbsp;</div>
+                <i class="ajouterIcon material-icons">
+                    add_circle_outline
+                </i>
+            </div>
+        </div>
+        <h2 class="titleAdmin">Liste de mes disponibilités</h2>
+        <div class="listDispo">
+            <div style="margin-left: 5px">
+                Du 01/03/2020 au 05/03/2020
+            </div>
+            <div class="delete">
+                <div>Supprimer&nbsp;</div>
+                <i class="material-icons deleteIcon">
+                    delete_forever
+                </i>
+            </div>
+        </div>
+
+        <div class="listDispo">
+            <div style="margin-left: 5px">
+                Du 20/03/2020 au 24/03/2020
+            </div>
+            <div class="delete">
+                <div>Supprimer&nbsp;</div>
+                <i class="material-icons deleteIcon">
+                    delete_forever
+                </i>
+            </div>
+        </div>
+
+        <div class="listDispo">
+            <div style="margin-left: 5px">
+                Du 11/05/2020 au 15/05/2020
+            </div>
+            <div class="delete">
+                <div>Supprimer&nbsp;</div>
+                <i class="material-icons deleteIcon">
+                    delete_forever
+                </i>
+            </div>
         </div>
     </div>
 </div>
 
 
-
+<!--
 <footer class="footer">
     <div class="container text-center">
         <span class="text-muted">Site web developpé par Clément HERNANDEZ, David CRETON et Loïc AUGE </span>
     </div>
 </footer>
+-->
 
 
 {% block javascripts %}
