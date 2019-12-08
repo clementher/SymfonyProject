@@ -108,6 +108,22 @@ class CoursController extends AbstractController
     }
 
     /**
+     * @Route("/adminCours")
+     */
+    function adminCours()
+    {
+        return $this->render('/admin.html.twig');
+    }
+
+    /**
+     * @Route("/dispo")
+     */
+    function dispo()
+    {
+        return $this->render('/dispo.html.twig');
+    }
+
+    /**
      * @Route("/year/{noann}", name="creneauDetailAnnee")
      */
     function afficherCreneauAnnee($noann){
