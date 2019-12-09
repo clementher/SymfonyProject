@@ -108,9 +108,9 @@ class CoursController extends AbstractController
     }
 
     /**
-     * @Route("/adminCours")
+     * @Route("/admin")
      */
-    function adminCours()
+    function admin()
     {
         return $this->render('/admin.html.twig');
     }

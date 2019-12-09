@@ -12,6 +12,8 @@
               crossorigin="anonymous">
         <link rel="stylesheet" href="/css/font-awesome.css">
         <link rel="stylesheet" href="/css/styles.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+              rel="stylesheet">
     {% endblock %}
 </head>
 
@@ -20,8 +22,33 @@
 
 <div id="containerAdmin">
     <div id="formAdmin">
-        <h2>Ajouter un cours</h2>
-        <h2>Supprimer un cours</h2>
+        <div class="containerAdmin">
+            <h2>Ajouter un Intervenant</h2>
+            <form action="/action_page.php"  class="addIntervenant">
+                <div>Nom: <input type="text" name="FirstName" value="Mickey"></div>
+                <div>Prénom: <input type="text" name="FirstName" value="Mickey"></div>
+                <div>Mail: <input type="text" name="FirstName" value="Mickey"></div>
+                <div>Spécialité: <input type="text" name="FirstName" value="Mickey"></div>
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+
+
+
+        <div class="containerAdmin">
+            <h2>Liste des Intervenants</h2>
+            <form action="/action_page.php"  class="addIntervenant">
+                <div>Nom: <b>BONJOUR</b></div>
+                <div>Prénom: <b>Bonsoir</b></div>
+                <div>Mail: <b>Bonsoir@bonjour.com</b></div>
+                <div>Spécialité: <b>Bonsoirade</b></div>
+                <div class="deleteAdmin">
+                    <i class="material-icons deleteIcon">
+                        delete_forever
+                    </i>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 

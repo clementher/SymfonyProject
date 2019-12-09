@@ -301,7 +301,7 @@ html {height:100%}
     align-items: center;
     background-color: white;
     border: #c6c6c6 1px solid;
-    width: 50%;
+    width: 550px;
     margin: auto;
     margin-bottom: 10px;
 }
@@ -315,9 +315,27 @@ html {height:100%}
     padding: 10px;
     background-color: white;
     border: #c6c6c6 1px solid;
-    width: 70%;
+    width: 800px;
     margin: auto;
     margin-bottom: 50px;
+}
+
+.form-group {
+    margin-bottom: 0;
+}
+
+.addIntervenant{
+    border-radius: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: whitesmoke;
+    width: 95%;
+    margin: auto;
+    margin-bottom: 50px;
+    margin-top: 50px;
 }
 
 .chooseDispo{
@@ -331,10 +349,18 @@ html {height:100%}
 
 .end{
     padding: 4px 20px 4px 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .begin{
     padding: 4px 20px 4px 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .delete{
@@ -348,6 +374,20 @@ html {height:100%}
     justify-content: flex-start;
     align-items: center;
     padding: 4px 23px;
+    font-weight: bold;
+}
+
+.deleteAdmin{
+    margin-right: 5px;
+    background-color: #e69000;
+    border-radius: 24px;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 6px 6px 6px 0px;
     font-weight: bold;
 }
 

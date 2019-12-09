@@ -21,49 +21,61 @@
 
 
 <div id="containerAdmin">
-    <div id="formAdmin">
+    <div class="formAdmin">
         <h2 class="titleAdmin">Ajouter une plage de disponibilité</h2>
         <div class="addDispo">
             <div class="chooseDispo">
             Du
             <div class="begin">
-            <select name="Jours" id="pet-select">
-                {% for i in 1..31 %}
-                    <option value="{{ i }}">{{ i }}</option>
-                {% endfor %}
-            </select>
-            &nbsp;/&nbsp;
-            <select name="Mois" id="pet-select">
-                {% for i in 1..12 %}
-                    <option value="{{ i }}">{{ i }}</option>
-                {% endfor %}
-            </select>
-            &nbsp;/&nbsp;
-            <select name="Mois" id="pet-select">
-                {% for i in 2019..2022 %}
-                    <option value="{{ i }}">{{ i }}</option>
-                {% endfor %}
-            </select>
+                <div class="form-group">
+                    <select class="form-control"name="Jours" id="pet-select">
+                        {% for i in 1..31 %}
+                            <option value="{{ i }}">{{ i }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                &nbsp;/&nbsp;
+                <div class="form-group">
+                    <select class="form-control"name="Jours" id="pet-select">
+                        {% for i in 1..12 %}
+                            <option value="{{ i }}">{{ i }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                &nbsp;/&nbsp;
+                <div class="form-group">
+                    <select class="form-control"name="Jours" id="pet-select">
+                        {% for i in 2019..2022 %}
+                            <option value="{{ i }}">{{ i }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
             </div>
             au
             <div class="end">
-            <select name="Jours" id="pet-select">
-                {% for i in 1..31 %}
-                    <option value="{{ i }}">{{ i }}</option>
-                {% endfor %}
-            </select>
-            &nbsp;/&nbsp;
-            <select name="Mois" id="pet-select">
-                {% for i in 1..12 %}
-                    <option value="{{ i }}">{{ i }}</option>
-                {% endfor %}
-            </select>
-            &nbsp;/&nbsp;
-            <select name="Mois" id="pet-select">
-                {% for i in 2019..2022 %}
-                    <option value="{{ i }}">{{ i }}</option>
-                {% endfor %}
-            </select>
+                <div class="form-group">
+                    <select class="form-control"name="Jours" id="pet-select">
+                        {% for i in 1..31 %}
+                            <option value="{{ i }}">{{ i }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                &nbsp;/&nbsp;
+                <div class="form-group">
+                    <select class="form-control"name="Jours" id="pet-select">
+                        {% for i in 1..12 %}
+                            <option value="{{ i }}">{{ i }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                &nbsp;/&nbsp;
+                <div class="form-group">
+                    <select class="form-control"name="Jours" id="pet-select">
+                        {% for i in 2019..2022 %}
+                            <option value="{{ i }}">{{ i }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
             </div>
 
             </div>
