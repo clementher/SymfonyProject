@@ -134,7 +134,7 @@ class CoursController extends AbstractController
     }
 
     /**
-     * @Route("/week")
+     * @Route("/week", name="app_Week")
      */
     function afficherCreneau()
     {
