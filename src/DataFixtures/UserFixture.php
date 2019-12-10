@@ -25,6 +25,8 @@ class UserFixture extends Fixture
             'abcd1234*'));
         $user->setNom("Auge");
         $user->setPrenom("Loic");
+        $user->getFkIntervenantId("2");
+        $user->setIsAdmin("0");
         $manager->persist($user);
 
         $manager->flush();
