@@ -6,26 +6,39 @@
             <link rel="stylesheet" href="{{ asset('css/login.css') }}">
         {% endblock %}
 {% block body %}
-    <form class="form-signin" method="post">
-        {% if error %}
-            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-        {% endif %}
-        <h1 class="h3 mb-3 font-weight-normal">Connectez-vous</h1>
-        <label for="inputEmail" class="sr-only">Email</label>
-        <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" placeholder="exemple@domaine.fr" required
-               autofocus>
-        <label for="inputPassword" class="sr-only">Mot de passe</label>
-        <input type="password" name="password" id="inputPassword" class="form-control" placeholder="*******" required>
-        <input type="hidden" name="_csrf_token"
-               value="{{ csrf_token('authenticate') }}"
-        >
-        <div class="checkbox mb-3">
-            <label>
-                <input type="checkbox" value="_remember_me"> Se souvenir de moi
-            </label>
+    <div id="containerLogin">
+        <div id="formLogin">
+            <div id="imgContainer">
+                <img src="/images/calendarLogin.png" id="imageLogin" width="600" height="400">
+            </div>
+            <div id="form">
+                <div id="title" class="formGroup">
+                    <h1>Gestion de Planning</h1>
+                    <h2 style="color: #656565;">CFPI</h2>
+                </div>
+                <form class="form-signin" method="post">
+                    {% if error %}
+                        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                    {% endif %}
+                    <h1 class="h3 mb-3 font-weight-normal">Connectez-vous</h1>
+                    <label for="inputEmail" class="sr-only">Email</label>
+                    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" placeholder="exemple@domaine.fr" required
+                           autofocus>
+                    <label for="inputPassword" class="sr-only">Mot de passe</label>
+                    <input type="password" name="password" id="inputPassword" class="form-control" placeholder="*******" required>
+                    <input type="hidden" name="_csrf_token"
+                           value="{{ csrf_token('authenticate') }}"
+                    >
+                    <div class="checkbox mb-3">
+                        <label>
+                            <input type="checkbox" value="_remember_me"> Se souvenir de moi
+                        </label>
+                    </div>
+                    <button class="btn btn-lg btn-primary btn-block" type="submit">
+                        Connexion
+                    </button>
+                </form>
+            </div>
         </div>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">
-            Connexion
-        </button>
-    </form>
+    </div>
 {% endblock %}

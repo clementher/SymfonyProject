@@ -11,10 +11,10 @@ use Symfony\Component\Routing\Annotation\Route;
 class AccueilController extends AbstractController
 {
     /**
-     * @Route("/")
+     * @Route("/", name="app_login")
      */
     function index(){
-        return $this->render('login.html.twig');
+        return $this->render('security/login.html.twig');
     }
 
 
