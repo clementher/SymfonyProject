@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Cours;
 use App\Entity\Intervenant;
 use App\Entity\Matiere;
+use App\Entity\Utilisateurs;
 use DateTime;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\BrowserKit\Request;
@@ -202,9 +203,21 @@ class CoursController extends AbstractController
     {
         $tabjour = array($jour1, $jour2, $jour3, $jour4, $jour5);
         $tabRet = array();
+        $user = new Utilisateurs();
+        $user = $this->getUser();
+        $idIntervenant = $user->getFkIntervenantId();
+        $isAdmin = $user->getIsAdmin();
+        $this->console_log("ID :".$idIntervenant);
         for ($i = 0; $i <= 4; $i++) {
-            $query1 = $this->entityManager->createQuery('SELECT m.intitule AS intitule, i.nom as nom, i.prenom as prenom, c.debut as debut, c.fin as fin, m.isSpecialite as spe FROM App\Entity\Matiere m, App\Entity\Intervenant i, App\Entity\Cours c
-                        WHERE m.id = c.fk_matiere_id AND i.id = c.fk_intervenant_id and c.fk_intervenant_id = 1 and c.debut >= ' . date('Ymd', $tabjour[$i]) . ' AND c.debut < ' . date('Ymd', $tabjour[$i] + 86400) . ' ORDER BY c.debut');
+            if ($isAdmin == 1)
+            {
+                $query1 = $this->entityManager->createQuery('SELECT m.intitule AS intitule, i.nom as nom, i.prenom as prenom, c.debut as debut, c.fin as fin, m.isSpecialite as spe FROM App\Entity\Matiere m, App\Entity\Intervenant i, App\Entity\Cours c
+                        WHERE m.id = c.fk_matiere_id AND i.id = c.fk_intervenant_id and c.debut >= ' . date('Ymd', $tabjour[$i]) . ' AND c.debut < ' . date('Ymd', $tabjour[$i] + 86400) . ' ORDER BY c.debut');
+            }
+            else {
+                $query1 = $this->entityManager->createQuery('SELECT m.intitule AS intitule, i.nom as nom, i.prenom as prenom, c.debut as debut, c.fin as fin, m.isSpecialite as spe FROM App\Entity\Matiere m, App\Entity\Intervenant i, App\Entity\Cours c
+                        WHERE m.id = c.fk_matiere_id AND i.id = c.fk_intervenant_id and c.fk_intervenant_id = '.$idIntervenant.' and c.debut >= ' . date('Ymd', $tabjour[$i]) . ' AND c.debut < ' . date('Ymd', $tabjour[$i] + 86400) . ' ORDER BY c.debut');
+            }
             array_push($tabRet, $query1->getResult());
         }
         return $tabRet;
@@ -319,9 +332,17 @@ class CoursController extends AbstractController
                 array_push($tabJours[$nb], array("Semaine " . $sem," "));
             }
             if (date("N", $jour) < 6) {
-                //array_push($tabJours[$nb], date("j", $jour) . " " . $this->deterMois(date("n", $jour)) . " " . date("Y", $jour));
-                $query1 = $this->entityManager->createQuery('SELECT m.intitule AS intitule FROM App\Entity\Matiere m, App\Entity\Cours c
-                        WHERE m.id = c.fk_matiere_id and (c.fk_intervenant_id = 3 or c.fk_intervenant_id = 1) and c.debut >= ' . date('Ymd', $jour) . ' AND c.debut < ' . date('Ymd', $jour + 86400) . ' ORDER BY c.debut');
+                $user = new Utilisateurs();
+                $user = $this->getUser();
+                $idIntervenant = $user->getFkIntervenantId();
+                $isAdmin = $user->getIsAdmin();
+                if ($isAdmin == 1){
+                    $query1 = $this->entityManager->createQuery('SELECT m.intitule AS intitule FROM App\Entity\Matiere m, App\Entity\Cours c
+                        WHERE m.id = c.fk_matiere_id and c.debut >= ' . date('Ymd', $jour) . ' AND c.debut < ' . date('Ymd', $jour + 86400) . ' ORDER BY c.debut');
+                }else {
+                    $query1 = $this->entityManager->createQuery('SELECT m.intitule AS intitule FROM App\Entity\Matiere m, App\Entity\Cours c
+                        WHERE m.id = c.fk_matiere_id and c.fk_intervenant_id = '.$idIntervenant.' and c.debut >= ' . date('Ymd', $jour) . ' AND c.debut < ' . date('Ymd', $jour + 86400) . ' ORDER BY c.debut');
+                }
                 $tabRetQuery = $query1->getResult();
                 if (count($tabRetQuery) >0) {
                     if ($tabRetQuery[0]['intitule'] == "ENTREPRISE") {
@@ -349,8 +370,17 @@ class CoursController extends AbstractController
             $jour = mktime(0, 0, 0, $i+1, 1, $noann);
             for($j=1;$j<=date("t",$jour);$j++){
                 if (date("N", $jour) < 6) {
-                    $query1 = $this->entityManager->createQuery('SELECT m.intitule AS intitule FROM App\Entity\Matiere m, App\Entity\Cours c
-                        WHERE m.id = c.fk_matiere_id and (c.fk_intervenant_id = 3 or c.fk_intervenant_id = 1) and c.debut >= ' . date('Ymd', $jour) . ' AND c.debut < ' . date('Ymd', $jour + 86400) . ' ORDER BY c.debut');
+                    $user = new Utilisateurs();
+                    $user = $this->getUser();
+                    $idIntervenant = $user->getFkIntervenantId();
+                    $isAdmin = $user->getIsAdmin();
+                    if ($isAdmin == 1){
+                        $query1 = $this->entityManager->createQuery('SELECT m.intitule AS intitule FROM App\Entity\Matiere m, App\Entity\Cours c
+                        WHERE m.id = c.fk_matiere_id and c.debut >= ' . date('Ymd', $jour) . ' AND c.debut < ' . date('Ymd', $jour + 86400) . ' ORDER BY c.debut');
+                    }else {
+                        $query1 = $this->entityManager->createQuery('SELECT m.intitule AS intitule FROM App\Entity\Matiere m, App\Entity\Cours c
+                        WHERE m.id = c.fk_matiere_id and c.fk_intervenant_id = '.$idIntervenant.' and c.debut >= ' . date('Ymd', $jour) . ' AND c.debut < ' . date('Ymd', $jour + 86400) . ' ORDER BY c.debut');
+                    }
                     $tabRetQuery = $query1->getResult();
                     if (count($tabRetQuery) >0) {
                         if ($tabRetQuery[0]['intitule'] == "ENTREPRISE") {
