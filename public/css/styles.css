@@ -391,6 +391,10 @@ html {height:100%}
     font-weight: bold;
 }
 
+.weekend{
+    background-color: gray;
+}
+
 .deleteIcon {
     background-color: white;
     color: #e69000;

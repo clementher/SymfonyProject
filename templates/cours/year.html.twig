@@ -72,27 +72,42 @@
             <tr class="column1">
                 <th class="month">Janvier</th>
                 {% for i in 1..31 %}
-                    <td class="intitule">
+                    {%if tabCours[0][i-1][0] == "Sam" or tabCours[0][i-1][0] == "Dim" %}
+                        <td class="intitule weekend">
+                        <div>{{ i }}</div>
+                    {%  else %}
+                        <td class="intitule">
                         <div class="schoolNumber">{{ i }}</div>
-                        <b>&nbsp;{{ tabCours[0][i-1][0] }}</b>
-                        <div class="matiereCat">{{tabCours[0][i-1][1]}}</div>
-                    </td>
+                    {%  endif %}
+                    <b>&nbsp;{{ tabCours[0][i-1][0] }}</b>
+                    <div class="matiereCat">{{tabCours[0][i-1][1]}}</div>
+                </td>
                 {% endfor %}
             </tr>
             <tr class="column2">
                 <th class="month">Février</th>
                 {% if bisex == 1 %}
                     {% for i in 1..29 %}
-                        <td class="intitule">
+                        {%if tabCours[1][i-1][0] == "Sam" or tabCours[1][i-1][0] == "Dim" %}
+                            <td class="intitule weekend">
+                            <div>{{ i }}</div>
+                        {%  else %}
+                            <td class="intitule">
                             <div class="schoolNumber">{{ i }}</div>
+                        {%  endif %}
                             <b>&nbsp;{{ tabCours[1][i-1][0] }}</b>
                             <div class="matiereCat">{{tabCours[1][i-1][1]}}</div>
                         </td>
                     {% endfor %}
                 {% else %}
                     {% for i in 1..28 %}
-                        <td class="intitule">
+                        {%if tabCours[1][i-1][0] == "Sam" or tabCours[1][i-1][0] == "Dim" %}
+                            <td class="intitule weekend">
+                            <div>{{ i }}</div>
+                        {%  else %}
+                            <td class="intitule">
                             <div class="schoolNumber">{{ i }}</div>
+                        {%  endif %}
                             <b>&nbsp;{{ tabCours[1][i-1][0] }}</b>
                             <div class="matiereCat">{{tabCours[1][i-1][1]}}</div>
                         </td>
@@ -105,8 +120,13 @@
             <tr class="column1">
                 <th class="month">Mars</th>
                 {% for i in 1..31 %}
-                    <td class="intitule">
+                    {%if tabCours[2][i-1][0] == "Sam" or tabCours[2][i-1][0] == "Dim" %}
+                        <td class="intitule weekend">
+                        <div>{{ i }}</div>
+                    {%  else %}
+                        <td class="intitule">
                         <div class="schoolNumber">{{ i }}</div>
+                    {%  endif %}
                         <b>&nbsp;{{ tabCours[2][i-1][0] }}</b>
                         <div class="matiereCat">{{tabCours[2][i-1][1]}}</div>
                     </td>
@@ -115,8 +135,13 @@
             <tr class="column2">
                 <th class="month">Avril</th>
                 {% for i in 1..30 %}
-                    <td class="intitule">
+                    {%if tabCours[3][i-1][0] == "Sam" or tabCours[3][i-1][0] == "Dim" %}
+                        <td class="intitule weekend">
+                        <div>{{ i }}</div>
+                    {%  else %}
+                        <td class="intitule">
                         <div class="schoolNumber">{{ i }}</div>
+                    {%  endif %}
                         <b>&nbsp;{{ tabCours[3][i-1][0] }}</b>
                         <div class="matiereCat">{{tabCours[3][i-1][1]}}</div>
                     </td>
@@ -126,8 +151,13 @@
             <tr class="column1">
                 <th class="month">Mai</th>
                 {% for i in 1..31 %}
-                    <td class="intitule">
-                        <div class="enterpriseNumber">{{ i }}</div>
+                    {%if tabCours[4][i-1][0] == "Sam" or tabCours[4][i-1][0] == "Dim" %}
+                        <td class="intitule weekend">
+                        <div>{{ i }}</div>
+                    {%  else %}
+                        <td class="intitule">
+                        <div class="schoolNumber">{{ i }}</div>
+                    {%  endif %}
                         <b>&nbsp;{{ tabCours[4][i-1][0] }}</b>
                         <div class="matiereCat">{{tabCours[4][i-1][1]}}</div>
                     </td>
@@ -136,8 +166,13 @@
             <tr class="column2">
                 <th class="month">Juin</th>
                 {% for i in 1..30 %}
-                    <td class="intitule">
-                        <div class="enterpriseNumber">{{ i }}</div>
+                    {%if tabCours[5][i-1][0] == "Sam" or tabCours[5][i-1][0] == "Dim" %}
+                        <td class="intitule weekend">
+                        <div>{{ i }}</div>
+                    {%  else %}
+                        <td class="intitule">
+                        <div class="schoolNumber">{{ i }}</div>
+                    {%  endif %}
                         <b>&nbsp;{{ tabCours[5][i-1][0] }}</b>
                         <div class="matiereCat">{{tabCours[5][i-1][1]}}</div>
                     </td>
@@ -147,8 +182,13 @@
             <tr class="column1">
                 <th class="month">Juillet</th>
                 {% for i in 1..31 %}
-                    <td class="intitule">
+                    {%if tabCours[6][i-1][0] == "Sam" or tabCours[6][i-1][0] == "Dim" %}
+                        <td class="intitule weekend">
+                        <div>{{ i }}</div>
+                    {%  else %}
+                        <td class="intitule">
                         <div class="schoolNumber">{{ i }}</div>
+                    {%  endif %}
                         <b>&nbsp;{{ tabCours[6][i-1][0] }}</b>
                         <div class="matiereCat">{{tabCours[6][i-1][1]}}</div>
                     </td>
@@ -157,8 +197,13 @@
             <tr class="column2">
                 <th class="month">Aout</th>
                 {% for i in 1..31 %}
-                    <td class="intitule">
+                    {%if tabCours[7][i-1][0] == "Sam" or tabCours[7][i-1][0] == "Dim" %}
+                        <td class="intitule weekend">
+                        <div>{{ i }}</div>
+                    {%  else %}
+                        <td class="intitule">
                         <div class="schoolNumber">{{ i }}</div>
+                    {%  endif %}
                         <b>&nbsp;{{ tabCours[7][i-1][0] }}</b>
                         <div class="matiereCat">{{tabCours[7][i-1][1]}}</div>
                     </td>
@@ -167,9 +212,13 @@
             <tr class="column1">
                 <th class="month">Septembre</th>
                 {% for i in 1..30 %}
-                    <td class="intitule">
-
+                    {%if tabCours[8][i-1][0] == "Sam" or tabCours[8][i-1][0] == "Dim" %}
+                        <td class="intitule weekend">
+                        <div>{{ i }}</div>
+                    {%  else %}
+                        <td class="intitule">
                         <div class="schoolNumber">{{ i }}</div>
+                    {%  endif %}
                         <b>&nbsp;{{ tabCours[8][i-1][0] }}</b>
                         <div class="matiereCat">{{tabCours[8][i-1][1]}}</div>
                     </td>
@@ -179,8 +228,13 @@
             <tr class="column2">
                 <th class="month">Octobre</th>
                 {% for i in 1..31 %}
-                    <td class="intitule">
-                        <div class="enterpriseNumber">{{ i }}</div>
+                    {%if tabCours[9][i-1][0] == "Sam" or tabCours[9][i-1][0] == "Dim" %}
+                        <td class="intitule weekend">
+                        <div>{{ i }}</div>
+                    {%  else %}
+                        <td class="intitule">
+                        <div class="schoolNumber">{{ i }}</div>
+                    {%  endif %}
                         <b>&nbsp;{{ tabCours[9][i-1][0] }}</b>
                         <div class="matiereCat">{{tabCours[9][i-1][1]}}</div>
                     </td>
@@ -189,8 +243,13 @@
             <tr class="column1">
                 <th class="month">Novembre</th>
                 {% for i in 1..30 %}
-                    <td class="intitule">
-                        <div class="enterpriseNumber">{{ i }}</div>
+                    {%if tabCours[10][i-1][0] == "Sam" or tabCours[10][i-1][0] == "Dim" %}
+                        <td class="intitule weekend">
+                        <div>{{ i }}</div>
+                    {%  else %}
+                        <td class="intitule">
+                        <div class="schoolNumber">{{ i }}</div>
+                    {%  endif %}
                         <b>&nbsp;{{ tabCours[10][i-1][0] }}</b>
                         <div class="matiereCat">{{tabCours[10][i-1][1]}}</div>
                     </td>
@@ -200,8 +259,13 @@
             <tr class="column2">
                 <th class="month">Decembre</th>
                 {% for i in 1..31 %}
-                    <td class="intitule">
+                    {%if tabCours[11][i-1][0] == "Sam" or tabCours[11][i-1][0] == "Dim" %}
+                        <td class="intitule weekend">
+                        <div>{{ i }}</div>
+                    {%  else %}
+                        <td class="intitule">
                         <div class="schoolNumber">{{ i }}</div>
+                    {%  endif %}
                         <b>&nbsp;{{ tabCours[11][i-1][0] }}</b>
                         <div class="matiereCat">{{tabCours[11][i-1][1]}}</div>
                     </td>
