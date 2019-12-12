@@ -639,7 +639,7 @@ td.intitule {
     text-align: right;
     display: flex;
     flex-wrap: nowrap;
-    justify-content: space-between;
+    justify-content: left;
     flex-direction: row;
     border-left: 1px solid #b2b2b2;
 }

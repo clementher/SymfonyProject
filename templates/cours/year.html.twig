@@ -77,10 +77,13 @@
                         <div>{{ i }}</div>
                     {%  else %}
                         <td class="intitule">
-                        <div class="schoolNumber">{{ i }}</div>
+                        {%if tabCours[0][i-1][1] == "Entreprise"%}
+                            <div class="enterpriseNumber">{{ i }}</div>
+                        {%  else %}
+                            <div class="schoolNumber">{{ i }}</div>
+                        {%  endif %}
                     {%  endif %}
                     <b>&nbsp;{{ tabCours[0][i-1][0] }}</b>
-                    <div class="matiereCat">{{tabCours[0][i-1][1]}}</div>
                 </td>
                 {% endfor %}
             </tr>
@@ -93,10 +96,13 @@
                             <div>{{ i }}</div>
                         {%  else %}
                             <td class="intitule">
-                            <div class="schoolNumber">{{ i }}</div>
+                            {%if tabCours[1][i-1][1] == "Entreprise"%}
+                                <div class="enterpriseNumber">{{ i }}</div>
+                            {%  else %}
+                                <div class="schoolNumber">{{ i }}</div>
+                            {%  endif %}
                         {%  endif %}
                             <b>&nbsp;{{ tabCours[1][i-1][0] }}</b>
-                            <div class="matiereCat">{{tabCours[1][i-1][1]}}</div>
                         </td>
                     {% endfor %}
                 {% else %}
@@ -106,10 +112,13 @@
                             <div>{{ i }}</div>
                         {%  else %}
                             <td class="intitule">
-                            <div class="schoolNumber">{{ i }}</div>
+                            {%if tabCours[1][i-1][1] == "Entreprise"%}
+                                <div class="enterpriseNumber">{{ i }}</div>
+                            {%  else %}
+                                <div class="schoolNumber">{{ i }}</div>
+                            {%  endif %}
                         {%  endif %}
                             <b>&nbsp;{{ tabCours[1][i-1][0] }}</b>
-                            <div class="matiereCat">{{tabCours[1][i-1][1]}}</div>
                         </td>
                     {% endfor %}
                     <td class="intitule"></td>
@@ -125,10 +134,13 @@
                         <div>{{ i }}</div>
                     {%  else %}
                         <td class="intitule">
-                        <div class="schoolNumber">{{ i }}</div>
+                        {%if tabCours[2][i-1][1] == "Entreprise"%}
+                            <div class="enterpriseNumber">{{ i }}</div>
+                        {%  else %}
+                            <div class="schoolNumber">{{ i }}</div>
+                        {%  endif %}
                     {%  endif %}
                         <b>&nbsp;{{ tabCours[2][i-1][0] }}</b>
-                        <div class="matiereCat">{{tabCours[2][i-1][1]}}</div>
                     </td>
                 {% endfor %}
             </tr>
@@ -140,7 +152,11 @@
                         <div>{{ i }}</div>
                     {%  else %}
                         <td class="intitule">
-                        <div class="schoolNumber">{{ i }}</div>
+                        {%if tabCours[3][i-1][1] == "Entreprise"%}
+                            <div class="enterpriseNumber">{{ i }}</div>
+                        {%  else %}
+                            <div class="schoolNumber">{{ i }}</div>
+                        {%  endif %}
                     {%  endif %}
                         <b>&nbsp;{{ tabCours[3][i-1][0] }}</b>
                         <div class="matiereCat">{{tabCours[3][i-1][1]}}</div>
@@ -156,10 +172,13 @@
                         <div>{{ i }}</div>
                     {%  else %}
                         <td class="intitule">
-                        <div class="schoolNumber">{{ i }}</div>
+                        {%if tabCours[4][i-1][1] == "Entreprise"%}
+                            <div class="enterpriseNumber">{{ i }}</div>
+                        {%  else %}
+                            <div class="schoolNumber">{{ i }}</div>
+                        {%  endif %}
                     {%  endif %}
                         <b>&nbsp;{{ tabCours[4][i-1][0] }}</b>
-                        <div class="matiereCat">{{tabCours[4][i-1][1]}}</div>
                     </td>
                 {% endfor %}
             </tr>
@@ -171,10 +190,13 @@
                         <div>{{ i }}</div>
                     {%  else %}
                         <td class="intitule">
-                        <div class="schoolNumber">{{ i }}</div>
+                        {%if tabCours[5][i-1][1] == "Entreprise"%}
+                            <div class="enterpriseNumber">{{ i }}</div>
+                        {%  else %}
+                            <div class="schoolNumber">{{ i }}</div>
+                        {%  endif %}
                     {%  endif %}
                         <b>&nbsp;{{ tabCours[5][i-1][0] }}</b>
-                        <div class="matiereCat">{{tabCours[5][i-1][1]}}</div>
                     </td>
                 {% endfor %}
                 <td class="intitule"></td>
@@ -187,10 +209,13 @@
                         <div>{{ i }}</div>
                     {%  else %}
                         <td class="intitule">
-                        <div class="schoolNumber">{{ i }}</div>
+                        {%if tabCours[6][i-1][1] == "Entreprise"%}
+                            <div class="enterpriseNumber">{{ i }}</div>
+                        {%  else %}
+                            <div class="schoolNumber">{{ i }}</div>
+                        {%  endif %}
                     {%  endif %}
                         <b>&nbsp;{{ tabCours[6][i-1][0] }}</b>
-                        <div class="matiereCat">{{tabCours[6][i-1][1]}}</div>
                     </td>
                 {% endfor %}
             </tr>
@@ -202,10 +227,13 @@
                         <div>{{ i }}</div>
                     {%  else %}
                         <td class="intitule">
-                        <div class="schoolNumber">{{ i }}</div>
+                        {%if tabCours[7][i-1][1] == "Entreprise"%}
+                            <div class="enterpriseNumber">{{ i }}</div>
+                        {%  else %}
+                            <div class="schoolNumber">{{ i }}</div>
+                        {%  endif %}
                     {%  endif %}
                         <b>&nbsp;{{ tabCours[7][i-1][0] }}</b>
-                        <div class="matiereCat">{{tabCours[7][i-1][1]}}</div>
                     </td>
                 {% endfor %}
             </tr>
@@ -217,10 +245,13 @@
                         <div>{{ i }}</div>
                     {%  else %}
                         <td class="intitule">
-                        <div class="schoolNumber">{{ i }}</div>
+                        {%if tabCours[8][i-1][1] == "Entreprise"%}
+                            <div class="enterpriseNumber">{{ i }}</div>
+                        {%  else %}
+                            <div class="schoolNumber">{{ i }}</div>
+                        {%  endif %}
                     {%  endif %}
                         <b>&nbsp;{{ tabCours[8][i-1][0] }}</b>
-                        <div class="matiereCat">{{tabCours[8][i-1][1]}}</div>
                     </td>
                 {% endfor %}
                 <td class="intitule"></td>
@@ -233,10 +264,13 @@
                         <div>{{ i }}</div>
                     {%  else %}
                         <td class="intitule">
-                        <div class="schoolNumber">{{ i }}</div>
+                        {%if tabCours[9][i-1][1] == "Entreprise"%}
+                            <div class="enterpriseNumber">{{ i }}</div>
+                        {%  else %}
+                            <div class="schoolNumber">{{ i }}</div>
+                        {%  endif %}
                     {%  endif %}
                         <b>&nbsp;{{ tabCours[9][i-1][0] }}</b>
-                        <div class="matiereCat">{{tabCours[9][i-1][1]}}</div>
                     </td>
                 {% endfor %}
             </tr>
@@ -248,10 +282,13 @@
                         <div>{{ i }}</div>
                     {%  else %}
                         <td class="intitule">
-                        <div class="schoolNumber">{{ i }}</div>
+                        {%if tabCours[10][i-1][1] == "Entreprise"%}
+                            <div class="enterpriseNumber">{{ i }}</div>
+                        {%  else %}
+                            <div class="schoolNumber">{{ i }}</div>
+                        {%  endif %}
                     {%  endif %}
                         <b>&nbsp;{{ tabCours[10][i-1][0] }}</b>
-                        <div class="matiereCat">{{tabCours[10][i-1][1]}}</div>
                     </td>
                 {% endfor %}
                 <td class="intitule"></td>
@@ -264,10 +301,13 @@
                         <div>{{ i }}</div>
                     {%  else %}
                         <td class="intitule">
-                        <div class="schoolNumber">{{ i }}</div>
+                        {%if tabCours[11][i-1][1] == "Entreprise"%}
+                            <div class="enterpriseNumber">{{ i }}</div>
+                        {%  else %}
+                            <div class="schoolNumber">{{ i }}</div>
+                        {%  endif %}
                     {%  endif %}
                         <b>&nbsp;{{ tabCours[11][i-1][0] }}</b>
-                        <div class="matiereCat">{{tabCours[11][i-1][1]}}</div>
                     </td>
                 {% endfor %}
             </tr>
