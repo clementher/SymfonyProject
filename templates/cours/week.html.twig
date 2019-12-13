@@ -58,6 +58,17 @@
         </button>
     </div>
 
+    <div id="containerNavCalendar">
+        <div class="months">Janvier</div><div class="months">Février</div><div class="months">Mars</div>
+        <div class="months">Avril</div><div class="months">Mai</div><div class="months">Juin</div>
+        <div class="months">Juillet</div><div class="months">Aout</div><div class="months">Septembre</div>
+        <div class="months">Octobre</div><div class="months">Novembre</div><div class="months">Decembre</div>
+    </div>
+    <div id="containerNavCalendar">
+        {% for i in 1..52 %}
+        <button class="weeks" onclick="document.location.href='/week/{{ noAnn }}/{{ i }}';">{{ i }}</button>
+        {% endfor %}
+    </div>
 
     <table class="table">
         <tr class="hourColumn">

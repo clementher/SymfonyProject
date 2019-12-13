@@ -29,6 +29,33 @@
 
     </style>
 
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#popUpDelete">
+        POP UP OSSECOUR
+    </button>
+
+    <!-- PopUp -->
+    <div class="modal fade" id="popUpDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Supprimer "..."</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Êtes-vous sûr de vouloir supprimer ce cours ?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                    <button type="button" class="btn btn-primary">Oui, Supprimer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End PopUp -->
+
+
     <div id="corps">
         <div id="containerNavCalendar">
 
@@ -73,10 +100,10 @@
                 <th class="month">Janvier</th>
                 {% for i in 1..31 %}
                     {%if tabCours[0][i-1][0] == "Sam" or tabCours[0][i-1][0] == "Dim" %}
-                        <td class="intitule weekend">
+                        <td class="weekend intitule" ondblclick="myFunction()" data-toggle="modal" data-target="#popUpDelete">
                         <div>{{ i }}</div>
                     {%  else %}
-                        <td class="intitule">
+                        <td class="intitule" data-toggle="modal" data-target="#popUpDelete">
                         {%if tabCours[0][i-1][1] == "Entreprise"%}
                             <div class="enterpriseNumber">{{ i }}</div>
                         {%  else %}
@@ -92,7 +119,7 @@
                 {% if bisex == 1 %}
                     {% for i in 1..29 %}
                         {%if tabCours[1][i-1][0] == "Sam" or tabCours[1][i-1][0] == "Dim" %}
-                            <td class="intitule weekend">
+                            <td class="weekend intitule">
                             <div>{{ i }}</div>
                         {%  else %}
                             <td class="intitule">
@@ -108,7 +135,7 @@
                 {% else %}
                     {% for i in 1..28 %}
                         {%if tabCours[1][i-1][0] == "Sam" or tabCours[1][i-1][0] == "Dim" %}
-                            <td class="intitule weekend">
+                            <td class="weekend intitule">
                             <div>{{ i }}</div>
                         {%  else %}
                             <td class="intitule">
@@ -130,7 +157,7 @@
                 <th class="month">Mars</th>
                 {% for i in 1..31 %}
                     {%if tabCours[2][i-1][0] == "Sam" or tabCours[2][i-1][0] == "Dim" %}
-                        <td class="intitule weekend">
+                        <td class="weekend intitule">
                         <div>{{ i }}</div>
                     {%  else %}
                         <td class="intitule">
@@ -148,7 +175,7 @@
                 <th class="month">Avril</th>
                 {% for i in 1..30 %}
                     {%if tabCours[3][i-1][0] == "Sam" or tabCours[3][i-1][0] == "Dim" %}
-                        <td class="intitule weekend">
+                        <td class="weekend intitule">
                         <div>{{ i }}</div>
                     {%  else %}
                         <td class="intitule">
@@ -168,7 +195,7 @@
                 <th class="month">Mai</th>
                 {% for i in 1..31 %}
                     {%if tabCours[4][i-1][0] == "Sam" or tabCours[4][i-1][0] == "Dim" %}
-                        <td class="intitule weekend">
+                        <td class="weekend intitule">
                         <div>{{ i }}</div>
                     {%  else %}
                         <td class="intitule">
@@ -186,7 +213,7 @@
                 <th class="month">Juin</th>
                 {% for i in 1..30 %}
                     {%if tabCours[5][i-1][0] == "Sam" or tabCours[5][i-1][0] == "Dim" %}
-                        <td class="intitule weekend">
+                        <td class="weekend intitule">
                         <div>{{ i }}</div>
                     {%  else %}
                         <td class="intitule">
@@ -205,7 +232,7 @@
                 <th class="month">Juillet</th>
                 {% for i in 1..31 %}
                     {%if tabCours[6][i-1][0] == "Sam" or tabCours[6][i-1][0] == "Dim" %}
-                        <td class="intitule weekend">
+                        <td class="weekend intitule">
                         <div>{{ i }}</div>
                     {%  else %}
                         <td class="intitule">
@@ -223,7 +250,7 @@
                 <th class="month">Aout</th>
                 {% for i in 1..31 %}
                     {%if tabCours[7][i-1][0] == "Sam" or tabCours[7][i-1][0] == "Dim" %}
-                        <td class="intitule weekend">
+                        <td class="weekend intitule">
                         <div>{{ i }}</div>
                     {%  else %}
                         <td class="intitule">
@@ -241,7 +268,7 @@
                 <th class="month">Septembre</th>
                 {% for i in 1..30 %}
                     {%if tabCours[8][i-1][0] == "Sam" or tabCours[8][i-1][0] == "Dim" %}
-                        <td class="intitule weekend">
+                        <td class="weekend intitule">
                         <div>{{ i }}</div>
                     {%  else %}
                         <td class="intitule">
@@ -260,7 +287,7 @@
                 <th class="month">Octobre</th>
                 {% for i in 1..31 %}
                     {%if tabCours[9][i-1][0] == "Sam" or tabCours[9][i-1][0] == "Dim" %}
-                        <td class="intitule weekend">
+                        <td class="weekend intitule">
                         <div>{{ i }}</div>
                     {%  else %}
                         <td class="intitule">
@@ -278,7 +305,7 @@
                 <th class="month">Novembre</th>
                 {% for i in 1..30 %}
                     {%if tabCours[10][i-1][0] == "Sam" or tabCours[10][i-1][0] == "Dim" %}
-                        <td class="intitule weekend">
+                        <td class="weekend intitule">
                         <div>{{ i }}</div>
                     {%  else %}
                         <td class="intitule">
@@ -297,7 +324,7 @@
                 <th class="month">Decembre</th>
                 {% for i in 1..31 %}
                     {%if tabCours[11][i-1][0] == "Sam" or tabCours[11][i-1][0] == "Dim" %}
-                        <td class="intitule weekend">
+                        <td class="weekend intitule">
                         <div>{{ i }}</div>
                     {%  else %}
                         <td class="intitule">
@@ -313,4 +340,10 @@
             </tr>
         </table>
     </div>
+
+    <script>
+        $('td').on('dblclick', function() {
+            $('#popUpDelete').modal('show');
+        });
+    </script>
 {% endblock %}

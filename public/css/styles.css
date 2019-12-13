@@ -549,7 +549,7 @@ th {
     text-align: center;
     background: #3a3a3a;
     color: white;
-    font-size: 17px;
+    font-size: 14px;
     max-height: 52px;
     padding: 15px;
 }
@@ -642,6 +642,26 @@ td.intitule {
     justify-content: left;
     flex-direction: row;
     border-left: 1px solid #b2b2b2;
+    /*background-color: #0095ff;*/
+}
+
+.weeks {
+    font-size: 11px;
+    padding: 0;
+    width: 100%;
+    margin: 1px;
+}
+
+.months {
+    font-size: 11px;
+    padding: 0;
+    width: 100%;
+    margin: 1px;
+    text-align: center;
+    background-color: #2859a4;
+    font-weight: bold;
+    color: white;
+    padding: 2px;
 }
 
 th.month {
