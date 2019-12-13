@@ -664,6 +664,10 @@ td.intitule {
     padding: 2px;
 }
 
+.grey {
+    background-color: #a6a6a6;
+}
+
 th.month {
     font-size: 12px;
 }
