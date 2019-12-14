@@ -43,10 +43,16 @@ class Intervenant
      */
     private $cours;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Notification", mappedBy="fk_intervenant_id")
+     */
+    private $notifications;
+
     public function __construct()
     {
         $this->matieres = new ArrayCollection();
         $this->cours = new ArrayCollection();
+        $this->notifications = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -146,6 +152,37 @@ class Intervenant
             // set the owning side to null (unless already changed)
             if ($cour->getFkIntervenantId() === $this) {
                 $cour->setFkIntervenantId(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Notification[]
+     */
+    public function getNotifications(): Collection
+    {
+        return $this->notifications;
+    }
+
+    public function addNotification(Notification $notification): self
+    {
+        if (!$this->notifications->contains($notification)) {
+            $this->notifications[] = $notification;
+            $notification->setFkIntervenantId($this);
+        }
+
+        return $this;
+    }
+
+    public function removeNotification(Notification $notification): self
+    {
+        if ($this->notifications->contains($notification)) {
+            $this->notifications->removeElement($notification);
+            // set the owning side to null (unless already changed)
+            if ($notification->getFkIntervenantId() === $this) {
+                $notification->setFkIntervenantId(null);
             }
         }
 
