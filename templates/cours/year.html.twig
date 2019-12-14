@@ -30,7 +30,7 @@
     </style>
 
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#popUpDelete">
-        POP UP OSSECOUR
+        POP UP
     </button>
 
     <!-- PopUp -->
@@ -100,10 +100,10 @@
                 <th class="month">Janvier</th>
                 {% for i in 1..31 %}
                     {%if tabCours[0][i-1][0] == "Sam" or tabCours[0][i-1][0] == "Dim" %}
-                        <td class="weekend intitule" ondblclick="myFunction()" data-toggle="modal" data-target="#popUpDelete">
+                        <td class="weekend intitule">
                         <div>{{ i }}</div>
                     {%  else %}
-                        <td class="intitule" data-toggle="modal" data-target="#popUpDelete">
+                        <td class="intitule daySemaine" data-toggle="modal" data-target="#popUpDelete">
                         {%if tabCours[0][i-1][1] == "Entreprise"%}
                             <div class="enterpriseNumber">{{ i }}</div>
                         {%  else %}
@@ -122,7 +122,7 @@
                             <td class="weekend intitule">
                             <div>{{ i }}</div>
                         {%  else %}
-                            <td class="intitule">
+                            <td class="intitule daySemaine" data-toggle="modal" data-target="#popUpDelete">
                             {%if tabCours[1][i-1][1] == "Entreprise"%}
                                 <div class="enterpriseNumber">{{ i }}</div>
                             {%  else %}
@@ -138,7 +138,7 @@
                             <td class="weekend intitule">
                             <div>{{ i }}</div>
                         {%  else %}
-                            <td class="intitule">
+                            <td class="intitule daySemaine" data-toggle="modal" data-target="#popUpDelete">
                             {%if tabCours[1][i-1][1] == "Entreprise"%}
                                 <div class="enterpriseNumber">{{ i }}</div>
                             {%  else %}
@@ -148,10 +148,10 @@
                             <b>&nbsp;{{ tabCours[1][i-1][0] }}</b>
                         </td>
                     {% endfor %}
-                    <td class="intitule"></td>
+                    <td class="intitule daySemaine" data-toggle="modal" data-target="#popUpDelete"></td>
                 {% endif %}
-                <td class="intitule"></td>
-                <td class="intitule"></td>
+                <td class="intitule daySemaine" data-toggle="modal" data-target="#popUpDelete"></td>
+                <td class="intitule daySemaine" data-toggle="modal" data-target="#popUpDelete"></td>
             </tr>
             <tr class="column1">
                 <th class="month">Mars</th>
@@ -160,7 +160,7 @@
                         <td class="weekend intitule">
                         <div>{{ i }}</div>
                     {%  else %}
-                        <td class="intitule">
+                        <td class="intitule daySemaine" data-toggle="modal" data-target="#popUpDelete">
                         {%if tabCours[2][i-1][1] == "Entreprise"%}
                             <div class="enterpriseNumber">{{ i }}</div>
                         {%  else %}
@@ -178,7 +178,7 @@
                         <td class="weekend intitule">
                         <div>{{ i }}</div>
                     {%  else %}
-                        <td class="intitule">
+                        <td class="intitule daySemaine" data-toggle="modal" data-target="#popUpDelete">
                         {%if tabCours[3][i-1][1] == "Entreprise"%}
                             <div class="enterpriseNumber">{{ i }}</div>
                         {%  else %}
@@ -189,7 +189,7 @@
                         <div class="matiereCat">{{tabCours[3][i-1][1]}}</div>
                     </td>
                 {% endfor %}
-                <td class="intitule"></td>
+                <td class="intitule daySemaine" data-toggle="modal" data-target="#popUpDelete"></td>
             </tr>
             <tr class="column1">
                 <th class="month">Mai</th>
@@ -198,7 +198,7 @@
                         <td class="weekend intitule">
                         <div>{{ i }}</div>
                     {%  else %}
-                        <td class="intitule">
+                        <td class="intitule daySemaine" data-toggle="modal" data-target="#popUpDelete">
                         {%if tabCours[4][i-1][1] == "Entreprise"%}
                             <div class="enterpriseNumber">{{ i }}</div>
                         {%  else %}
@@ -216,7 +216,7 @@
                         <td class="weekend intitule">
                         <div>{{ i }}</div>
                     {%  else %}
-                        <td class="intitule">
+                        <td class="intitule daySemaine" data-toggle="modal" data-target="#popUpDelete">
                         {%if tabCours[5][i-1][1] == "Entreprise"%}
                             <div class="enterpriseNumber">{{ i }}</div>
                         {%  else %}
@@ -226,7 +226,7 @@
                         <b>&nbsp;{{ tabCours[5][i-1][0] }}</b>
                     </td>
                 {% endfor %}
-                <td class="intitule"></td>
+                <td class="intitule daySemaine" data-toggle="modal" data-target="#popUpDelete"></td>
             </tr>
             <tr class="column1">
                 <th class="month">Juillet</th>
@@ -235,7 +235,7 @@
                         <td class="weekend intitule">
                         <div>{{ i }}</div>
                     {%  else %}
-                        <td class="intitule">
+                        <td class="intitule daySemaine" data-toggle="modal" data-target="#popUpDelete">
                         {%if tabCours[6][i-1][1] == "Entreprise"%}
                             <div class="enterpriseNumber">{{ i }}</div>
                         {%  else %}
@@ -253,7 +253,7 @@
                         <td class="weekend intitule">
                         <div>{{ i }}</div>
                     {%  else %}
-                        <td class="intitule">
+                        <td class="intitule daySemaine" data-toggle="modal" data-target="#popUpDelete">
                         {%if tabCours[7][i-1][1] == "Entreprise"%}
                             <div class="enterpriseNumber">{{ i }}</div>
                         {%  else %}
@@ -271,7 +271,7 @@
                         <td class="weekend intitule">
                         <div>{{ i }}</div>
                     {%  else %}
-                        <td class="intitule">
+                        <td class="intitule daySemaine" data-toggle="modal" data-target="#popUpDelete">
                         {%if tabCours[8][i-1][1] == "Entreprise"%}
                             <div class="enterpriseNumber">{{ i }}</div>
                         {%  else %}
@@ -281,7 +281,7 @@
                         <b>&nbsp;{{ tabCours[8][i-1][0] }}</b>
                     </td>
                 {% endfor %}
-                <td class="intitule"></td>
+                <td class="intitule daySemaine" data-toggle="modal" data-target="#popUpDelete"></td>
             </tr>
             <tr class="column2">
                 <th class="month">Octobre</th>
@@ -290,7 +290,7 @@
                         <td class="weekend intitule">
                         <div>{{ i }}</div>
                     {%  else %}
-                        <td class="intitule">
+                        <td class="intitule daySemaine" data-toggle="modal" data-target="#popUpDelete">
                         {%if tabCours[9][i-1][1] == "Entreprise"%}
                             <div class="enterpriseNumber">{{ i }}</div>
                         {%  else %}
@@ -308,7 +308,7 @@
                         <td class="weekend intitule">
                         <div>{{ i }}</div>
                     {%  else %}
-                        <td class="intitule">
+                        <td class="intitule daySemaine" data-toggle="modal" data-target="#popUpDelete">
                         {%if tabCours[10][i-1][1] == "Entreprise"%}
                             <div class="enterpriseNumber">{{ i }}</div>
                         {%  else %}
@@ -318,7 +318,7 @@
                         <b>&nbsp;{{ tabCours[10][i-1][0] }}</b>
                     </td>
                 {% endfor %}
-                <td class="intitule"></td>
+                <td class="intitule daySemaine" data-toggle="modal" data-target="#popUpDelete"></td>
             </tr>
             <tr class="column2">
                 <th class="month">Decembre</th>
@@ -327,7 +327,7 @@
                         <td class="weekend intitule">
                         <div>{{ i }}</div>
                     {%  else %}
-                        <td class="intitule">
+                        <td class="intitule daySemaine" data-toggle="modal" data-target="#popUpDelete">
                         {%if tabCours[11][i-1][1] == "Entreprise"%}
                             <div class="enterpriseNumber">{{ i }}</div>
                         {%  else %}
