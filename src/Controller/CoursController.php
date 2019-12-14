@@ -131,6 +131,7 @@ class CoursController extends AbstractController
         $this->console_log($noann);
         $bisex = date("L", mktime(0, 0, 0, 1, 1, $noann));
         $tabCours = $this->setTabYear($noann);
+        $this->console_log($tabCours);
         return $this->render('/cours/year.html.twig',array('bisex' => $bisex, 'noann'=> $noann, 'tabCours'=> $tabCours));
     }
 
