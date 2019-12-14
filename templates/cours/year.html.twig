@@ -29,31 +29,41 @@
 
     </style>
 
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#popUpDelete">
-        POP UP
+
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" data-myvalue="davide et laulau">
+        davide et laulau
     </button>
 
-    <!-- PopUp -->
-    <div class="modal fade" id="popUpDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
+    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" data-myvalue="davide et agathe">
+        davide et agathe
+    </button>
+
+    <td type="button" class="btn btn-primary btn-lg" data-toggle="test" data-target="#myModal" data-myvalue="davide et agathe">
+        ossecour
+    </td>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Supprimer "..."</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                    <h4 class="modal-title" id="myModalLabel">Suppression du cours</h4>
                 </div>
                 <div class="modal-body">
-                    Êtes-vous sûr de vouloir supprimer ce cours ?
+                    <span id="modal-myvalue"></span> <span id="modal-myvar"></span> <span id="modal-bb"></span>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-                    <button type="button" class="btn btn-primary">Oui, Supprimer</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+                    <button type="button" class="btn btn-danger">Supprimer</button>
                 </div>
             </div>
         </div>
     </div>
-    <!-- End PopUp -->
+
+
+
 
 
     <div id="corps">
@@ -115,6 +125,13 @@
                             {% endif %}
                     {%  endif %}
                     <b>&nbsp;{{ tabCours[0][i-1][0] }}</b>
+                    {%if tabCours[0][i-1][0] != "Sam" and tabCours[0][i-1][0] != "Dim" %}
+                    <button type="button" data-toggle="modal" data-target="#myModal" data-myvalue="Jour choisis : {{ tabCours[0][i-1][0] }} {{ i }} Janvier">
+                       <i class="material-icons" style="font-size: 13px; color: gray()">
+                            remove
+                        </i>
+                    </button>
+                    {%  endif %}
                 </td>
                 {% endfor %}
             </tr>
@@ -138,6 +155,11 @@
                             {% endif %}
                         {%  endif %}
                             <b>&nbsp;{{ tabCours[1][i-1][0] }}</b>
+                        {%if tabCours[1][i-1][0] != "Sam" and tabCours[1][i-1][0] != "Dim" %}
+                            <button type="button" data-toggle="modal" data-target="#myModal" data-myvalue="Jour choisis : {{ tabCours[0][i-1][0] }} {{ i }} Février">
+
+                            </button>
+                        {%  endif %}
                         </td>
                     {% endfor %}
                 {% else %}
@@ -157,8 +179,12 @@
                                     <div>{{ i }}</div>
                                 {% endif %}
                                 {%  endif %}
-
                             <b>&nbsp;{{ tabCours[1][i-1][0] }}</b>
+                        {%if tabCours[1][i-1][0] != "Sam" and tabCours[1][i-1][0] != "Dim" %}
+                            <button type="button" data-toggle="modal" data-target="#myModal" data-myvalue="Jour choisis : {{ tabCours[0][i-1][0] }} {{ i }} Février">
+
+                            </button>
+                        {%  endif %}
                         </td>
                     {% endfor %}
                     <td class="intitule daySemaine" data-toggle="modal" data-target="#popUpDelete"></td>
@@ -184,8 +210,12 @@
                                 <div>{{ i }}</div>
                             {% endif %}
                             {%  endif %}
-
                         <b>&nbsp;{{ tabCours[2][i-1][0] }}</b>
+                    {%if tabCours[2][i-1][0] != "Sam" and tabCours[2][i-1][0] != "Dim" %}
+                        <button type="button" data-toggle="modal" data-target="#myModal" data-myvalue="Jour choisis : {{ tabCours[0][i-1][0] }} {{ i }} Mars">
+
+                        </button>
+                    {%  endif %}
                     </td>
                 {% endfor %}
             </tr>
@@ -207,8 +237,12 @@
                                 <div>{{ i }}</div>
                             {% endif %}
                             {%  endif %}
-
                         <b>&nbsp;{{ tabCours[3][i-1][0] }}</b>
+                    {%if tabCours[3][i-1][0] != "Sam" and tabCours[3][i-1][0] != "Dim" %}
+                        <button type="button" data-toggle="modal" data-target="#myModal" data-myvalue="Jour choisis : {{ tabCours[0][i-1][0] }} {{ i }} Avril">
+
+                        </button>
+                    {%  endif %}
                         <div class="matiereCat">{{tabCours[3][i-1][1]}}</div>
                     </td>
                 {% endfor %}
@@ -232,8 +266,12 @@
                                 <div>{{ i }}</div>
                             {% endif %}
                             {%  endif %}
-
                         <b>&nbsp;{{ tabCours[4][i-1][0] }}</b>
+                    {%if tabCours[4][i-1][0] != "Sam" and tabCours[4][i-1][0] != "Dim" %}
+                        <button type="button" data-toggle="modal" data-target="#myModal" data-myvalue="Jour choisis : {{ tabCours[0][i-1][0] }} {{ i }} Mai">
+
+                        </button>
+                    {%  endif %}
                     </td>
                 {% endfor %}
             </tr>
@@ -255,8 +293,12 @@
                                 <div>{{ i }}</div>
                             {% endif %}
                             {%  endif %}
-
                         <b>&nbsp;{{ tabCours[5][i-1][0] }}</b>
+                    {%if tabCours[5][i-1][0] != "Sam" and tabCours[5][i-1][0] != "Dim" %}
+                        <button type="button" data-toggle="modal" data-target="#myModal" data-myvalue="Jour choisis : {{ tabCours[0][i-1][0] }} {{ i }} Juin">
+
+                        </button>
+                    {%  endif %}
                     </td>
                 {% endfor %}
                 <td class="intitule daySemaine" data-toggle="modal" data-target="#popUpDelete"></td>
@@ -279,8 +321,12 @@
                                 <div>{{ i }}</div>
                             {% endif %}
                             {%  endif %}
-
                         <b>&nbsp;{{ tabCours[6][i-1][0] }}</b>
+                    {%if tabCours[6][i-1][0] != "Sam" and tabCours[6][i-1][0] != "Dim" %}
+                        <button type="button" data-toggle="modal" data-target="#myModal" data-myvalue="Jour choisis : {{ tabCours[0][i-1][0] }} {{ i }} Juillet">
+
+                        </button>
+                    {%  endif %}
                     </td>
                 {% endfor %}
             </tr>
@@ -302,8 +348,12 @@
                                 <div>{{ i }}</div>
                             {% endif %}
                             {%  endif %}
-
                         <b>&nbsp;{{ tabCours[7][i-1][0] }}</b>
+                    {%if tabCours[7][i-1][0] != "Sam" and tabCours[7][i-1][0] != "Dim" %}
+                        <button type="button" data-toggle="modal" data-target="#myModal" data-myvalue="Jour choisis : {{ tabCours[0][i-1][0] }} {{ i }} Aout">
+
+                        </button>
+                    {%  endif %}
                     </td>
                 {% endfor %}
             </tr>
@@ -325,8 +375,12 @@
                                 <div>{{ i }}</div>
                             {% endif %}
                             {%  endif %}
-
                         <b>&nbsp;{{ tabCours[8][i-1][0] }}</b>
+                    {%if tabCours[8][i-1][0] != "Sam" and tabCours[8][i-1][0] != "Dim" %}
+                        <button type="button" data-toggle="modal" data-target="#myModal" data-myvalue="Jour choisis : {{ tabCours[0][i-1][0] }} {{ i }} Septembre">
+
+                        </button>
+                    {%  endif %}
                     </td>
                 {% endfor %}
                 <td class="intitule daySemaine" data-toggle="modal" data-target="#popUpDelete"></td>
@@ -349,8 +403,12 @@
                                 <div>{{ i }}</div>
                             {% endif %}
                             {%  endif %}
-
                         <b>&nbsp;{{ tabCours[9][i-1][0] }}</b>
+                    {%if tabCours[9][i-1][0] != "Sam" and tabCours[9][i-1][0] != "Dim" %}
+                        <button type="button" data-toggle="modal" data-target="#myModal" data-myvalue="Jour choisis : {{ tabCours[0][i-1][0] }} {{ i }} Octobre">
+
+                        </button>
+                    {%  endif %}
                     </td>
                 {% endfor %}
             </tr>
@@ -372,8 +430,12 @@
                                 <div>{{ i }}</div>
                             {% endif %}
                             {%  endif %}
-
                         <b>&nbsp;{{ tabCours[10][i-1][0] }}</b>
+                    {%if tabCours[10][i-1][0] != "Sam" and tabCours[10][i-1][0] != "Dim" %}
+                        <button type="button" data-toggle="modal" data-target="#myModal" data-myvalue="Jour choisis : {{ tabCours[0][i-1][0] }} {{ i }} Novembre">
+
+                        </button>
+                    {%  endif %}
                     </td>
                 {% endfor %}
                 <td class="intitule daySemaine" data-toggle="modal" data-target="#popUpDelete"></td>
@@ -396,8 +458,14 @@
                                 <div>{{ i }}</div>
                             {% endif %}
                             {%  endif %}
-
                         <b>&nbsp;{{ tabCours[11][i-1][0] }}</b>
+                    {%if tabCours[11][i-1][0] != "Sam" and tabCours[11][i-1][0] != "Dim" %}
+                        <button type="button" data-toggle="modal" data-target="#myModal" data-myvalue="Jour choisis : {{ tabCours[0][i-1][0] }} {{ i }} Decembre">
+                            <i class="material-icons" style="font-size: 13px; color: gray()">
+                                block
+                            </i>
+                        </button>
+                    {%  endif %}
                     </td>
                 {% endfor %}
             </tr>
@@ -405,8 +473,24 @@
     </div>
 
     <script>
-        $('td').on('dblclick', function() {
-            $('#popUpDelete').modal('show');
+        var att = ['myvalue'];
+
+        $('[data-toggle="modal"]').on('click', function (e) {
+            var $target = $(e.target);
+            var modalSelector = $target.data('target');
+
+            att.forEach(function (attributeName) {
+                var $modalAttribute = $(modalSelector + ' #modal-' + attributeName);
+                var dataValue = $target.data(attributeName);
+                $modalAttribute.text(dataValue || '');
+            });
         });
     </script>
+
+    <script>
+        $('[data-toggle="test"]').on("click", "td", function() {
+            alert('clicked');
+        });
+    </script>
+
 {% endblock %}
