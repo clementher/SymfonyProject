@@ -401,6 +401,20 @@ class CoursController extends AbstractController
         return $tabRet;
     }
 
+    /**
+     * @Route("/deleteYear/{var}", name="deleteCoursYear")
+     */
+    function deleteCoursYear($var)
+    {
+        $noann = substr($var,6,4);
+        $nomon = substr($var,3,2);
+        $nojour = substr($var,0,2);
+        $this->console_log($noann.$nomon.$nojour);
+        $jour = mktime(0,0,0,$nomon,$nojour,$noann);
+        $query1 = $this->entityManager->createQuery('DELETE App\Entity\Cours c WHERE c.debut >='.date('Ymd', $jour).'and c.fin <'. date('Ymd', $jour + 86400));
+        $query1->execute();
+        return $this->redirectToRoute("creneauDetailAnnee", array('noann' => $noann));
+    }
 
 
 
