@@ -393,6 +393,11 @@ html {height:100%}
 
 .weekend{
     background-color: gray;
+    cursor: auto;
+}
+
+.daySemaine{
+    cursor: pointer;
 }
 
 .deleteIcon {
