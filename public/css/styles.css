@@ -577,6 +577,16 @@ th {
     cursor: pointer;
 }
 
+button.red {
+    background-color: #dd0808;
+    /* padding: 10px; */
+    border-radius: 70px;
+    text-align: center;
+    width: 36px;
+    height: 36px;
+}
+
+
 .salle {
     flex-grow: 1;
     text-align: right;
@@ -594,18 +604,16 @@ th {
 
 .up {
     display: flex;
-    flex-wrap: wrap;
     flex-direction: row;
     justify-content: space-between;
-    align-items: stretch;
+    align-items: center;
 }
 
 .down {
     font-size: 17px;
     font-weight: bold;
-    padding-top: 15px;
     padding-bottom: 5px;
-    color: #888888;
+    color: #464646;
 }
 
 td.hour {

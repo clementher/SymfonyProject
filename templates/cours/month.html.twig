@@ -560,4 +560,19 @@
             </tr>
         </table>
     </div>
+
+    <script>
+        var att = ['myvalue'];
+
+        $('[data-toggle="modal"]').on('click', function (e) {
+            var $target = $(e.target);
+            var modalSelector = $target.data('target');
+
+            att.forEach(function (attributeName) {
+                var $modalAttribute = $(modalSelector + ' #modal-' + attributeName);
+                var dataValue = $target.data(attributeName);
+                $modalAttribute.text(dataValue || '');
+            });
+        });
+    </script>
 {% endblock %}
