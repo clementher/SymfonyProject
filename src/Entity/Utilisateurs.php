@@ -58,6 +58,11 @@ class Utilisateurs implements UserInterface
      */
     private $fk_intervenant_id;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $specialiteprofessionnelle;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -124,7 +129,7 @@ class Utilisateurs implements UserInterface
      */
     public function getSalt()
     {
-        // not needed when using the "bcrypt" algorithm in security.fr.yaml
+
     }
 
     /**
@@ -132,8 +137,7 @@ class Utilisateurs implements UserInterface
      */
     public function eraseCredentials()
     {
-        // If you store any temporary, sensitive data on the user, clear it here
-        // $this->plainPassword = null;
+
     }
 
     public function getNom(): ?string
@@ -192,6 +196,18 @@ class Utilisateurs implements UserInterface
     public function setFkIntervenantId(int $fk_intervenant_id): self
     {
         $this->fk_intervenant_id = $fk_intervenant_id;
+
+        return $this;
+    }
+
+    public function getSpecialiteprofessionnelle(): ?string
+    {
+        return $this->specialiteprofessionnelle;
+    }
+
+    public function setSpecialiteprofessionnelle(?string $specialiteprofessionnelle): self
+    {
+        $this->specialiteprofessionnelle = $specialiteprofessionnelle;
 
         return $this;
     }

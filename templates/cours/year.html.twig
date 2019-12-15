@@ -29,44 +29,6 @@
 
     </style>
 
-
-    <!-- Button trigger modal
-    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" data-myvalue="davide et laulau">
-        davide et laulau
-    </button>
-
-    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" data-myvalue="davide et agathe">
-        davide et agathe
-    </button>
-
-    <td type="button" class="btn btn-primary btn-lg" data-toggle="test" data-target="#myModal" data-myvalue="davide et agathe">
-        ossecour
-    </td>
-    -->
-
-    <!-- Modal -->
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title" id="myModalLabel">Suppression du cours</h4>
-                </div>
-                <div class="modal-body">
-                    <p>Voulez-vous supprimer ce cours ?</p>
-                    <span id="modal-myvalue" style="color: #fff"></span> <span id="modal-myvar" style="color: #fff"></span> <span id="modal-bb" style="color: #fff"></span>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
-                    <button type="button" class="btn btn-danger" onclick="document.location.href='/deleteYear/'+ document.getElementById('modal-myvalue').textContent;">Supprimer</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-
-
-
     <div id="corps">
         <div id="containerNavCalendar">
 
@@ -111,31 +73,17 @@
                 <th class="month">Janvier</th>
                 {% for i in 1..31 %}
                     {%if tabCours[0][i-1][0] == "Sam" or tabCours[0][i-1][0] == "Dim" %}
-                        <td class="weekend intitule">
+                        <td class="intitule weekend">
                         <div>{{ i }}</div>
                     {%  else %}
-                        <td class="intitule daySemaine" data-toggle="modal" data-target="#popUpDelete">
-                        {% if tabCours[0][i-1][1] != " "%}
-                        {% if tabCours[0][i-1][1] == "ENTREPRISE"%}
+                        <td class="intitule">
+                        {%if tabCours[0][i-1][1] == "Entreprise"%}
                             <div class="enterpriseNumber">{{ i }}</div>
                         {%  else %}
                             <div class="schoolNumber">{{ i }}</div>
                         {%  endif %}
-                            {% else %}
-                                <div>{{ i }}</div>
-                            {% endif %}
                     {%  endif %}
                     <b>&nbsp;{{ tabCours[0][i-1][0] }}</b>
-                    {%if tabCours[0][i-1][0] != "Sam" and tabCours[0][i-1][0] != "Dim" %}
-                        {% if tabCours[0][i-1][1] != " "%}
-                        <button type="button" data-toggle="modal" data-target="#myModal" data-myvalue="{{ i }};01;{{ noann }}">
-
-                           <i class="material-icons" style="font-size: 13px; color: gray()">
-                                remove
-                            </i>
-                        </button>
-                        {%  endif %}
-                    {%  endif %}
                 </td>
                 {% endfor %}
             </tr>
@@ -144,82 +92,55 @@
                 {% if bisex == 1 %}
                     {% for i in 1..29 %}
                         {%if tabCours[1][i-1][0] == "Sam" or tabCours[1][i-1][0] == "Dim" %}
-                            <td class="weekend intitule">
+                            <td class="intitule weekend">
                             <div>{{ i }}</div>
                         {%  else %}
-                            <td class="intitule daySemaine" data-toggle="modal" data-target="#popUpDelete">
-                            {% if  tabCours[1][i-1][1] != " "%}
-                                {%if tabCours[1][i-1][1] == "ENTREPRISE"%}
-                                    <div class="enterpriseNumber">{{ i }}</div>
-                                {%  else %}
-                                    <div class="schoolNumber">{{ i }}</div>
-                                {%  endif %}
-                            {% else %}
-                                <div>{{ i }}</div>
-                            {% endif %}
+                            <td class="intitule">
+                            {%if tabCours[1][i-1][1] == "Entreprise"%}
+                                <div class="enterpriseNumber">{{ i }}</div>
+                            {%  else %}
+                                <div class="schoolNumber">{{ i }}</div>
+                            {%  endif %}
                         {%  endif %}
                             <b>&nbsp;{{ tabCours[1][i-1][0] }}</b>
-                        {%if tabCours[1][i-1][0] != "Sam" and tabCours[1][i-1][0] != "Dim" %}
-                            <button type="button" data-toggle="modal" data-target="#myModal" data-myvalue="{{ i }};02;{{ noann }}">
-
-                            </button>
-                        {%  endif %}
                         </td>
                     {% endfor %}
                 {% else %}
                     {% for i in 1..28 %}
                         {%if tabCours[1][i-1][0] == "Sam" or tabCours[1][i-1][0] == "Dim" %}
-                            <td class="weekend intitule">
+                            <td class="intitule weekend">
                             <div>{{ i }}</div>
                         {%  else %}
-                            <td class="intitule daySemaine" data-toggle="modal" data-target="#popUpDelete">
-                                {% if  tabCours[1][i-1][1] != " "%}
-                                    {%if tabCours[1][i-1][1] == "ENTREPRISE"%}
-                                        <div class="enterpriseNumber">{{ i }}</div>
-                                    {%  else %}
-                                        <div class="schoolNumber">{{ i }}</div>
-                                    {%  endif %}
-                                {% else %}
-                                    <div>{{ i }}</div>
-                                {% endif %}
-                                {%  endif %}
-                            <b>&nbsp;{{ tabCours[1][i-1][0] }}</b>
-                        {%if tabCours[1][i-1][0] != "Sam" and tabCours[1][i-1][0] != "Dim" %}
-                            <button type="button" data-toggle="modal" data-target="#myModal" data-myvalue="{{ i }};02;{{ noann }}">
-
-                            </button>
+                            <td class="intitule">
+                            {%if tabCours[1][i-1][1] == "Entreprise"%}
+                                <div class="enterpriseNumber">{{ i }}</div>
+                            {%  else %}
+                                <div class="schoolNumber">{{ i }}</div>
+                            {%  endif %}
                         {%  endif %}
+                            <b>&nbsp;{{ tabCours[1][i-1][0] }}</b>
                         </td>
                     {% endfor %}
-                    <td class="intitule daySemaine" data-toggle="modal" data-target="#popUpDelete"></td>
+                    <td class="intitule"></td>
                 {% endif %}
-                <td class="intitule daySemaine" data-toggle="modal" data-target="#popUpDelete"></td>
-                <td class="intitule daySemaine" data-toggle="modal" data-target="#popUpDelete"></td>
+                <td class="intitule"></td>
+                <td class="intitule"></td>
             </tr>
             <tr class="column1">
                 <th class="month">Mars</th>
                 {% for i in 1..31 %}
                     {%if tabCours[2][i-1][0] == "Sam" or tabCours[2][i-1][0] == "Dim" %}
-                        <td class="weekend intitule">
+                        <td class="intitule weekend">
                         <div>{{ i }}</div>
                     {%  else %}
-                        <td class="intitule daySemaine" data-toggle="modal" data-target="#popUpDelete">
-                            {% if  tabCours[2][i-1][1] != " "%}
-                                {%if tabCours[2][i-1][1] == "ENTREPRISE"%}
-                                    <div class="enterpriseNumber">{{ i }}</div>
-                                {%  else %}
-                                    <div class="schoolNumber">{{ i }}</div>
-                                {%  endif %}
-                            {% else %}
-                                <div>{{ i }}</div>
-                            {% endif %}
-                            {%  endif %}
-                        <b>&nbsp;{{ tabCours[2][i-1][0] }}</b>
-                    {%if tabCours[2][i-1][0] != "Sam" and tabCours[2][i-1][0] != "Dim" %}
-                        <button type="button" data-toggle="modal" data-target="#myModal" data-myvalue="{{ i }};03;{{ noann }}">
-
-                        </button>
+                        <td class="intitule">
+                        {%if tabCours[2][i-1][1] == "Entreprise"%}
+                            <div class="enterpriseNumber">{{ i }}</div>
+                        {%  else %}
+                            <div class="schoolNumber">{{ i }}</div>
+                        {%  endif %}
                     {%  endif %}
+                        <b>&nbsp;{{ tabCours[2][i-1][0] }}</b>
                     </td>
                 {% endfor %}
             </tr>
@@ -227,55 +148,37 @@
                 <th class="month">Avril</th>
                 {% for i in 1..30 %}
                     {%if tabCours[3][i-1][0] == "Sam" or tabCours[3][i-1][0] == "Dim" %}
-                        <td class="weekend intitule">
+                        <td class="intitule weekend">
                         <div>{{ i }}</div>
                     {%  else %}
-                        <td class="intitule daySemaine" data-toggle="modal" data-target="#popUpDelete">
-                            {% if  tabCours[3][i-1][1] != " "%}
-                                {%if tabCours[3][i-1][1] == "ENTREPRISE"%}
-                                    <div class="enterpriseNumber">{{ i }}</div>
-                                {%  else %}
-                                    <div class="schoolNumber">{{ i }}</div>
-                                {%  endif %}
-                            {% else %}
-                                <div>{{ i }}</div>
-                            {% endif %}
-                            {%  endif %}
-                        <b>&nbsp;{{ tabCours[3][i-1][0] }}</b>
-                    {%if tabCours[3][i-1][0] != "Sam" and tabCours[3][i-1][0] != "Dim" %}
-                        <button type="button" data-toggle="modal" data-target="#myModal" data-myvalue="{{ i }};04;{{ noann }}">
-
-                        </button>
+                        <td class="intitule">
+                        {%if tabCours[3][i-1][1] == "Entreprise"%}
+                            <div class="enterpriseNumber">{{ i }}</div>
+                        {%  else %}
+                            <div class="schoolNumber">{{ i }}</div>
+                        {%  endif %}
                     {%  endif %}
+                        <b>&nbsp;{{ tabCours[3][i-1][0] }}</b>
                         <div class="matiereCat">{{tabCours[3][i-1][1]}}</div>
                     </td>
                 {% endfor %}
-                <td class="intitule daySemaine" data-toggle="modal" data-target="#popUpDelete"></td>
+                <td class="intitule"></td>
             </tr>
             <tr class="column1">
                 <th class="month">Mai</th>
                 {% for i in 1..31 %}
                     {%if tabCours[4][i-1][0] == "Sam" or tabCours[4][i-1][0] == "Dim" %}
-                        <td class="weekend intitule">
+                        <td class="intitule weekend">
                         <div>{{ i }}</div>
                     {%  else %}
-                        <td class="intitule daySemaine" data-toggle="modal" data-target="#popUpDelete">
-                            {% if  tabCours[4][i-1][1] != " "%}
-                                {%if tabCours[4][i-1][1] == "ENTREPRISE"%}
-                                    <div class="enterpriseNumber">{{ i }}</div>
-                                {%  else %}
-                                    <div class="schoolNumber">{{ i }}</div>
-                                {%  endif %}
-                            {% else %}
-                                <div>{{ i }}</div>
-                            {% endif %}
-                            {%  endif %}
-                        <b>&nbsp;{{ tabCours[4][i-1][0] }}</b>
-                    {%if tabCours[4][i-1][0] != "Sam" and tabCours[4][i-1][0] != "Dim" %}
-                        <button type="button" data-toggle="modal" data-target="#myModal" data-myvalue="{{ i }};05;{{ noann }}">
-
-                        </button>
+                        <td class="intitule">
+                        {%if tabCours[4][i-1][1] == "Entreprise"%}
+                            <div class="enterpriseNumber">{{ i }}</div>
+                        {%  else %}
+                            <div class="schoolNumber">{{ i }}</div>
+                        {%  endif %}
                     {%  endif %}
+                        <b>&nbsp;{{ tabCours[4][i-1][0] }}</b>
                     </td>
                 {% endfor %}
             </tr>
@@ -283,54 +186,36 @@
                 <th class="month">Juin</th>
                 {% for i in 1..30 %}
                     {%if tabCours[5][i-1][0] == "Sam" or tabCours[5][i-1][0] == "Dim" %}
-                        <td class="weekend intitule">
+                        <td class="intitule weekend">
                         <div>{{ i }}</div>
                     {%  else %}
-                        <td class="intitule daySemaine" data-toggle="modal" data-target="#popUpDelete">
-                            {% if  tabCours[5][i-1][1] != " "%}
-                                {%if tabCours[5][i-1][1] == "ENTREPRISE"%}
-                                    <div class="enterpriseNumber">{{ i }}</div>
-                                {%  else %}
-                                    <div class="schoolNumber">{{ i }}</div>
-                                {%  endif %}
-                            {% else %}
-                                <div>{{ i }}</div>
-                            {% endif %}
-                            {%  endif %}
-                        <b>&nbsp;{{ tabCours[5][i-1][0] }}</b>
-                    {%if tabCours[5][i-1][0] != "Sam" and tabCours[5][i-1][0] != "Dim" %}
-                        <button type="button" data-toggle="modal" data-target="#myModal" data-myvalue="{{ i }};06;{{ noann }}">
-
-                        </button>
+                        <td class="intitule">
+                        {%if tabCours[5][i-1][1] == "Entreprise"%}
+                            <div class="enterpriseNumber">{{ i }}</div>
+                        {%  else %}
+                            <div class="schoolNumber">{{ i }}</div>
+                        {%  endif %}
                     {%  endif %}
+                        <b>&nbsp;{{ tabCours[5][i-1][0] }}</b>
                     </td>
                 {% endfor %}
-                <td class="intitule daySemaine" data-toggle="modal" data-target="#popUpDelete"></td>
+                <td class="intitule"></td>
             </tr>
             <tr class="column1">
                 <th class="month">Juillet</th>
                 {% for i in 1..31 %}
                     {%if tabCours[6][i-1][0] == "Sam" or tabCours[6][i-1][0] == "Dim" %}
-                        <td class="weekend intitule">
+                        <td class="intitule weekend">
                         <div>{{ i }}</div>
                     {%  else %}
-                        <td class="intitule daySemaine" data-toggle="modal" data-target="#popUpDelete">
-                            {% if  tabCours[6][i-1][1] != " "%}
-                                {%if tabCours[6][i-1][1] == "ENTREPRISE"%}
-                                    <div class="enterpriseNumber">{{ i }}</div>
-                                {%  else %}
-                                    <div class="schoolNumber">{{ i }}</div>
-                                {%  endif %}
-                            {% else %}
-                                <div>{{ i }}</div>
-                            {% endif %}
-                            {%  endif %}
-                        <b>&nbsp;{{ tabCours[6][i-1][0] }}</b>
-                    {%if tabCours[6][i-1][0] != "Sam" and tabCours[6][i-1][0] != "Dim" %}
-                        <button type="button" data-toggle="modal" data-target="#myModal" data-myvalue="{{ i }};07;{{ noann }}">
-
-                        </button>
+                        <td class="intitule">
+                        {%if tabCours[6][i-1][1] == "Entreprise"%}
+                            <div class="enterpriseNumber">{{ i }}</div>
+                        {%  else %}
+                            <div class="schoolNumber">{{ i }}</div>
+                        {%  endif %}
                     {%  endif %}
+                        <b>&nbsp;{{ tabCours[6][i-1][0] }}</b>
                     </td>
                 {% endfor %}
             </tr>
@@ -338,26 +223,17 @@
                 <th class="month">Aout</th>
                 {% for i in 1..31 %}
                     {%if tabCours[7][i-1][0] == "Sam" or tabCours[7][i-1][0] == "Dim" %}
-                        <td class="weekend intitule">
+                        <td class="intitule weekend">
                         <div>{{ i }}</div>
                     {%  else %}
-                        <td class="intitule daySemaine" data-toggle="modal" data-target="#popUpDelete">
-                            {% if  tabCours[7][i-1][1] != " "%}
-                                {%if tabCours[7][i-1][1] == "ENTREPRISE"%}
-                                    <div class="enterpriseNumber">{{ i }}</div>
-                                {%  else %}
-                                    <div class="schoolNumber">{{ i }}</div>
-                                {%  endif %}
-                            {% else %}
-                                <div>{{ i }}</div>
-                            {% endif %}
-                            {%  endif %}
-                        <b>&nbsp;{{ tabCours[7][i-1][0] }}</b>
-                    {%if tabCours[7][i-1][0] != "Sam" and tabCours[7][i-1][0] != "Dim" %}
-                        <button type="button" data-toggle="modal" data-target="#myModal" data-myvalue="{{ i }};08;{{ noann }}">
-
-                        </button>
+                        <td class="intitule">
+                        {%if tabCours[7][i-1][1] == "Entreprise"%}
+                            <div class="enterpriseNumber">{{ i }}</div>
+                        {%  else %}
+                            <div class="schoolNumber">{{ i }}</div>
+                        {%  endif %}
                     {%  endif %}
+                        <b>&nbsp;{{ tabCours[7][i-1][0] }}</b>
                     </td>
                 {% endfor %}
             </tr>
@@ -365,54 +241,36 @@
                 <th class="month">Septembre</th>
                 {% for i in 1..30 %}
                     {%if tabCours[8][i-1][0] == "Sam" or tabCours[8][i-1][0] == "Dim" %}
-                        <td class="weekend intitule">
+                        <td class="intitule weekend">
                         <div>{{ i }}</div>
                     {%  else %}
-                        <td class="intitule daySemaine" data-toggle="modal" data-target="#popUpDelete">
-                            {% if  tabCours[8][i-1][1] != " "%}
-                                {%if tabCours[8][i-1][1] == "ENTREPRISE"%}
-                                    <div class="enterpriseNumber">{{ i }}</div>
-                                {%  else %}
-                                    <div class="schoolNumber">{{ i }}</div>
-                                {%  endif %}
-                            {% else %}
-                                <div>{{ i }}</div>
-                            {% endif %}
-                            {%  endif %}
-                        <b>&nbsp;{{ tabCours[8][i-1][0] }}</b>
-                    {%if tabCours[8][i-1][0] != "Sam" and tabCours[8][i-1][0] != "Dim" %}
-                        <button type="button" data-toggle="modal" data-target="#myModal" data-myvalue="{{ i }};09;{{ noann }}">
-
-                        </button>
+                        <td class="intitule">
+                        {%if tabCours[8][i-1][1] == "Entreprise"%}
+                            <div class="enterpriseNumber">{{ i }}</div>
+                        {%  else %}
+                            <div class="schoolNumber">{{ i }}</div>
+                        {%  endif %}
                     {%  endif %}
+                        <b>&nbsp;{{ tabCours[8][i-1][0] }}</b>
                     </td>
                 {% endfor %}
-                <td class="intitule daySemaine" data-toggle="modal" data-target="#popUpDelete"></td>
+                <td class="intitule"></td>
             </tr>
             <tr class="column2">
                 <th class="month">Octobre</th>
                 {% for i in 1..31 %}
                     {%if tabCours[9][i-1][0] == "Sam" or tabCours[9][i-1][0] == "Dim" %}
-                        <td class="weekend intitule">
+                        <td class="intitule weekend">
                         <div>{{ i }}</div>
                     {%  else %}
-                        <td class="intitule daySemaine" data-toggle="modal" data-target="#popUpDelete">
-                            {% if  tabCours[9][i-1][1] != " "%}
-                                {%if tabCours[9][i-1][1] == "ENTREPRISE"%}
-                                    <div class="enterpriseNumber">{{ i }}</div>
-                                {%  else %}
-                                    <div class="schoolNumber">{{ i }}</div>
-                                {%  endif %}
-                            {% else %}
-                                <div>{{ i }}</div>
-                            {% endif %}
-                            {%  endif %}
-                        <b>&nbsp;{{ tabCours[9][i-1][0] }}</b>
-                    {%if tabCours[9][i-1][0] != "Sam" and tabCours[9][i-1][0] != "Dim" %}
-                        <button type="button" data-toggle="modal" data-target="#myModal" data-myvalue="{{ i }};10;{{ noann }}">
-
-                        </button>
+                        <td class="intitule">
+                        {%if tabCours[9][i-1][1] == "Entreprise"%}
+                            <div class="enterpriseNumber">{{ i }}</div>
+                        {%  else %}
+                            <div class="schoolNumber">{{ i }}</div>
+                        {%  endif %}
                     {%  endif %}
+                        <b>&nbsp;{{ tabCours[9][i-1][0] }}</b>
                     </td>
                 {% endfor %}
             </tr>
@@ -420,86 +278,39 @@
                 <th class="month">Novembre</th>
                 {% for i in 1..30 %}
                     {%if tabCours[10][i-1][0] == "Sam" or tabCours[10][i-1][0] == "Dim" %}
-                        <td class="weekend intitule">
+                        <td class="intitule weekend">
                         <div>{{ i }}</div>
                     {%  else %}
-                        <td class="intitule daySemaine" data-toggle="modal" data-target="#popUpDelete">
-                            {% if  tabCours[10][i-1][1] != " "%}
-                                {%if tabCours[10][i-1][1] == "ENTREPRISE"%}
-                                    <div class="enterpriseNumber">{{ i }}</div>
-                                {%  else %}
-                                    <div class="schoolNumber">{{ i }}</div>
-                                {%  endif %}
-                            {% else %}
-                                <div>{{ i }}</div>
-                            {% endif %}
-                            {%  endif %}
-                        <b>&nbsp;{{ tabCours[10][i-1][0] }}</b>
-                    {%if tabCours[10][i-1][0] != "Sam" and tabCours[10][i-1][0] != "Dim" %}
-                        <button type="button" data-toggle="modal" data-target="#myModal" data-myvalue="{{ i }};11;{{ noann }}">
-
-                        </button>
+                        <td class="intitule">
+                        {%if tabCours[10][i-1][1] == "Entreprise"%}
+                            <div class="enterpriseNumber">{{ i }}</div>
+                        {%  else %}
+                            <div class="schoolNumber">{{ i }}</div>
+                        {%  endif %}
                     {%  endif %}
+                        <b>&nbsp;{{ tabCours[10][i-1][0] }}</b>
                     </td>
                 {% endfor %}
-                <td class="intitule daySemaine" data-toggle="modal" data-target="#popUpDelete"></td>
+                <td class="intitule"></td>
             </tr>
             <tr class="column2">
                 <th class="month">Decembre</th>
                 {% for i in 1..31 %}
                     {%if tabCours[11][i-1][0] == "Sam" or tabCours[11][i-1][0] == "Dim" %}
-                        <td class="weekend intitule">
+                        <td class="intitule weekend">
                         <div>{{ i }}</div>
                     {%  else %}
-                        <td class="intitule daySemaine" data-toggle="modal" data-target="#popUpDelete">
-                            {% if  tabCours[11][i-1][1] != " "%}
-                                {%if tabCours[11][i-1][1] == "ENTREPRISE"%}
-                                    <div class="enterpriseNumber">{{ i }}</div>
-                                {%  else %}
-                                    <div class="schoolNumber">{{ i }}</div>
-                                {%  endif %}
-                            {% else %}
-                                <div>{{ i }}</div>
-                            {% endif %}
-                            {%  endif %}
-                        <b>&nbsp;{{ tabCours[11][i-1][0] }}</b>
-                    {%if tabCours[11][i-1][0] != "Sam" and tabCours[11][i-1][0] != "Dim" %}
-                        <button type="button" data-toggle="modal" data-target="#myModal" data-myvalue="{{ i }};12;{{ noann }}">
-
-                    </button>
+                        <td class="intitule">
+                        {%if tabCours[11][i-1][1] == "Entreprise"%}
+                            <div class="enterpriseNumber">{{ i }}</div>
+                        {%  else %}
+                            <div class="schoolNumber">{{ i }}</div>
+                        {%  endif %}
                     {%  endif %}
+                        <b>&nbsp;{{ tabCours[11][i-1][0] }}</b>
                     </td>
                 {% endfor %}
             </tr>
         </table>
     </div>
-
-    <script>
-        var att = ['myvalue'];
-
-        $('[data-toggle="modal"]').on('click', function (e) {
-            var $target = $(e.target);
-            var modalSelector = $target.data('target');
-
-            att.forEach(function (attributeName) {
-                var $modalAttribute = $(modalSelector + ' #modal-' + attributeName);
-                var dataValue = $target.data(attributeName);
-                $modalAttribute.text(dataValue || '');
-            });
-        });
-    </script>
-
-    <script>
-        $('[data-toggle="test"]').on("click", "td", function() {
-            alert('clicked');
-        });
-    </script>
-
-    <script>
-        var span = document.getElementById("modal-myvalue");
-        function gfg_Run() {
-            return span.textContent;
-        }
-    </script>
-
 {% endblock %}

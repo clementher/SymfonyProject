@@ -5,7 +5,6 @@
     <title>{% block title %}Gestion de planning{% endblock %}</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
     {% block stylesheets %}
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
@@ -28,22 +27,11 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink"
-                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: #fff">
-                    Récapitulatif
-                </a>
-                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="/week">Semaine</a>
-                    <a class="dropdown-item" href="/month">Mois</a>
-                    <a class="dropdown-item" href="/year">Année</a>
-                </div>
+            <li class="nav-item">
+                <a style="color: #fff;" class="nav-link" href="#">Récapitulatif</a>
             </li>
             <li class="nav-item">
                 <a style="color: #fff;" class="nav-link" href="#">Intervenants</a>
-            </li>
-            <li class="nav-item">
-                <a style="color: #fff;" class="nav-link" href="/dispo">Dipsonibilités</a>
             </li>
         </ul>
         <!--<form class="form-inline my-2 my-lg-0">

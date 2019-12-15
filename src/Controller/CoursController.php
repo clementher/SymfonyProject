@@ -131,7 +131,6 @@ class CoursController extends AbstractController
         $this->console_log($noann);
         $bisex = date("L", mktime(0, 0, 0, 1, 1, $noann));
         $tabCours = $this->setTabYear($noann);
-        $this->console_log($tabCours);
         return $this->render('/cours/year.html.twig',array('bisex' => $bisex, 'noann'=> $noann, 'tabCours'=> $tabCours));
     }
 
@@ -401,29 +400,6 @@ class CoursController extends AbstractController
         return $tabRet;
     }
 
-    /**
-     * @Route("/deleteYear/{var}", name="deleteCoursYear")
-     */
-    function deleteCoursYear($var)
-    {
-        $noann = substr($var,6,4);
-        $nomon = substr($var,3,2);
-        $nojour = substr($var,0,2);
-        $user = $this->getUser();
-        $idIntervenant = $user->getFkIntervenantId();
-        $inter = new Intervenant();
-        $inter = $this->entityManager->find(Intervenant::class,$idIntervenant);
-        $this->console_log($noann.$nomon.$nojour);
-        $jour = mktime(0,0,0,$nomon,$nojour,$noann);
-        $query1 = $this->entityManager->createQuery('DELETE App\Entity\Cours c WHERE c.debut >='.date('Ymd', $jour).'and c.fin <'. date('Ymd', $jour + 86400));
-        $query1->execute();
-        $query3 = $this->entityManager->createQuery('SELECT i.prenom as prenom, i.nom as nom from App\Entity\Intervenant i where i.id = '.$idIntervenant);
-        $tabRetQuery = $query3->getResult();
-        $libNotif = '"Le cours de '.$tabRetQuery[0]['nom'].' '.$tabRetQuery[0]['prenom']. ' du '. $nojour.'/'.$nomon.'/'.$noann.' a été annulé par cet intervenant"';
-        $query2 = 'INSERT INTO Notification (libelle, fk_intervenant_id_id, is_read) VALUES ('.$libNotif.','.$idIntervenant.', 0)';
-        $this->entityManager->getConnection()->executeUpdate($query2);
-        return $this->redirectToRoute("creneauDetailAnnee", array('noann' => $noann));
-    }
 
 
 

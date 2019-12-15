@@ -1,6 +1,10 @@
-{% extends 'base.html.twig' %}
-{% block title %}Gestion de planning{% endblock %}
+<!doctype html>
+<html>
 
+<head>
+    <title>{% block title %}Gestion de planning{% endblock %}</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     {% block stylesheets %}
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
@@ -11,9 +15,9 @@
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
               rel="stylesheet">
     {% endblock %}
+</head>
 
-
-{% block body %}
+<body>
 
 
 <div id="containerAdmin">
@@ -144,5 +148,5 @@
         $('.dropdown-toggle').dropdown();
     </script>
 {% endblock %}
-{% endblock %}
-
+</body>
+</html>
