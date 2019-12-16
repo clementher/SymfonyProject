@@ -130,9 +130,6 @@
                         {% if tabCours[0][i-1][1] != " "%}
                         <button type="button" data-toggle="modal" data-target="#myModal" data-myvalue="{{ i }};01;{{ noann }}">
 
-                           <i class="material-icons" style="font-size: 13px; color: gray()">
-                                remove
-                            </i>
                         </button>
                         {%  endif %}
                     {%  endif %}
@@ -160,9 +157,11 @@
                         {%  endif %}
                             <b>&nbsp;{{ tabCours[1][i-1][0] }}</b>
                         {%if tabCours[1][i-1][0] != "Sam" and tabCours[1][i-1][0] != "Dim" %}
-                            <button type="button" data-toggle="modal" data-target="#myModal" data-myvalue="{{ i }};02;{{ noann }}">
+                            {%if tabCours[1][i-1][1] != " " %}
+                                <button type="button" data-toggle="modal" data-target="#myModal" data-myvalue="{{ i }};10;{{ noann }}">
 
-                            </button>
+                                </button>
+                            {%  endif %}
                         {%  endif %}
                         </td>
                     {% endfor %}
@@ -185,9 +184,11 @@
                                 {%  endif %}
                             <b>&nbsp;{{ tabCours[1][i-1][0] }}</b>
                         {%if tabCours[1][i-1][0] != "Sam" and tabCours[1][i-1][0] != "Dim" %}
-                            <button type="button" data-toggle="modal" data-target="#myModal" data-myvalue="{{ i }};02;{{ noann }}">
+                            {%if tabCours[1][i-1][1] != " " %}
+                                <button type="button" data-toggle="modal" data-target="#myModal" data-myvalue="{{ i }};10;{{ noann }}">
 
-                            </button>
+                                </button>
+                            {%  endif %}
                         {%  endif %}
                         </td>
                     {% endfor %}
@@ -216,9 +217,11 @@
                             {%  endif %}
                         <b>&nbsp;{{ tabCours[2][i-1][0] }}</b>
                     {%if tabCours[2][i-1][0] != "Sam" and tabCours[2][i-1][0] != "Dim" %}
-                        <button type="button" data-toggle="modal" data-target="#myModal" data-myvalue="{{ i }};03;{{ noann }}">
+                        {%if tabCours[2][i-1][1] != " " %}
+                            <button type="button" data-toggle="modal" data-target="#myModal" data-myvalue="{{ i }};10;{{ noann }}">
 
-                        </button>
+                            </button>
+                        {%  endif %}
                     {%  endif %}
                     </td>
                 {% endfor %}
@@ -243,9 +246,11 @@
                             {%  endif %}
                         <b>&nbsp;{{ tabCours[3][i-1][0] }}</b>
                     {%if tabCours[3][i-1][0] != "Sam" and tabCours[3][i-1][0] != "Dim" %}
-                        <button type="button" data-toggle="modal" data-target="#myModal" data-myvalue="{{ i }};04;{{ noann }}">
+                        {%if tabCours[3][i-1][1] != " " %}
+                            <button type="button" data-toggle="modal" data-target="#myModal" data-myvalue="{{ i }};10;{{ noann }}">
 
-                        </button>
+                            </button>
+                        {%  endif %}
                     {%  endif %}
                         <div class="matiereCat">{{tabCours[3][i-1][1]}}</div>
                     </td>
@@ -272,9 +277,11 @@
                             {%  endif %}
                         <b>&nbsp;{{ tabCours[4][i-1][0] }}</b>
                     {%if tabCours[4][i-1][0] != "Sam" and tabCours[4][i-1][0] != "Dim" %}
-                        <button type="button" data-toggle="modal" data-target="#myModal" data-myvalue="{{ i }};05;{{ noann }}">
+                        {%if tabCours[4][i-1][1] != " " %}
+                            <button type="button" data-toggle="modal" data-target="#myModal" data-myvalue="{{ i }};10;{{ noann }}">
 
-                        </button>
+                            </button>
+                        {%  endif %}
                     {%  endif %}
                     </td>
                 {% endfor %}
@@ -299,9 +306,11 @@
                             {%  endif %}
                         <b>&nbsp;{{ tabCours[5][i-1][0] }}</b>
                     {%if tabCours[5][i-1][0] != "Sam" and tabCours[5][i-1][0] != "Dim" %}
-                        <button type="button" data-toggle="modal" data-target="#myModal" data-myvalue="{{ i }};06;{{ noann }}">
+                        {%if tabCours[5][i-1][1] != " " %}
+                            <button type="button" data-toggle="modal" data-target="#myModal" data-myvalue="{{ i }};10;{{ noann }}">
 
-                        </button>
+                            </button>
+                        {%  endif %}
                     {%  endif %}
                     </td>
                 {% endfor %}
@@ -327,9 +336,11 @@
                             {%  endif %}
                         <b>&nbsp;{{ tabCours[6][i-1][0] }}</b>
                     {%if tabCours[6][i-1][0] != "Sam" and tabCours[6][i-1][0] != "Dim" %}
-                        <button type="button" data-toggle="modal" data-target="#myModal" data-myvalue="{{ i }};07;{{ noann }}">
+                        {%if tabCours[6][i-1][1] != " " %}
+                            <button type="button" data-toggle="modal" data-target="#myModal" data-myvalue="{{ i }};10;{{ noann }}">
 
-                        </button>
+                            </button>
+                        {%  endif %}
                     {%  endif %}
                     </td>
                 {% endfor %}
@@ -354,9 +365,11 @@
                             {%  endif %}
                         <b>&nbsp;{{ tabCours[7][i-1][0] }}</b>
                     {%if tabCours[7][i-1][0] != "Sam" and tabCours[7][i-1][0] != "Dim" %}
-                        <button type="button" data-toggle="modal" data-target="#myModal" data-myvalue="{{ i }};08;{{ noann }}">
+                        {%if tabCours[7][i-1][1] != " " %}
+                            <button type="button" data-toggle="modal" data-target="#myModal" data-myvalue="{{ i }};10;{{ noann }}">
 
-                        </button>
+                            </button>
+                        {%  endif %}
                     {%  endif %}
                     </td>
                 {% endfor %}
@@ -381,9 +394,11 @@
                             {%  endif %}
                         <b>&nbsp;{{ tabCours[8][i-1][0] }}</b>
                     {%if tabCours[8][i-1][0] != "Sam" and tabCours[8][i-1][0] != "Dim" %}
-                        <button type="button" data-toggle="modal" data-target="#myModal" data-myvalue="{{ i }};09;{{ noann }}">
+                        {%if tabCours[8][i-1][1] != " " %}
+                            <button type="button" data-toggle="modal" data-target="#myModal" data-myvalue="{{ i }};10;{{ noann }}">
 
-                        </button>
+                            </button>
+                        {%  endif %}
                     {%  endif %}
                     </td>
                 {% endfor %}
@@ -409,9 +424,11 @@
                             {%  endif %}
                         <b>&nbsp;{{ tabCours[9][i-1][0] }}</b>
                     {%if tabCours[9][i-1][0] != "Sam" and tabCours[9][i-1][0] != "Dim" %}
-                        <button type="button" data-toggle="modal" data-target="#myModal" data-myvalue="{{ i }};10;{{ noann }}">
+                        {%if tabCours[9][i-1][1] != " " %}
+                            <button type="button" data-toggle="modal" data-target="#myModal" data-myvalue="{{ i }};10;{{ noann }}">
 
-                        </button>
+                            </button>
+                        {%  endif %}
                     {%  endif %}
                     </td>
                 {% endfor %}
@@ -436,9 +453,11 @@
                             {%  endif %}
                         <b>&nbsp;{{ tabCours[10][i-1][0] }}</b>
                     {%if tabCours[10][i-1][0] != "Sam" and tabCours[10][i-1][0] != "Dim" %}
-                        <button type="button" data-toggle="modal" data-target="#myModal" data-myvalue="{{ i }};11;{{ noann }}">
+                        {%if tabCours[10][i-1][1] != " " %}
+                            <button type="button" data-toggle="modal" data-target="#myModal" data-myvalue="{{ i }};10;{{ noann }}">
 
-                        </button>
+                            </button>
+                        {%  endif %}
                     {%  endif %}
                     </td>
                 {% endfor %}
@@ -464,9 +483,11 @@
                             {%  endif %}
                         <b>&nbsp;{{ tabCours[11][i-1][0] }}</b>
                     {%if tabCours[11][i-1][0] != "Sam" and tabCours[11][i-1][0] != "Dim" %}
-                        <button type="button" data-toggle="modal" data-target="#myModal" data-myvalue="{{ i }};12;{{ noann }}">
+                        {%if tabCours[11][i-1][1] != " " %}
+                            <button type="button" data-toggle="modal" data-target="#myModal" data-myvalue="{{ i }};10;{{ noann }}">
 
-                    </button>
+                            </button>
+                        {%  endif %}
                     {%  endif %}
                     </td>
                 {% endfor %}
