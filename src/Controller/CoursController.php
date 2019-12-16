@@ -34,7 +34,7 @@ class CoursController extends AbstractController
             $jour3 = mktime(0, 0, 0, (new DateTime())->setISODate($noann, $nosem)->format('m'), (new DateTime())->setISODate($noann, $nosem)->format('d') + 2, $noann);
             $jour4 = mktime(0, 0, 0, (new DateTime())->setISODate($noann, $nosem)->format('m'), (new DateTime())->setISODate($noann, $nosem)->format('d') + 3, $noann);
             $jour5 = mktime(0, 0, 0, (new DateTime())->setISODate($noann, $nosem)->format('m'), (new DateTime())->setISODate($noann, $nosem)->format('d') + 4, $noann);
-
+            $this->console_log($this->setTabs($jour1, $jour2, $jour3, $jour4, $jour5));
             $tabCours = $this->initTabs($this->setTabs($jour1, $jour2, $jour3, $jour4, $jour5));
             //$tab1 = $tabCours[0];
 
@@ -55,6 +55,7 @@ class CoursController extends AbstractController
                     date("j", $jour5),
                     $this->deterMois(date("m", $jour5)))
             );
+            $this->console_log($tabCours);
             return $this->render('/cours/week.html.twig', ['tab' => $tab, 'noSem' => $nosem, 'noAnn' => $noann, 'cours' => $tabCours]);
         } elseif ($nosem == 1 || $nosem == 54) {
             if ($nosem == 54) {
@@ -422,6 +423,67 @@ class CoursController extends AbstractController
         $query2 = 'INSERT INTO Notification (libelle, fk_intervenant_id_id, is_read) VALUES ('.$libNotif.','.$idIntervenant.', 0)';
         $this->entityManager->getConnection()->executeUpdate($query2);
         return $this->redirectToRoute("creneauDetailAnnee", array('noann' => $date[2]));
+    }
+
+    /**
+     * @Route("/deleteWeek/{var}", name="deleteCoursYear")
+     */
+    function deleteCoursWeek($var)
+    {
+        $this->console_log($var);
+        $date = explode(";",$var);
+        $noMon = $this->deterNumMois($date[1]);
+        if ($date[3]>=9 && $date[3]<=12){
+            $heure = 9;
+        } else if ($date[3]>=15 && $date[3]<=17){
+            $heure = 15;
+        }
+        $user = $this->getUser();
+        $idIntervenant = $user->getFkIntervenantId();
+        $inter = new Intervenant();
+        $inter = $this->entityManager->find(Intervenant::class,$idIntervenant);
+        $jour = mktime($heure,0,0,$noMon,$date[0],$date[2]);
+        $this->console_log('DELETE App\Entity\Cours c WHERE c.debut >='.date('YmdGis', $jour).'and c.fin <'. date('YmdGis', $jour + 14400));
+        $query1 = $this->entityManager->createQuery('DELETE App\Entity\Cours c WHERE c.debut >='.date('YmdGis', $jour).'and c.fin <'. date('YmdGis', $jour + 14400));
+        $query1->execute();
+        $query3 = $this->entityManager->createQuery('SELECT i.prenom as prenom, i.nom as nom from App\Entity\Intervenant i where i.id = '.$idIntervenant);
+        $tabRetQuery = $query3->getResult();
+        $libNotif = '"Le cours de '.$tabRetQuery[0]['nom'].' '.$tabRetQuery[0]['prenom']. ' du '. $date[0].'/'.$noMon.'/'.$date[2].' a '.$heure.'h a été annulé par cet intervenant"';
+        $query2 = 'INSERT INTO Notification (libelle, fk_intervenant_id_id, is_read) VALUES ('.$libNotif.','.$idIntervenant.', 0)';
+        $this->entityManager->getConnection()->executeUpdate($query2);
+        return $this->redirectToRoute("creneauDetailSemaine", array('nosem' => $date[4], 'noann' => $date[2]));
+    }
+
+    function deterNumMois($nomMois)
+    {
+        switch ($nomMois) {
+            case "Janvier":
+                return 1;
+            case "Fevrier":
+                return 2;
+            case "Mars":
+                return 3;
+            case "Avril":
+                return 4;
+            case "Mai":
+                return 5;
+            case "Juin":
+                return 6;
+            case "Juillet":
+                return 7;
+            case "Aout":
+                return 8;
+            case "Septembre":
+                return 9;
+            case "Octobre":
+                return 10;
+            case "Novembre":
+                return 11;
+            case "Decembre":
+                return 12;
+            default:
+                return 'Erreur';
+        }
     }
 
 
