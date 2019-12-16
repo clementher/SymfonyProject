@@ -29,6 +29,24 @@
 
     </style>
 
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel">Suppression du cours</h4>
+                </div>
+                <div class="modal-body">
+                    <span id="modal-myvalue"></span> <span id="modal-myvar"></span> <span id="modal-bb"></span>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+                    <button type="button" class="btn btn-danger">Supprimer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div id="corps">
         <div id="containerNavCalendar">
 
@@ -48,8 +66,6 @@
                 </nav>
             </div>
 
-
-
             <button class="buttonNav arrowNav" onclick="document.location.href='/month/{{ noann }}/{{ nomon + 1}}';">
                 <div>
                     Suivant &nbsp;
@@ -58,6 +74,23 @@
                     redo
                 </i>
             </button>
+        </div>
+
+        <div id="containerNavCalendar">
+            <button class="months grey" onclick="document.location.href='/month/{{ noann - 1 }}/12';">Decembre</button>
+            <button class="months" onclick="document.location.href='/month/{{ noann }}/1';">Janvier</button>
+            <button class="months" onclick="document.location.href='/month/{{ noann }}/2';">Février</button>
+            <button class="months" onclick="document.location.href='/month/{{ noann }}/3';">Mars</button>
+            <button class="months" onclick="document.location.href='/month/{{ noann }}/4';">Avril</button>
+            <button class="months" onclick="document.location.href='/month/{{ noann }}/5';">Mai</button>
+            <button class="months" onclick="document.location.href='/month/{{ noann }}/6';">Juin</button>
+            <button class="months" onclick="document.location.href='/month/{{ noann }}/7';">Juillet</button>
+            <button class="months" onclick="document.location.href='/month/{{ noann }}/8';">Aout</button>
+            <button class="months" onclick="document.location.href='/month/{{ noann }}/9';">Septembre</button>
+            <button class="months" onclick="document.location.href='/month/{{ noann }}/10';">Octobre</button>
+            <button class="months" onclick="document.location.href='/month/{{ noann }}/11';">Novembre</button>
+            <button class="months" onclick="document.location.href='/month/{{ noann }}/12';">Decembre</button>
+            <button class="months grey" onclick="document.location.href='/month/{{ noann + 1 }}/1';">Janvier</button>
         </div>
 
 
@@ -527,4 +560,19 @@
             </tr>
         </table>
     </div>
+
+    <script>
+        var att = ['myvalue'];
+
+        $('[data-toggle="modal"]').on('click', function (e) {
+            var $target = $(e.target);
+            var modalSelector = $target.data('target');
+
+            att.forEach(function (attributeName) {
+                var $modalAttribute = $(modalSelector + ' #modal-' + attributeName);
+                var dataValue = $target.data(attributeName);
+                $modalAttribute.text(dataValue || '');
+            });
+        });
+    </script>
 {% endblock %}

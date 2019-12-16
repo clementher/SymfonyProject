@@ -44,14 +44,15 @@ class Intervenant
     private $cours;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\OneToMany(targetEntity="App\Entity\Notification", mappedBy="fk_intervenant_id")
      */
-    private $email;
+    private $notifications;
 
     public function __construct()
     {
         $this->matieres = new ArrayCollection();
         $this->cours = new ArrayCollection();
+        $this->notifications = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -157,14 +158,33 @@ class Intervenant
         return $this;
     }
 
-    public function getEmail(): ?string
+    /**
+     * @return Collection|Notification[]
+     */
+    public function getNotifications(): Collection
     {
-        return $this->email;
+        return $this->notifications;
     }
 
-    public function setEmail(string $email): self
+    public function addNotification(Notification $notification): self
     {
-        $this->email = $email;
+        if (!$this->notifications->contains($notification)) {
+            $this->notifications[] = $notification;
+            $notification->setFkIntervenantId($this);
+        }
+
+        return $this;
+    }
+
+    public function removeNotification(Notification $notification): self
+    {
+        if ($this->notifications->contains($notification)) {
+            $this->notifications->removeElement($notification);
+            // set the owning side to null (unless already changed)
+            if ($notification->getFkIntervenantId() === $this) {
+                $notification->setFkIntervenantId(null);
+            }
+        }
 
         return $this;
     }
