@@ -1,78 +1,61 @@
-<!doctype html>
-<html>
+{% extends 'base.html.twig' %}
 
-<head>
-    <title>{% block title %}Gestion de planning{% endblock %}</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+{% block title %}Gestion de planning{% endblock %}
     {% block stylesheets %}
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
-              integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
-              crossorigin="anonymous">
-        <link rel="stylesheet" href="/css/font-awesome.css">
-        <link rel="stylesheet" href="/css/styles.css">
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-              rel="stylesheet">
+        {{ parent() }}
+        <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
     {% endblock %}
-</head>
 
-<body>
+{% form_theme formUser 'bootstrap_4_layout.html.twig' %}
 
-
-<div id="containerAdmin">
-    <div id="formAdmin">
-        <div class="containerAdmin">
-            <h2>Ajouter un Intervenant</h2>
-            <form action="/action_page.php"  class="addIntervenant">
-                <div>Nom: <input type="text" name="FirstName" value="Mickey"></div>
-                <div>Prénom: <input type="text" name="FirstName" value="Mickey"></div>
-                <div>Mail: <input type="text" name="FirstName" value="Mickey"></div>
-                <div>Spécialité: <input type="text" name="FirstName" value="Mickey"></div>
-                <input type="submit" value="Submit">
-            </form>
+{% block body %}
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success">
+            {{ message }}
         </div>
-
-
-
-        <div class="containerAdmin">
-            <h2>Liste des Intervenants</h2>
-            <form action="/action_page.php"  class="addIntervenant">
-                <div>Nom: <b>BONJOUR</b></div>
-                <div>Prénom: <b>Bonsoir</b></div>
-                <div>Mail: <b>Bonsoir@bonjour.com</b></div>
-                <div>Spécialité: <b>Bonsoirade</b></div>
-                <div class="deleteAdmin">
-                    <i class="material-icons deleteIcon">
-                        delete_forever
-                    </i>
+    {% endfor %}
+    <div id="containerAdmin">
+        <div id="formAdmin">
+            <div class="containerAdmin">
+                <h2>Ajouter un Intervenant</h2>
+                {{ form_start(formUser) }}
+                <div class="my-custom-class-for-errors">
+                    {{ form_errors(formUser) }}
                 </div>
-            </form>
+                {{ form_row(formUser.nom) }}
+                {{ form_row(formUser.prenom) }}
+                {{ form_row(formUser.email) }}
+                {{ form_row(formUser.password) }}
+                {{ form_row(formUser.specialiteprofessionnelle) }}
+                <button type="submit" class="btn btn-success" onclick="return confirm('Vous êtes sur ?')">Créer</button>
+                {{ form_end(formUser) }}
+            </div>
+            {% for user in users %}
+                <div class="containerAdmin">
+                    <h2>Liste des Intervenants</h2>
+                    <div>Nom: <b>{{ user.nom }}</b></div>
+                    <div>Prénom: <b>{{ user.prenom }}</b></div>
+                    <div>Email: <b>{{ user.email }}</b></div>
+                    <div>Spécialité: <b>{{ user.specialiteprofessionnelle }}</b></div>
+                    <div class="deleteAdmin"><a href="/delete/{{ user.id }}"><i class="material-icons deleteIcon"
+                                                                                onclick="return confirm('Vous êtes sur ?')">delete_forever</i></a>
+                    </div>
+                </div>
+            {% endfor %}
         </div>
     </div>
-</div>
 
-
-
-<footer class="footer">
-    <div class="container text-center">
-        <span class="text-muted">Site web developpé par Clément HERNANDEZ, David CRETON et Loïc AUGE </span>
-    </div>
-</footer>
-
-
-{% block javascripts %}
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"
-            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"
-            integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
-            crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"
-            integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
-            crossorigin="anonymous"></script>
-    <script>
-        $('.dropdown-toggle').dropdown();
-    </script>
+    {% block javascripts %}
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"
+                integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"
+                integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+                crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"
+                integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+                crossorigin="anonymous"></script>
+        <script>
+            $('.dropdown-toggle').dropdown();
+        </script>
+    {% endblock %}
 {% endblock %}
-</body>
-</html>
