@@ -24,7 +24,7 @@
             Du
             <div class="begin">
                 <div class="form-group">
-                    <select class="form-control"name="Jours" id="pet-select">
+                    <select class="form-control"name="Jours" id="jour1">
                         {% for i in 1..31 %}
                             <option value="{{ i }}">{{ i }}</option>
                         {% endfor %}
@@ -32,7 +32,7 @@
                 </div>
                 &nbsp;/&nbsp;
                 <div class="form-group">
-                    <select class="form-control"name="Jours" id="pet-select">
+                    <select class="form-control"name="Jours" id="mois1">
                         {% for i in 1..12 %}
                             <option value="{{ i }}">{{ i }}</option>
                         {% endfor %}
@@ -40,8 +40,8 @@
                 </div>
                 &nbsp;/&nbsp;
                 <div class="form-group">
-                    <select class="form-control"name="Jours" id="pet-select">
-                        {% for i in 2019..2022 %}
+                    <select class="form-control"name="Jours" id="annee1">
+                        {% for i in 2019..2050 %}
                             <option value="{{ i }}">{{ i }}</option>
                         {% endfor %}
                     </select>
@@ -50,7 +50,7 @@
             au
             <div class="end">
                 <div class="form-group">
-                    <select class="form-control"name="Jours" id="pet-select">
+                    <select class="form-control"name="Jours" id="jour2">
                         {% for i in 1..31 %}
                             <option value="{{ i }}">{{ i }}</option>
                         {% endfor %}
@@ -58,7 +58,7 @@
                 </div>
                 &nbsp;/&nbsp;
                 <div class="form-group">
-                    <select class="form-control"name="Jours" id="pet-select">
+                    <select class="form-control"name="Jours" id="mois2">
                         {% for i in 1..12 %}
                             <option value="{{ i }}">{{ i }}</option>
                         {% endfor %}
@@ -66,8 +66,8 @@
                 </div>
                 &nbsp;/&nbsp;
                 <div class="form-group">
-                    <select class="form-control"name="Jours" id="pet-select">
-                        {% for i in 2019..2022 %}
+                    <select class="form-control"name="Jours" id="annee2">
+                        {% for i in 2019..2050 %}
                             <option value="{{ i }}">{{ i }}</option>
                         {% endfor %}
                     </select>
@@ -75,29 +75,24 @@
             </div>
 
             </div>
-            <div class="ajouter">
+            <div class="ajouter" onclick="document.location.href='/addDispo/'+document.getElementById('jour1').value+';'+
+                                                                              document.getElementById('mois1').value+';'+
+                                                                              document.getElementById('annee1').value+';'+
+                                                                              document.getElementById('jour2').value+';'+
+                                                                              document.getElementById('mois2').value+';'+
+                                                                              document.getElementById('annee2').value">
                 <div>Ajouter&nbsp;</div>
-                <i class="ajouterIcon material-icons">
+                <i class="ajouterIcon material-icons" >
                     add_circle_outline
                 </i>
             </div>
         </div>
         <h2 class="titleAdmin">Liste de mes disponibilités</h2>
-        <div class="listDispo">
-            <div style="margin-left: 5px">
-                Du 01/03/2020 au 05/03/2020
-            </div>
-            <div class="delete">
-                <div>Supprimer&nbsp;</div>
-                <i class="material-icons deleteIcon">
-                    delete_forever
-                </i>
-            </div>
-        </div>
 
+        {% for i in 0..nb-1 %}
         <div class="listDispo">
             <div style="margin-left: 5px">
-                Du 20/03/2020 au 24/03/2020
+                Du {{dates[2*i]}} au {{dates[2*i+1]}}
             </div>
             <div class="delete">
                 <div>Supprimer&nbsp;</div>
@@ -106,18 +101,7 @@
                 </i>
             </div>
         </div>
-
-        <div class="listDispo">
-            <div style="margin-left: 5px">
-                Du 11/05/2020 au 15/05/2020
-            </div>
-            <div class="delete">
-                <div>Supprimer&nbsp;</div>
-                <i class="material-icons deleteIcon">
-                    delete_forever
-                </i>
-            </div>
-        </div>
+        {% endfor %}
     </div>
 </div>
 

@@ -42,9 +42,11 @@
             <li class="nav-item">
                 <a style="color: #fff;" class="nav-link" href="#">Intervenants</a>
             </li>
+            {% if is_granted('ROLE_USER') %}
             <li class="nav-item">
                 <a style="color: #fff;" class="nav-link" href="/dispo">Dipsonibilités</a>
             </li>
+            {% endif %}
         </ul>
         <!--<form class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">

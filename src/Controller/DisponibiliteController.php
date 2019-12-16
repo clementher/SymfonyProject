@@ -2,45 +2,56 @@
 
 namespace App\Controller;
 
+use Doctrine\ORM\EntityManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
 class DisponibiliteController extends AbstractController
 {
-    /**
-     * @Route("/disponibilite", name="disponibilite")
-     */
-    public function index()
+
+    public function __construct(EntityManager $em)
     {
-        return $this->render('disponibilite/index.html.twig', [
-            'controller_name' => 'DisponibiliteController',
-        ]);
+        $this->entityManager = $em;
     }
 
     /**
-     * @Route("/disponibilite/add", name="addDisponibilite")
+     * @Route("/dispo", name="dispo")
      */
-    function setDispo($jour1, $jour2, $jour3, $jour4, $jour5)
+    function dispo()
     {
-        $tabjour = array($jour1, $jour2, $jour3, $jour4, $jour5);
-        $tabRet = array();
-        $user = new Utilisateurs();
+        $arraydate = array();
         $user = $this->getUser();
         $idIntervenant = $user->getFkIntervenantId();
-        $isAdmin = $user->getIsAdmin();
-        $this->console_log("ID :".$idIntervenant);
-        for ($i = 0; $i <= 4; $i++) {
-            if ($isAdmin == 1)
-            {
-                $query1 = $this->entityManager->createQuery('SELECT m.intitule AS intitule, i.nom as nom, i.prenom as prenom, c.debut as debut, c.fin as fin, m.isSpecialite as spe FROM App\Entity\Matiere m, App\Entity\Intervenant i, App\Entity\Cours c
-                        WHERE m.id = c.fk_matiere_id AND i.id = c.fk_intervenant_id and c.debut >= ' . date('Ymd', $tabjour[$i]) . ' AND c.debut < ' . date('Ymd', $tabjour[$i] + 86400) . ' ORDER BY c.debut');
-            }
-            else {
-                $query1 = $this->entityManager->createQuery('SELECT m.intitule AS intitule, i.nom as nom, i.prenom as prenom, c.debut as debut, c.fin as fin, m.isSpecialite as spe FROM App\Entity\Matiere m, App\Entity\Intervenant i, App\Entity\Cours c
-                        WHERE m.id = c.fk_matiere_id AND i.id = c.fk_intervenant_id and c.fk_intervenant_id = '.$idIntervenant.' and c.debut >= ' . date('Ymd', $tabjour[$i]) . ' AND c.debut < ' . date('Ymd', $tabjour[$i] + 86400) . ' ORDER BY c.debut');
-            }
-            array_push($tabRet, $query1->getResult());
+        $query1 = $this->entityManager->createQuery('SELECT d.debut as debut, d.fin as fin, identity(d.fk_intervenant_id) as intervenant from App\Entity\Disponibilite d
+                                                        where d.fk_intervenant_id ='. $idIntervenant.'order by d.debut');
+        $tabRetQuery = $query1->getResult();
+        for($i=0;$i<count($tabRetQuery);$i++){
+            array_push($arraydate,date_format($tabRetQuery[$i]['debut'],"d").'/'.date_format($tabRetQuery[$i]['debut'],"m").'/'.date_format($tabRetQuery[$i]['debut'],"Y"));
+            array_push($arraydate,date_format($tabRetQuery[$i]['fin'],"d").'/'.date_format($tabRetQuery[$i]['fin'],"m").'/'.date_format($tabRetQuery[$i]['fin'],"Y"));
         }
-        return $tabRet;
+        $this->console_log($arraydate);
+        return $this->render('/dispo.html.twig', ['nb' => count($tabRetQuery), 'dates'=> $arraydate]);
+    }
+
+    /**
+     * @Route("/addDispo/{var}")
+     */
+    function addDispo($var)
+    {
+        $dates = explode(";",$var);
+        $jour1 = mktime(0,0,0,$dates[1],$dates[0],$dates[2]);
+        $jour2 = mktime(0,0,0,$dates[4],$dates[3],$dates[5]);
+        $user = $this->getUser();
+        $idIntervenant = $user->getFkIntervenantId();
+        $query2 = 'INSERT INTO Disponibilite (debut, fk_intervenant_id_id, fin) VALUES ('.date('Ymd', $jour1).','.$idIntervenant.','.date('Ymd', $jour2).')';
+        $this->entityManager->getConnection()->executeUpdate($query2);
+        return $this->redirectToRoute("dispo");
+    }
+
+    function console_log($data)
+    {
+        echo '<script>';
+        echo 'console.log(' . json_encode($data) . ')';
+        echo '</script>';
     }
 }

@@ -53,11 +53,17 @@ class Intervenant
      */
     private $email;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Disponibilite", mappedBy="fk_intervenant_id")
+     */
+    private $disponibilites;
+
     public function __construct()
     {
         $this->matieres = new ArrayCollection();
         $this->cours = new ArrayCollection();
         $this->notifications = new ArrayCollection();
+        $this->disponibilites = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -202,6 +208,37 @@ class Intervenant
     public function setEmail(string $email): self
     {
         $this->email = $email;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Disponibilite[]
+     */
+    public function getDisponibilites(): Collection
+    {
+        return $this->disponibilites;
+    }
+
+    public function addDisponibilite(Disponibilite $disponibilite): self
+    {
+        if (!$this->e->contains($disponibilite)) {
+            $this->disponibilites[] = $disponibilite;
+            $disponibilite->setFkIntervenantId($this);
+        }
+
+        return $this;
+    }
+
+    public function removeDisponibilite(Disponibilite $disponibilite): self
+    {
+        if ($this->disponibilites->contains($disponibilite)) {
+            $this->disponibilites->removeElement($disponibilite);
+            // set the owning side to null (unless already changed)
+            if ($disponibilite->getFkIntervenantId() === $this) {
+                $disponibilite->setFkIntervenantId(null);
+            }
+        }
 
         return $this;
     }
