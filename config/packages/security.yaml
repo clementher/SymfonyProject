@@ -40,5 +40,13 @@ security:
          - { path: ^/month, roles: ROLE_USER }
          - { path: ^/week, roles: ROLE_USER }
          - { path: ^/year, roles: ROLE_USER }
+         - { path: ^/admin/intervenant, roles: ROLE_ADMIN }
+         - { path: ^/admin/cours, roles: ROLE_ADMIN }
+         - { path: ^/admin/matiere, roles: ROLE_ADMIN }
+         - { path: ^/admin, roles: ROLE_ADMIN }
+         - { path: ^/dispo, roles: ROLE_USER }
+         - { path: ^/dispo, roles: ROLE_ADMIN }
+         - { path: ^/logout, roles: ROLE_USER }
+         - { path: ^/logout, roles: ROLE_ADMIN }
 
     # php bin/console debug:router pour voir les routes
