@@ -103,6 +103,7 @@
             </div>
         </div>
 
+
         <table class="table">
             <!-- <tr class="hourColumn">
                 <th>2019</th>
@@ -120,16 +121,18 @@
                         <td class="weekend intitule">
                         <div>{{ i }}</div>
                     {%  else %}
-                        <td class="intitule daySemaine" data-toggle="modal" data-target="#popUpDelete">
                         {% if tabCours[0][i-1][1] != " "%}
-                        {% if tabCours[0][i-1][1] == "ENTREPRISE"%}
-                            <div class="enterpriseNumber">{{ i }}</div>
-                        {%  else %}
-                            <div class="schoolNumber">{{ i }}</div>
-                        {%  endif %}
-                            {% else %}
-                                <div>{{ i }}</div>
-                            {% endif %}
+                            {% if tabCours[0][i-1][1] == "ENTREPRISE"%}
+                                <td class="intitule daySemaine caseEntreprise" data-toggle="modal" data-target="#popUpDelete">
+                                <div class="enterpriseNumber">{{ i }}</div>
+                            {%  else %}
+                                <td class="intitule daySemaine caseEcole" data-toggle="modal" data-target="#popUpDelete">
+                                <div class="schoolNumber">{{ i }}</div>
+                            {%  endif %}
+                        {% else %}
+                            <td class="intitule daySemaine" data-toggle="modal" data-target="#popUpDelete">
+                            <div>{{ i }}</div>
+                        {% endif %}
                     {%  endif %}
                     <b>&nbsp;{{ tabCours[0][i-1][0] }}</b>
                     {%if tabCours[0][i-1][0] != "Sam" and tabCours[0][i-1][0] != "Dim" %}
@@ -153,11 +156,14 @@
                             <td class="intitule daySemaine" data-toggle="modal" data-target="#popUpDelete">
                             {% if  tabCours[1][i-1][1] != " "%}
                                 {%if tabCours[1][i-1][1] == "ENTREPRISE"%}
+                                    <td class="intitule daySemaine caseEntreprise" data-toggle="modal" data-target="#popUpDelete">
                                     <div class="enterpriseNumber">{{ i }}</div>
                                 {%  else %}
+                                    <td class="intitule daySemaine caseEcole" data-toggle="modal" data-target="#popUpDelete">
                                     <div class="schoolNumber">{{ i }}</div>
                                 {%  endif %}
                             {% else %}
+                                <td class="intitule daySemaine" data-toggle="modal" data-target="#popUpDelete">
                                 <div>{{ i }}</div>
                             {% endif %}
                         {%  endif %}
@@ -177,17 +183,19 @@
                             <td class="weekend intitule">
                             <div>{{ i }}</div>
                         {%  else %}
-                            <td class="intitule daySemaine" data-toggle="modal" data-target="#popUpDelete">
-                                {% if  tabCours[1][i-1][1] != " "%}
-                                    {%if tabCours[1][i-1][1] == "ENTREPRISE"%}
-                                        <div class="enterpriseNumber">{{ i }}</div>
-                                    {%  else %}
-                                        <div class="schoolNumber">{{ i }}</div>
-                                    {%  endif %}
-                                {% else %}
-                                    <div>{{ i }}</div>
-                                {% endif %}
+                            {% if  tabCours[1][i-1][1] != " "%}
+                                {%if tabCours[1][i-1][1] == "ENTREPRISE"%}
+                                    <td class="intitule daySemaine caseEntreprise" data-toggle="modal" data-target="#popUpDelete">
+                                    <div class="enterpriseNumber">{{ i }}</div>
+                                {%  else %}
+                                    <td class="intitule daySemaine caseEcole" data-toggle="modal" data-target="#popUpDelete">
+                                    <div class="schoolNumber">{{ i }}</div>
                                 {%  endif %}
+                            {% else %}
+                                <td class="intitule daySemaine" data-toggle="modal" data-target="#popUpDelete">
+                                <div>{{ i }}</div>
+                            {% endif %}
+                        {%  endif %}
                             <b>&nbsp;{{ tabCours[1][i-1][0] }}</b>
                         {%if tabCours[1][i-1][0] != "Sam" and tabCours[1][i-1][0] != "Dim" %}
                             {%if tabCours[1][i-1][1] != " " %}
@@ -210,14 +218,17 @@
                         <td class="weekend intitule">
                         <div>{{ i }}</div>
                     {%  else %}
-                        <td class="intitule daySemaine" data-toggle="modal" data-target="#popUpDelete">
+
                             {% if  tabCours[2][i-1][1] != " "%}
                                 {%if tabCours[2][i-1][1] == "ENTREPRISE"%}
+                                    <td class="intitule daySemaine caseEntreprise" data-toggle="modal" data-target="#popUpDelete">
                                     <div class="enterpriseNumber">{{ i }}</div>
                                 {%  else %}
+                                    <td class="intitule daySemaine caseEcole" data-toggle="modal" data-target="#popUpDelete">
                                     <div class="schoolNumber">{{ i }}</div>
                                 {%  endif %}
                             {% else %}
+                                <td class="intitule daySemaine" data-toggle="modal" data-target="#popUpDelete">
                                 <div>{{ i }}</div>
                             {% endif %}
                             {%  endif %}
@@ -239,14 +250,16 @@
                         <td class="weekend intitule">
                         <div>{{ i }}</div>
                     {%  else %}
-                        <td class="intitule daySemaine" data-toggle="modal" data-target="#popUpDelete">
                             {% if  tabCours[3][i-1][1] != " "%}
                                 {%if tabCours[3][i-1][1] == "ENTREPRISE"%}
+                                    <td class="intitule daySemaine caseEntreprise" data-toggle="modal" data-target="#popUpDelete">
                                     <div class="enterpriseNumber">{{ i }}</div>
                                 {%  else %}
+                                    <td class="intitule daySemaine caseEcole" data-toggle="modal" data-target="#popUpDelete">
                                     <div class="schoolNumber">{{ i }}</div>
                                 {%  endif %}
                             {% else %}
+                                <td class="intitule daySemaine" data-toggle="modal" data-target="#popUpDelete">
                                 <div>{{ i }}</div>
                             {% endif %}
                             {%  endif %}
@@ -270,14 +283,16 @@
                         <td class="weekend intitule">
                         <div>{{ i }}</div>
                     {%  else %}
-                        <td class="intitule daySemaine" data-toggle="modal" data-target="#popUpDelete">
                             {% if  tabCours[4][i-1][1] != " "%}
                                 {%if tabCours[4][i-1][1] == "ENTREPRISE"%}
+                                    <td class="intitule daySemaine caseEntreprise" data-toggle="modal" data-target="#popUpDelete">
                                     <div class="enterpriseNumber">{{ i }}</div>
                                 {%  else %}
+                                    <td class="intitule daySemaine caseEcole" data-toggle="modal" data-target="#popUpDelete">
                                     <div class="schoolNumber">{{ i }}</div>
                                 {%  endif %}
                             {% else %}
+                                <td class="intitule daySemaine" data-toggle="modal" data-target="#popUpDelete">
                                 <div>{{ i }}</div>
                             {% endif %}
                             {%  endif %}
@@ -299,14 +314,16 @@
                         <td class="weekend intitule">
                         <div>{{ i }}</div>
                     {%  else %}
-                        <td class="intitule daySemaine" data-toggle="modal" data-target="#popUpDelete">
                             {% if  tabCours[5][i-1][1] != " "%}
                                 {%if tabCours[5][i-1][1] == "ENTREPRISE"%}
+                                    <td class="intitule daySemaine caseEntreprise" data-toggle="modal" data-target="#popUpDelete">
                                     <div class="enterpriseNumber">{{ i }}</div>
                                 {%  else %}
+                                    <td class="intitule daySemaine caseEcole" data-toggle="modal" data-target="#popUpDelete">
                                     <div class="schoolNumber">{{ i }}</div>
                                 {%  endif %}
                             {% else %}
+                                <td class="intitule daySemaine" data-toggle="modal" data-target="#popUpDelete">
                                 <div>{{ i }}</div>
                             {% endif %}
                             {%  endif %}
@@ -329,14 +346,16 @@
                         <td class="weekend intitule">
                         <div>{{ i }}</div>
                     {%  else %}
-                        <td class="intitule daySemaine" data-toggle="modal" data-target="#popUpDelete">
                             {% if  tabCours[6][i-1][1] != " "%}
                                 {%if tabCours[6][i-1][1] == "ENTREPRISE"%}
+                                    <td class="intitule daySemaine caseEntreprise" data-toggle="modal" data-target="#popUpDelete">
                                     <div class="enterpriseNumber">{{ i }}</div>
                                 {%  else %}
+                                    <td class="intitule daySemaine caseEcole" data-toggle="modal" data-target="#popUpDelete">
                                     <div class="schoolNumber">{{ i }}</div>
                                 {%  endif %}
                             {% else %}
+                                <td class="intitule daySemaine" data-toggle="modal" data-target="#popUpDelete">
                                 <div>{{ i }}</div>
                             {% endif %}
                             {%  endif %}
@@ -358,14 +377,16 @@
                         <td class="weekend intitule">
                         <div>{{ i }}</div>
                     {%  else %}
-                        <td class="intitule daySemaine" data-toggle="modal" data-target="#popUpDelete">
                             {% if  tabCours[7][i-1][1] != " "%}
                                 {%if tabCours[7][i-1][1] == "ENTREPRISE"%}
+                                    <td class="intitule daySemaine caseEntreprise" data-toggle="modal" data-target="#popUpDelete">
                                     <div class="enterpriseNumber">{{ i }}</div>
                                 {%  else %}
+                                    <td class="intitule daySemaine caseEcole" data-toggle="modal" data-target="#popUpDelete">
                                     <div class="schoolNumber">{{ i }}</div>
                                 {%  endif %}
                             {% else %}
+                                <td class="intitule daySemaine" data-toggle="modal" data-target="#popUpDelete">
                                 <div>{{ i }}</div>
                             {% endif %}
                             {%  endif %}
@@ -387,14 +408,16 @@
                         <td class="weekend intitule">
                         <div>{{ i }}</div>
                     {%  else %}
-                        <td class="intitule daySemaine" data-toggle="modal" data-target="#popUpDelete">
                             {% if  tabCours[8][i-1][1] != " "%}
                                 {%if tabCours[8][i-1][1] == "ENTREPRISE"%}
+                                    <td class="intitule daySemaine caseEntreprise" data-toggle="modal" data-target="#popUpDelete">
                                     <div class="enterpriseNumber">{{ i }}</div>
                                 {%  else %}
+                                    <td class="intitule daySemaine caseEcole" data-toggle="modal" data-target="#popUpDelete">
                                     <div class="schoolNumber">{{ i }}</div>
                                 {%  endif %}
                             {% else %}
+                                <td class="intitule daySemaine" data-toggle="modal" data-target="#popUpDelete">
                                 <div>{{ i }}</div>
                             {% endif %}
                             {%  endif %}
@@ -417,14 +440,16 @@
                         <td class="weekend intitule">
                         <div>{{ i }}</div>
                     {%  else %}
-                        <td class="intitule daySemaine" data-toggle="modal" data-target="#popUpDelete">
                             {% if  tabCours[9][i-1][1] != " "%}
                                 {%if tabCours[9][i-1][1] == "ENTREPRISE"%}
+                                    <td class="intitule daySemaine caseEntreprise" data-toggle="modal" data-target="#popUpDelete">
                                     <div class="enterpriseNumber">{{ i }}</div>
                                 {%  else %}
+                                    <td class="intitule daySemaine caseEcole" data-toggle="modal" data-target="#popUpDelete">
                                     <div class="schoolNumber">{{ i }}</div>
                                 {%  endif %}
                             {% else %}
+                                <td class="intitule daySemaine" data-toggle="modal" data-target="#popUpDelete">
                                 <div>{{ i }}</div>
                             {% endif %}
                             {%  endif %}
@@ -446,14 +471,16 @@
                         <td class="weekend intitule">
                         <div>{{ i }}</div>
                     {%  else %}
-                        <td class="intitule daySemaine" data-toggle="modal" data-target="#popUpDelete">
                             {% if  tabCours[10][i-1][1] != " "%}
                                 {%if tabCours[10][i-1][1] == "ENTREPRISE"%}
+                                    <td class="intitule daySemaine caseEntreprise" data-toggle="modal" data-target="#popUpDelete">
                                     <div class="enterpriseNumber">{{ i }}</div>
                                 {%  else %}
+                                    <td class="intitule daySemaine caseEcole" data-toggle="modal" data-target="#popUpDelete">
                                     <div class="schoolNumber">{{ i }}</div>
                                 {%  endif %}
                             {% else %}
+                                <td class="intitule daySemaine" data-toggle="modal" data-target="#popUpDelete">
                                 <div>{{ i }}</div>
                             {% endif %}
                             {%  endif %}
@@ -476,14 +503,16 @@
                         <td class="weekend intitule">
                         <div>{{ i }}</div>
                     {%  else %}
-                        <td class="intitule daySemaine" data-toggle="modal" data-target="#popUpDelete">
                             {% if  tabCours[11][i-1][1] != " "%}
                                 {%if tabCours[11][i-1][1] == "ENTREPRISE"%}
+                                    <td class="intitule daySemaine caseEntreprise" data-toggle="modal" data-target="#popUpDelete">
                                     <div class="enterpriseNumber">{{ i }}</div>
                                 {%  else %}
+                                    <td class="intitule daySemaine caseEcole" data-toggle="modal" data-target="#popUpDelete">
                                     <div class="schoolNumber">{{ i }}</div>
                                 {%  endif %}
                             {% else %}
+                                <td class="intitule daySemaine" data-toggle="modal" data-target="#popUpDelete">
                                 <div>{{ i }}</div>
                             {% endif %}
                             {%  endif %}

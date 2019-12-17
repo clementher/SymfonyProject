@@ -514,14 +514,14 @@ table.table {
 tr.column1 {
     display: flex;
     flex-direction: column;
-    width: auto;
+    width: 100%;
     flex-grow: 1;
 }
 
 tr.column2 {
     display: flex;
     flex-direction: column;
-    width: auto;
+    width: 100%;
     flex-grow: 1;
     background: whitesmoke;
 }
@@ -539,7 +539,7 @@ tr.hourColumn {
 
 tbody{
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     flex-direction: row;
     justify-content: space-between;
     align-items: stretch;
@@ -559,6 +559,8 @@ tbody{
     padding-top: 10px;
     padding-bottom: 10px;
     color: #888888;
+    padding-right: 10px;
+    padding-left: 10px;
 }
 
 th {
@@ -590,12 +592,10 @@ th {
 }
 
 button.red {
-    /* background-color: #dd0808;
-    padding: 10px; */
     border-radius: 70px;
-    text-align: center;
-    width: 36px;
-    height: 36px;
+    text-align: right;
+    width: 20px;
+    position: absolute;
 }
 
 
@@ -606,7 +606,7 @@ button.red {
 
 .professor{
     flex-grow: 1;
-    text-align: left;
+    text-align: center;
 }
 
 .matiere {
@@ -626,12 +626,14 @@ button.red {
     font-weight: bold;
     padding-bottom: 5px;
     color: #464646;
+    padding-top: 18px;
 }
 
 td.hour {
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 105px;
 }
 
 button.hour {
@@ -737,6 +739,7 @@ button.intitule {
 
 th.month {
     font-size: 12px;
+    padding: 4px;
 }
 
 .schoolNumber {
@@ -773,6 +776,15 @@ th.month {
     align-items: center;
     margin: 1px 20px;
 }
+
+.caseEcole {
+    background-color: #0095ff;
+}
+
+.caseEntreprise {
+    background-color: #ff8100;
+}
+
 
 .noneNumber {
     font-size: 10px;

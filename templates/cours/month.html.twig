@@ -118,6 +118,14 @@
             <tr class="column1">
                 <th>Lundi</th>
                 <td>
+                    {% if tabJours[0][1][1] != " "%}
+                        <button class="red modalTrigger" type="button" data-toggle="modal" data-target="#myModal"
+                                data-myvalue="{{ tabJours[0][1][0] }}">
+                            <i class="material-icons" style="color: red; font-size: 19px">
+                                cancel
+                            </i>
+                        </button>
+                    {% endif %}
                     <div class="TopMonth">{{ tabJours[0][1][0] }}</div>
                     <div class="monthDays">
                         {{tabJours[0][1][1]}}
@@ -132,17 +140,17 @@
                             </i>
                             {%  endif %}
                         {% endif %}
-                        {% if tabJours[0][1][1] != " "%}
-                            <button class="red modalTrigger" type="button" data-toggle="modal" data-target="#myModal"
-                                    data-myvalue="{{ tabJours[0][1][0] }}">
-                                <i class="material-icons" style="color: red; font-size: 19px">
-                                    cancel
-                                </i>
-                            </button>
-                        {% endif %}
                     </div>
                 </td>
                 <td>
+                    {% if tabJours[1][1][1] != " "%}
+                        <button class="red modalTrigger" type="button" data-toggle="modal" data-target="#myModal"
+                                data-myvalue="{{ tabJours[1][1][0] }}">
+                            <i class="material-icons" style="color: red; font-size: 19px">
+                                cancel
+                            </i>
+                        </button>
+                    {% endif %}
                     <div class="TopMonth">{{ tabJours[1][1][0] }}</div>
                     <div class="monthDays">
                         {{tabJours[1][1][1]}}
@@ -157,17 +165,17 @@
                                 </i>
                             {%  endif %}
                         {% endif %}
-                        {% if tabJours[1][1][1] != " "%}
-                            <button class="red modalTrigger" type="button" data-toggle="modal" data-target="#myModal"
-                                    data-myvalue="{{ tabJours[1][1][0] }}">
-                                <i class="material-icons" style="color: red; font-size: 19px">
-                                    cancel
-                                </i>
-                            </button>
-                        {% endif %}
                     </div>
                 </td>
                 <td>
+                    {% if tabJours[2][1][1] != " "%}
+                        <button class="red modalTrigger" type="button" data-toggle="modal" data-target="#myModal"
+                                data-myvalue="{{ tabJours[2][1][0] }}">
+                            <i class="material-icons" style="color: red; font-size: 19px">
+                                cancel
+                            </i>
+                        </button>
+                    {% endif %}
                     <div class="TopMonth">{{ tabJours[2][1][0] }}</div>
                     <div class="monthDays">
                         {{tabJours[2][1][1]}}
@@ -182,17 +190,17 @@
                                 </i>
                             {%  endif %}
                         {% endif %}
-                        {% if tabJours[2][1][1] != " "%}
-                            <button class="red modalTrigger" type="button" data-toggle="modal" data-target="#myModal"
-                                    data-myvalue="{{ tabJours[2][1][0] }}">
-                                <i class="material-icons" style="color: red; font-size: 19px">
-                                    cancel
-                                </i>
-                            </button>
-                        {% endif %}
                     </div>
                 </td>
                 <td>
+                    {% if tabJours[3][1][1] != " "%}
+                        <button class="red modalTrigger" type="button" data-toggle="modal" data-target="#myModal"
+                                data-myvalue="{{ tabJours[3][1][0] }}">
+                            <i class="material-icons" style="color: red; font-size: 19px">
+                                cancel
+                            </i>
+                        </button>
+                    {% endif %}
                     <div class="TopMonth">{{ tabJours[3][1][0] }}</div>
                     <div class="monthDays">
                         {{tabJours[3][1][1]}}
@@ -207,17 +215,17 @@
                                 </i>
                             {%  endif %}
                         {% endif %}
-                        {% if tabJours[3][1][1] != " "%}
-                            <button class="red modalTrigger" type="button" data-toggle="modal" data-target="#myModal"
-                                    data-myvalue="{{ tabJours[3][1][0] }}">
-                                <i class="material-icons" style="color: red; font-size: 19px">
-                                    cancel
-                                </i>
-                            </button>
-                        {% endif %}
                     </div>
                 </td>
                 <td>
+                    {% if tabJours[4][1][1] != " "%}
+                        <button class="red modalTrigger" type="button" data-toggle="modal" data-target="#myModal"
+                                data-myvalue="{{ tabJours[4][1][0] }}">
+                            <i class="material-icons" style="color: red; font-size: 19px">
+                                cancel
+                            </i>
+                        </button>
+                    {% endif %}
                     <div class="TopMonth">{{ tabJours[4][1][0] }}</div>
                     <div class="monthDays">
                         {{tabJours[4][1][1]}}
@@ -232,14 +240,6 @@
                                 </i>
                             {%  endif %}
                         {% endif %}
-                        {% if tabJours[4][1][1] != " "%}
-                            <button class="red modalTrigger" type="button" data-toggle="modal" data-target="#myModal"
-                                    data-myvalue="{{ tabJours[4][1][0] }}">
-                                <i class="material-icons" style="color: red; font-size: 19px">
-                                    cancel
-                                </i>
-                            </button>
-                        {% endif %}
                     </div>
                 </td>
             </tr>
@@ -247,6 +247,14 @@
             <tr class="column2">
                 <th>Mardi</th>
                 <td>
+                    {% if tabJours[0][2][1] != " "%}
+                        <button class="red modalTrigger" type="button" data-toggle="modal" data-target="#myModal"
+                                data-myvalue="{{ tabJours[0][2][0] }}">
+                            <i class="material-icons" style="color: red; font-size: 19px">
+                                cancel
+                            </i>
+                        </button>
+                    {% endif %}
                     <div class="TopMonth">{{ tabJours[0][2][0] }}</div>
                     <div class="monthDays">
                         {{tabJours[0][2][1]}}
@@ -261,17 +269,17 @@
                                 </i>
                             {%  endif %}
                         {% endif %}
-                        {% if tabJours[0][2][1] != " "%}
-                            <button class="red modalTrigger" type="button" data-toggle="modal" data-target="#myModal"
-                                    data-myvalue="{{ tabJours[0][2][0] }}">
-                                <i class="material-icons" style="color: red; font-size: 19px">
-                                    cancel
-                                </i>
-                            </button>
-                        {% endif %}
                     </div>
                 </td>
                 <td>
+                    {% if tabJours[1][2][1] != " "%}
+                        <button class="red modalTrigger" type="button" data-toggle="modal" data-target="#myModal"
+                                data-myvalue="{{ tabJours[1][2][0] }}">
+                            <i class="material-icons" style="color: red; font-size: 19px">
+                                cancel
+                            </i>
+                        </button>
+                    {% endif %}
                     <div class="TopMonth">{{ tabJours[1][2][0] }}</div>
                     <div class="monthDays">
                         {{tabJours[1][2][1]}}
@@ -286,17 +294,17 @@
                                 </i>
                             {%  endif %}
                         {% endif %}
-                        {% if tabJours[1][2][1] != " "%}
-                            <button class="red modalTrigger" type="button" data-toggle="modal" data-target="#myModal"
-                                    data-myvalue="{{ tabJours[1][2][0] }}">
-                                <i class="material-icons" style="color: red; font-size: 19px">
-                                    cancel
-                                </i>
-                            </button>
-                        {% endif %}
                     </div>
                 </td>
                 <td>
+                    {% if tabJours[2][2][1] != " "%}
+                        <button class="red modalTrigger" type="button" data-toggle="modal" data-target="#myModal"
+                                data-myvalue="{{ tabJours[2][2][0] }}">
+                            <i class="material-icons" style="color: red; font-size: 19px">
+                                cancel
+                            </i>
+                        </button>
+                    {% endif %}
                     <div class="TopMonth">{{ tabJours[2][2][0] }}</div>
                     <div class="monthDays">
                         {{tabJours[2][2][1]}}
@@ -311,17 +319,17 @@
                                 </i>
                             {%  endif %}
                         {% endif %}
-                        {% if tabJours[2][2][1] != " "%}
-                            <button class="red modalTrigger" type="button" data-toggle="modal" data-target="#myModal"
-                                    data-myvalue="{{ tabJours[2][2][0] }}">
-                                <i class="material-icons" style="color: red; font-size: 19px">
-                                    cancel
-                                </i>
-                            </button>
-                        {% endif %}
                     </div>
                 </td>
                 <td>
+                    {% if tabJours[3][2][1] != " "%}
+                        <button class="red modalTrigger" type="button" data-toggle="modal" data-target="#myModal"
+                                data-myvalue="{{ tabJours[3][2][0] }}">
+                            <i class="material-icons" style="color: red; font-size: 19px">
+                                cancel
+                            </i>
+                        </button>
+                    {% endif %}
                     <div class="TopMonth">{{ tabJours[3][2][0] }}</div>
                     <div class="monthDays">
                         {{tabJours[3][2][1]}}
@@ -336,17 +344,17 @@
                                 </i>
                             {%  endif %}
                         {% endif %}
-                        {% if tabJours[3][2][1] != " "%}
-                            <button class="red modalTrigger" type="button" data-toggle="modal" data-target="#myModal"
-                                    data-myvalue="{{ tabJours[3][2][0] }}">
-                                <i class="material-icons" style="color: red; font-size: 19px">
-                                    cancel
-                                </i>
-                            </button>
-                        {% endif %}
                     </div>
                 </td>
                 <td>
+                    {% if tabJours[4][2][1] != " "%}
+                        <button class="red modalTrigger" type="button" data-toggle="modal" data-target="#myModal"
+                                data-myvalue="{{ tabJours[4][2][0] }}">
+                            <i class="material-icons" style="color: red; font-size: 19px">
+                                cancel
+                            </i>
+                        </button>
+                    {% endif %}
                     <div class="TopMonth">{{ tabJours[4][2][0] }}</div>
                     <div class="monthDays">
                         {{tabJours[4][2][1]}}
@@ -361,14 +369,6 @@
                                 </i>
                             {%  endif %}
                         {% endif %}
-                        {% if tabJours[4][2][1] != " "%}
-                            <button class="red modalTrigger" type="button" data-toggle="modal" data-target="#myModal"
-                                    data-myvalue="{{ tabJours[4][2][0] }}">
-                                <i class="material-icons" style="color: red; font-size: 19px">
-                                    cancel
-                                </i>
-                            </button>
-                        {% endif %}
                     </div>
                 </td>
             </tr>
@@ -376,6 +376,14 @@
             <tr class="column1">
                 <th>Mercredi</th>
                 <td>
+                    {% if tabJours[0][3][1] != " "%}
+                        <button class="red modalTrigger" type="button" data-toggle="modal" data-target="#myModal"
+                                data-myvalue="{{ tabJours[0][3][0] }}">
+                            <i class="material-icons" style="color: red; font-size: 19px">
+                                cancel
+                            </i>
+                        </button>
+                    {% endif %}
                     <div class="TopMonth">{{ tabJours[0][3][0] }}</div>
                     <div class="monthDays">
                         {{tabJours[0][3][1]}}
@@ -390,17 +398,17 @@
                                 </i>
                             {%  endif %}
                         {% endif %}
-                        {% if tabJours[0][3][1] != " "%}
-                            <button class="red modalTrigger" type="button" data-toggle="modal" data-target="#myModal"
-                                    data-myvalue="{{ tabJours[0][3][0] }}">
-                                <i class="material-icons" style="color: red; font-size: 19px">
-                                    cancel
-                                </i>
-                            </button>
-                        {% endif %}
                     </div>
                 </td>
                 <td>
+                    {% if tabJours[1][3][1] != " "%}
+                        <button class="red modalTrigger" type="button" data-toggle="modal" data-target="#myModal"
+                                data-myvalue="{{ tabJours[1][3][0] }}">
+                            <i class="material-icons" style="color: red; font-size: 19px">
+                                cancel
+                            </i>
+                        </button>
+                    {% endif %}
                     <div class="TopMonth">{{ tabJours[1][3][0] }}</div>
                     <div class="monthDays">
                         {{tabJours[1][3][1]}}
@@ -415,17 +423,17 @@
                                 </i>
                             {%  endif %}
                         {% endif %}
-                        {% if tabJours[1][3][1] != " "%}
-                            <button class="red modalTrigger" type="button" data-toggle="modal" data-target="#myModal"
-                                    data-myvalue="{{ tabJours[1][3][0] }}">
-                                <i class="material-icons" style="color: red; font-size: 19px">
-                                    cancel
-                                </i>
-                            </button>
-                        {% endif %}
                     </div>
                 </td>
                 <td>
+                    {% if tabJours[2][3][1] != " "%}
+                        <button class="red modalTrigger" type="button" data-toggle="modal" data-target="#myModal"
+                                data-myvalue="{{ tabJours[2][3][0] }}">
+                            <i class="material-icons" style="color: red; font-size: 19px">
+                                cancel
+                            </i>
+                        </button>
+                    {% endif %}
                     <div class="TopMonth">{{ tabJours[2][3][0] }}</div>
                     <div class="monthDays">
                         {{tabJours[2][3][1]}}
@@ -440,17 +448,17 @@
                                 </i>
                             {%  endif %}
                         {% endif %}
-                        {% if tabJours[2][3][1] != " "%}
-                            <button class="red modalTrigger" type="button" data-toggle="modal" data-target="#myModal"
-                                    data-myvalue="{{ tabJours[2][3][0] }}">
-                                <i class="material-icons" style="color: red; font-size: 19px">
-                                    cancel
-                                </i>
-                            </button>
-                        {% endif %}
                     </div>
                 </td>
                 <td>
+                    {% if tabJours[2][3][1] != " "%}
+                        <button class="red modalTrigger" type="button" data-toggle="modal" data-target="#myModal"
+                                data-myvalue="{{ tabJours[2][3][0] }}">
+                            <i class="material-icons" style="color: red; font-size: 19px">
+                                cancel
+                            </i>
+                        </button>
+                    {% endif %}
                     <div class="TopMonth">{{ tabJours[3][3][0] }}</div>
                     <div class="monthDays">
                         {{tabJours[3][3][1]}}
@@ -465,17 +473,17 @@
                                 </i>
                             {%  endif %}
                         {% endif %}
-                        {% if tabJours[2][3][1] != " "%}
-                            <button class="red modalTrigger" type="button" data-toggle="modal" data-target="#myModal"
-                                    data-myvalue="{{ tabJours[2][3][0] }}">
-                                <i class="material-icons" style="color: red; font-size: 19px">
-                                    cancel
-                                </i>
-                            </button>
-                        {% endif %}
                     </div>
                 </td>
                 <td>
+                    {% if tabJours[4][3][1] != " "%}
+                        <button class="red modalTrigger" type="button" data-toggle="modal" data-target="#myModal"
+                                data-myvalue="{{ tabJours[4][3][0] }}">
+                            <i class="material-icons" style="color: red; font-size: 19px">
+                                cancel
+                            </i>
+                        </button>
+                    {% endif %}
                     <div class="TopMonth">{{ tabJours[4][3][0] }}</div>
                     <div class="monthDays">
                         {{tabJours[4][3][1]}}
@@ -490,14 +498,6 @@
                                 </i>
                             {%  endif %}
                         {% endif %}
-                        {% if tabJours[4][3][1] != " "%}
-                            <button class="red modalTrigger" type="button" data-toggle="modal" data-target="#myModal"
-                                    data-myvalue="{{ tabJours[4][3][0] }}">
-                                <i class="material-icons" style="color: red; font-size: 19px">
-                                    cancel
-                                </i>
-                            </button>
-                        {% endif %}
                     </div>
                 </td>
             </tr>
@@ -505,6 +505,14 @@
             <tr class="column2">
                 <th>Jeudi</th>
                 <td>
+                    {% if tabJours[0][4][1] != " "%}
+                        <button class="red modalTrigger" type="button" data-toggle="modal" data-target="#myModal"
+                                data-myvalue="{{ tabJours[0][4][0] }}">
+                            <i class="material-icons" style="color: red; font-size: 19px">
+                                cancel
+                            </i>
+                        </button>
+                    {% endif %}
                     <div class="TopMonth">{{ tabJours[0][4][0]}}</div>
                     <div class="monthDays">
                         {{tabJours[0][4][1]}}
@@ -519,17 +527,17 @@
                                 </i>
                             {%  endif %}
                         {% endif %}
-                        {% if tabJours[0][4][1] != " "%}
-                            <button class="red modalTrigger" type="button" data-toggle="modal" data-target="#myModal"
-                                    data-myvalue="{{ tabJours[0][4][0] }}">
-                                <i class="material-icons" style="color: red; font-size: 19px">
-                                    cancel
-                                </i>
-                            </button>
-                        {% endif %}
                     </div>
                 </td>
                 <td>
+                    {% if tabJours[1][4][1] != " "%}
+                        <button class="red modalTrigger" type="button" data-toggle="modal" data-target="#myModal"
+                                data-myvalue="{{ tabJours[1][4][0] }}">
+                            <i class="material-icons" style="color: red; font-size: 19px">
+                                cancel
+                            </i>
+                        </button>
+                    {% endif %}
                     <div class="TopMonth">{{ tabJours[1][4][0] }}</div>
                     <div class="monthDays">
                         {{tabJours[1][4][1]}}
@@ -544,17 +552,17 @@
                                 </i>
                             {%  endif %}
                         {% endif %}
-                        {% if tabJours[1][4][1] != " "%}
-                            <button class="red modalTrigger" type="button" data-toggle="modal" data-target="#myModal"
-                                    data-myvalue="{{ tabJours[1][4][0] }}">
-                                <i class="material-icons" style="color: red; font-size: 19px">
-                                    cancel
-                                </i>
-                            </button>
-                        {% endif %}
                     </div>
                 </td>
                 <td>
+                    {% if tabJours[2][4][1] != " "%}
+                        <button class="red modalTrigger" type="button" data-toggle="modal" data-target="#myModal"
+                                data-myvalue="{{ tabJours[2][4][0] }}">
+                            <i class="material-icons" style="color: red; font-size: 19px">
+                                cancel
+                            </i>
+                        </button>
+                    {% endif %}
                     <div class="TopMonth">{{ tabJours[2][4][0] }}</div>
                     <div class="monthDays">
                         {{tabJours[2][4][1]}}
@@ -569,17 +577,17 @@
                                 </i>
                             {%  endif %}
                         {% endif %}
-                        {% if tabJours[2][4][1] != " "%}
-                            <button class="red modalTrigger" type="button" data-toggle="modal" data-target="#myModal"
-                                    data-myvalue="{{ tabJours[2][4][0] }}">
-                                <i class="material-icons" style="color: red; font-size: 19px">
-                                    cancel
-                                </i>
-                            </button>
-                        {% endif %}
                     </div>
                 </td>
                 <td>
+                    {% if tabJours[3][4][1] != " "%}
+                        <button class="red modalTrigger" type="button" data-toggle="modal" data-target="#myModal"
+                                data-myvalue="{{ tabJours[3][4][0] }}">
+                            <i class="material-icons" style="color: red; font-size: 19px">
+                                cancel
+                            </i>
+                        </button>
+                    {% endif %}
                     <div class="TopMonth">{{ tabJours[3][4][0] }}</div>
                     <div class="monthDays">
                         {{tabJours[3][4][1]}}
@@ -594,17 +602,17 @@
                                 </i>
                             {%  endif %}
                         {% endif %}
-                        {% if tabJours[3][4][1] != " "%}
-                            <button class="red modalTrigger" type="button" data-toggle="modal" data-target="#myModal"
-                                    data-myvalue="{{ tabJours[3][4][0] }}">
-                                <i class="material-icons" style="color: red; font-size: 19px">
-                                    cancel
-                                </i>
-                            </button>
-                        {% endif %}
                     </div>
                 </td>
                 <td>
+                    {% if tabJours[4][4][1] != " "%}
+                        <button class="red modalTrigger" type="button" data-toggle="modal" data-target="#myModal"
+                                data-myvalue="{{ tabJours[4][4][0] }} ">
+                            <i class="material-icons" style="color: red; font-size: 19px">
+                                cancel
+                            </i>
+                        </button>
+                    {% endif %}
                     <div class="TopMonth">{{ tabJours[4][4][0] }}</div>
                     <div class="monthDays">
                         {{tabJours[4][4][1]}}
@@ -619,14 +627,6 @@
                                 </i>
                             {%  endif %}
                         {% endif %}
-                        {% if tabJours[4][4][1] != " "%}
-                            <button class="red modalTrigger" type="button" data-toggle="modal" data-target="#myModal"
-                                    data-myvalue="{{ tabJours[4][4][0] }} ">
-                                <i class="material-icons" style="color: red; font-size: 19px">
-                                    cancel
-                                </i>
-                            </button>
-                        {% endif %}
                     </div>
                 </td>
             </tr>
@@ -634,6 +634,14 @@
             <tr class="column1">
                 <th>Vendredi</th>
                 <td>
+                    {% if tabJours[0][5][1] != " "%}
+                        <button class="red modalTrigger" type="button" data-toggle="modal" data-target="#myModal"
+                                data-myvalue="{{ tabJours[0][5][0] }}">
+                            <i class="material-icons" style="color: red; font-size: 19px">
+                                cancel
+                            </i>
+                        </button>
+                    {% endif %}
                     <div class="TopMonth">{{ tabJours[0][5][0] }}</div>
                     <div class="monthDays">
                         {{tabJours[0][5][1]}}
@@ -648,17 +656,17 @@
                                 </i>
                             {%  endif %}
                         {% endif %}
-                        {% if tabJours[0][5][1] != " "%}
-                            <button class="red modalTrigger" type="button" data-toggle="modal" data-target="#myModal"
-                                    data-myvalue="{{ tabJours[0][5][0] }}">
-                                <i class="material-icons" style="color: red; font-size: 19px">
-                                    cancel
-                                </i>
-                            </button>
-                        {% endif %}
                     </div>
                 </td>
                 <td>
+                    {% if tabJours[1][5][1] != " "%}
+                        <button class="red modalTrigger" type="button" data-toggle="modal" data-target="#myModal"
+                                data-myvalue="{{ tabJours[1][5][0] }}">
+                            <i class="material-icons" style="color: red; font-size: 19px">
+                                cancel
+                            </i>
+                        </button>
+                    {% endif %}
                     <div class="TopMonth">{{ tabJours[1][5][0] }}</div>
                     <div class="monthDays">
                         {{tabJours[1][5][1]}}
@@ -673,17 +681,17 @@
                                 </i>
                             {%  endif %}
                         {% endif %}
-                        {% if tabJours[1][5][1] != " "%}
-                            <button class="red modalTrigger" type="button" data-toggle="modal" data-target="#myModal"
-                                    data-myvalue="{{ tabJours[1][5][0] }}">
-                                <i class="material-icons" style="color: red; font-size: 19px">
-                                    cancel
-                                </i>
-                            </button>
-                        {% endif %}
                     </div>
                 </td>
                 <td>
+                    {% if tabJours[2][5][1] != " "%}
+                        <button class="red modalTrigger" type="button" data-toggle="modal" data-target="#myModal"
+                                data-myvalue="{{ tabJours[2][5][0] }}">
+                            <i class="material-icons" style="color: red; font-size: 19px">
+                                cancel
+                            </i>
+                        </button>
+                    {% endif %}
                     <div class="TopMonth">{{ tabJours[2][5][0] }}</div>
                     <div class="monthDays">
                         {{tabJours[2][5][1]}}
@@ -698,18 +706,20 @@
                                 </i>
                             {%  endif %}
                         {% endif %}
-                        {% if tabJours[2][5][1] != " "%}
-                            <button class="red modalTrigger" type="button" data-toggle="modal" data-target="#myModal"
-                                    data-myvalue="{{ tabJours[2][5][0] }}">
-                                <i class="material-icons" style="color: red; font-size: 19px">
-                                    cancel
-                                </i>
-                            </button>
-                        {% endif %}
                     </div>
                 </td>
                 <td>
-                    <div class="TopMonth">{{ tabJours[3][5][0] }}</div>
+                    {% if tabJours[3][5][1] != " "%}
+                        <button class="red modalTrigger" type="button" data-toggle="modal" data-target="#myModal"
+                                data-myvalue="{{ tabJours[3][5][0] }}">
+                            <i class="material-icons" style="color: red; font-size: 19px">
+                                cancel
+                            </i>
+                        </button>
+                    {% endif %}
+                    <div class="TopMonth">
+                        {{ tabJours[3][5][0] }}
+                    </div>
                     <div class="monthDays">
                         {{tabJours[3][5][1]}}
                         {% if tabJours[3][5][1] != " " %}
@@ -723,17 +733,17 @@
                                 </i>
                             {%  endif %}
                         {% endif %}
-                        {% if tabJours[3][5][1] != " "%}
-                            <button class="red modalTrigger" type="button" data-toggle="modal" data-target="#myModal"
-                                    data-myvalue="{{ tabJours[3][5][0] }}">
-                                <i class="material-icons" style="color: red; font-size: 19px">
-                                    cancel
-                                </i>
-                            </button>
-                        {% endif %}
                     </div>
                 </td>
                 <td>
+                    {% if tabJours[4][5][1] != " "%}
+                        <button class="red modalTrigger" type="button" data-toggle="modal" data-target="#myModal"
+                                data-myvalue="{{ tabJours[4][5][0] }}">
+                            <i class="material-icons" style="color: red; font-size: 19px">
+                                cancel
+                            </i>
+                        </button>
+                    {% endif %}
                     <div class="TopMonth">{{ tabJours[4][5][0] }}</div>
                     <div class="monthDays">
                         {{tabJours[4][5][1]}}
@@ -747,14 +757,6 @@
                                     school
                                 </i>
                             {%  endif %}
-                        {% endif %}
-                        {% if tabJours[4][5][1] != " "%}
-                            <button class="red modalTrigger" type="button" data-toggle="modal" data-target="#myModal"
-                                    data-myvalue="{{ tabJours[4][5][0] }}">
-                                <i class="material-icons" style="color: red; font-size: 19px">
-                                    cancel
-                                </i>
-                            </button>
                         {% endif %}
                     </div>
                 </td>
