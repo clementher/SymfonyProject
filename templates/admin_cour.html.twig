@@ -23,9 +23,17 @@
                 <div class="my-custom-class-for-errors">
                     {{ form_errors(coursForm) }}
                 </div>
+                <h4>Intervenant</h4>
                 <select name="intervenant">
                     {% for inter in inters %}
                     <option value="{{ inter.id }}">{{ inter.nom}}</option>
+                    {% endfor %}
+                </select>
+                <br>
+                <h4>Matière</h4>
+                <select name="matiere">
+                    {% for matiere in matieres %}
+                        <option value="{{ matiere.id }}">{{ matiere.intitule }}</option>
                     {% endfor %}
                 </select>
                 {{ form_row(coursForm.debut) }}
@@ -36,6 +44,14 @@
                 {{ form_end(coursForm) }}
             </div>
         </div>
+        <h2 class="titleAdmin">Liste de mes disponibilités</h2>
+        {% if nb > 0 %}
+            {% for i in 0..nb-1 %}
+                <div class="containerAdmin">
+                        Du {{arraydate[2*i]}} au {{arraydate[2*i+1]}}
+                </div>
+            {% endfor %}
+        {% endif %}
     </div>
 
     {% block javascripts %}

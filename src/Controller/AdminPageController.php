@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Cours;
+use App\Entity\Disponibilite;
 use App\Entity\Intervenant;
 use App\Entity\Matiere;
 use App\Entity\Utilisateurs;
@@ -66,12 +67,12 @@ class AdminPageController extends AbstractController
         if ($matiereForm->isSubmitted() && $matiereForm->isValid()) {
             $idInter = isset($_POST['intervenant']) ? $_POST['intervenant'] : null;
             if ($idInter) {
-            $this->createMatiere($matiere, $idInter);
-            $this->addFlash('success', "La matière a été créée");
-            unset($matiere);
-            unset($matiereForm);
-            $matiere = new Matiere();
-            $matiereForm = $this->createMatiereform($matiere);
+                $this->createMatiere($matiere, $idInter);
+                $this->addFlash('success', "La matière a été créée");
+                unset($matiere);
+                unset($matiereForm);
+                $matiere = new Matiere();
+                $matiereForm = $this->createMatiereform($matiere);
             } else {
                 $matiereForm->addError(new FormError("L'intervenant n'existe pas"));
             }
@@ -100,23 +101,31 @@ class AdminPageController extends AbstractController
         #Form Cours
         if ($coursForm->isSubmitted() && $coursForm->isValid()) {
             $idInter = isset($_POST['intervenant']) ? $_POST['intervenant'] : null;
-            if ($idInter) {
-                $this->createCours($cours, $idInter);
-                $this->addFlash('success', "Le cour a été créé");
-                unset($cours);
-                unset($coursForm);
-                $cours = new Cours();
-                $coursForm = $this->createCoursform($cours);
-            } else {
-                $coursForm->addError(new FormError("L'intervenant n'existe déjà"));
-            }
+            $matiere = isset($_POST['matiere']) ? $_POST['matiere'] : null;
+            $this->createCours($cours, $idInter, $matiere);
+            $this->addFlash('success', "Le cour a été créé");
+            unset($cours);
+            unset($coursForm);
+            $cours = new Cours();
+            $coursForm = $this->createCoursform($cours);
 
         }
         $inters = $this->getAllIntervenants();
-
+        $dispo = $this->getAllDispo();
+        $arraydate = array();
+        #dd($dispo);
+        for($i=0;$i<count($dispo);$i++){
+            array_push($arraydate,date_format($dispo[$i]->getDebut(),"d").'/'.date_format($dispo[$i]->getDebut(),"m").'/'.date_format($dispo[$i]->getDebut(),"Y"));
+            array_push($arraydate,date_format($dispo[$i]->getFin(),"d").'/'.date_format($dispo[$i]->getFin(),"m").'/'.date_format($dispo[$i]->getFin(),"Y"));
+        }
+        $matieres = $this->getAllMatieres();
+        $nb = count($dispo);
         return $this->render('admin_cour.html.twig', [
             'coursForm' => $coursForm->createView(),
-            'inters' => $inters
+            'inters' => $inters,
+            'arraydate' => $arraydate,
+            'nb'=>$nb,
+            'matieres' => $matieres
         ]);
     }
 
@@ -178,11 +187,15 @@ class AdminPageController extends AbstractController
         $entityManager->flush();
     }
 
-    public function createCours(Cours $cours, $idInter)
+    public function createCours(Cours $cours, $idInter, $idmatiere)
     {
         $intervenant = $this->getDoctrine()
             ->getRepository(Intervenant::class)
             ->find($idInter);
+        $matiere = $this->getDoctrine()
+            ->getRepository(Matiere::class)
+            ->find($idmatiere);
+        $cours->setFkMatiereId($matiere);
         $cours->setFkIntervenantId($intervenant);
         $entityManager = $this->getDoctrine()->getManager();
         //informer Doctrine qu'on peut persister ces données
@@ -191,7 +204,7 @@ class AdminPageController extends AbstractController
         $entityManager->flush();
     }
 
-    public function createMatiere(Matiere $matiere,$idInter)
+    public function createMatiere(Matiere $matiere, $idInter)
     {
         $intervenant = $this->getDoctrine()
             ->getRepository(Intervenant::class)
@@ -250,6 +263,14 @@ class AdminPageController extends AbstractController
         $matieres = $em->getRepository(Matiere::class)
             ->findAll();
         return $matieres;
+    }
+
+    public function getAllDispo()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $dispo = $em->getRepository(Disponibilite::class)
+            ->findAll();
+        return $dispo;
     }
 
     /**
