@@ -89,7 +89,7 @@ class AdminPageController extends AbstractController
     }
 
     /**
-     * @Route("/admin/cour", name="app_admin_cour")
+     * @Route("/admin/cours", name="app_admin_cour")
      */
     public function Cour(Request $request, UserPasswordEncoderInterface $passwordEncoder)
     {
