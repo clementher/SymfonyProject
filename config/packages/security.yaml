@@ -37,16 +37,19 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
-         - { path: ^/month, roles: ROLE_USER }
-         - { path: ^/week, roles: ROLE_USER }
-         - { path: ^/year, roles: ROLE_USER }
-         - { path: ^/admin/intervenant, roles: ROLE_ADMIN }
-         - { path: ^/admin/cours, roles: ROLE_ADMIN }
-         - { path: ^/admin/matiere, roles: ROLE_ADMIN }
-         - { path: ^/admin, roles: ROLE_ADMIN }
-         - { path: ^/dispo, roles: ROLE_USER }
-         - { path: ^/dispo, roles: ROLE_ADMIN }
-         - { path: ^/logout, roles: ROLE_USER }
-         - { path: ^/logout, roles: ROLE_ADMIN }
+         - { path: '^/month', roles: ROLE_USER }
+         - { path: '^/week', roles: ROLE_USER }
+         - { path: '^/year', roles: ROLE_USER }
+         - { path: '^/admin', roles: ROLE_ADMIN }
+         - { path: '^/dispo', roles: ROLE_USER }
+         - { path: '^/logout', roles: ROLE_USER }
+         - { path: '^/delete_User', roles: ROLE_USER }
+         - { path: '^/delete_matiere', roles: ROLE_USER }
+         - { path: '^/deleteYear', roles: ROLE_USER }
+         - { path: '^/deleteMonth', roles: ROLE_USER }
+         - { path: '^/deleteWeek', roles: ROLE_USER }
+         - { path: '^/deleteEvent', roles: ROLE_USER }
+         - { path: '^/addDispo', roles: ROLE_USER }
+         - { path: '^/delDispo', roles: ROLE_USER }
 
     # php bin/console debug:router pour voir les routes

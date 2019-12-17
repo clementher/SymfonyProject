@@ -19,9 +19,9 @@
 </head>
 
 <body>
-{% if is_granted('ROLE_USER') or is_granted('ROLE_ADMIN') %}
+{% if is_granted('ROLE_USER') %}
 <nav class="navbar navbar-expand-lg navbar-dark navbar-bg mb-5">
-    <a style="margin-left: 10px;" class="navbar-brand space-brand" href="#">Gestion de planning</a>
+    <a style="margin-left: 10px;" class="navbar-brand space-brand" href="/week">Gestion de planning</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
             aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -39,7 +39,7 @@
                     <a class="dropdown-item" href="/year">Année</a>
                 </div>
             </li>
-            {% if is_granted('ROLE_USER') %}
+            {% if not is_granted("ROLE_ADMIN") %}
             <li class="nav-item">
                 <a style="color: #fff;" class="nav-link" href="/dispo">Disponibilités</a>
             </li>
