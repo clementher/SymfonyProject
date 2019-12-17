@@ -17,8 +17,8 @@
     <div id="containerAdmin">
         <!-- form Intervenant -->
         <div id="formAdmin">
+            <h2>Ajouter un Intervenant</h2>
             <div class="containerAdmin">
-                <h2>Ajouter un Intervenant</h2>
                 {{ form_start(userForm) }}
                 <div class="my-custom-class-for-errors">
                     {{ form_errors(userForm) }}
@@ -28,12 +28,18 @@
                 {{ form_row(userForm.email) }}
                 {{ form_row(userForm.password) }}
                 {{ form_row(userForm.specialiteprofessionnelle) }}
-                <button type="submit" name="user" value="addUser" class="btn btn-success" onclick="return confirm('Vous êtes sur ?')">
-                    Créer
-                </button>
+
+                <div class="formulairesButton">
+                    <button type="submit" name="user" value="addUser" class="btn btn-primary"
+                            onclick="return confirm('Vous êtes sur ?')">
+                        Créer
+                    </button>
+                </div>
                 {{ form_end(userForm) }}
             </div>
             <br>
+        </div>
+        <div id="formAdmin">
             <h2>Liste des Intervenants</h2>
             {% for user in users %}
                 <div class="containerAdmin">

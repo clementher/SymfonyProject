@@ -301,6 +301,10 @@ html {height:100%}
     flex-grow: 1;
 }
 
+.formAdmin {
+    margin-top: 20px;
+}
+
 .listDispo{
     padding: 10px;
     border-radius: 50px;
@@ -644,10 +648,18 @@ td.hour {
 }
 
 .formulairesButton {
-    margin: 10px 0px;
+    margin: 10px 0px 0px 0px;
     padding: 10px;
     border-radius: 10px;
     text-align: center;
+}
+
+.flexible {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 10px 10px 10px 0px;
 }
 
 .containerForm {

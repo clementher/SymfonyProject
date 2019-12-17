@@ -16,27 +16,35 @@
     <div id="containerAdmin">
         <!-- form Matiere -->
         <div id="formAdmin">
+            <h2>Ajouter une Matière</h2>
             <div class="containerAdmin">
-                <h2>Ajouter une Matière</h2>
+
                 {{ form_start(matiereForm) }}
                 <div class="my-custom-class-for-errors">
                     {{ form_errors(matiereForm) }}
                 </div>
-                <select name="intervenant">
-                    {% for inter in inters %}
-                        <option value="{{ inter.id }}">{{ inter.nom}}</option>
-                    {% endfor %}
-                </select>
+                <div class="formulairesButton">
+                    <select name="intervenant">
+                        {% for inter in inters %}
+                            <option value="{{ inter.id }}">{{ inter.nom }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
                 {{ form_row(matiereForm.intitule) }}
                 {{ form_row(matiereForm.duree) }}
-                {{ form_row(matiereForm.isSpecialite) }}
-                <button type="submit" name="matiere" class="btn btn-success"
-                        onclick="return confirm('Vous êtes sur ?')">Créer
-                </button>
+                <div class="formulairesButton">
+                    {{ form_row(matiereForm.isSpecialite) }}
+                </div>
+
+                <div class="formulairesButton">
+                    <button type="submit" name="matiere" class="btn btn-primary"
+                            onclick="return confirm('Vous êtes sur ?')">Créer
+                    </button>
+                </div>
                 {{ form_end(matiereForm) }}
             </div>
-
-            <br>
+        </div>
+        <div id="formAdmin">
             <h2>Liste des Matières</h2>
             {% for matiere in matieres %}
                 <div class="containerAdmin">
