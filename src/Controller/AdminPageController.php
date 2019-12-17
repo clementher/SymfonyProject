@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Cours;
 use App\Entity\Intervenant;
+use App\Entity\Matiere;
 use App\Entity\Utilisateurs;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
@@ -52,6 +53,41 @@ class AdminPageController extends AbstractController
     }
 
     /**
+     * @Route("/admin/matiere", name="app_admin_matiere")
+     */
+    public function matiere(Request $request, UserPasswordEncoderInterface $passwordEncoder)
+    {
+        $this->passwordEncoder = $passwordEncoder;
+        $matiere = new Matiere();
+        $matiereForm = $this->createMatiereform($matiere);
+        $matiereForm->handleRequest($request);
+
+        #Form Matiere
+        if ($matiereForm->isSubmitted() && $matiereForm->isValid()) {
+            $idInter = isset($_POST['intervenant']) ? $_POST['intervenant'] : null;
+            if ($idInter) {
+            $this->createMatiere($matiere, $idInter);
+            $this->addFlash('success', "La matière a été créée");
+            unset($matiere);
+            unset($matiereForm);
+            $matiere = new Matiere();
+            $matiereForm = $this->createMatiereform($matiere);
+            } else {
+                $matiereForm->addError(new FormError("L'intervenant n'existe pas"));
+            }
+        }
+        $matieres = $this->getAllMatieres();
+        $inters = $this->getAllIntervenants();
+
+        return $this->render('admin_matiere.html.twig', [
+            'matiereForm' => $matiereForm->createView(),
+            'matieres' => $matieres,
+            'inters' => $inters
+        ]);
+
+    }
+
+    /**
      * @Route("/admin/cour", name="app_admin_cour")
      */
     public function Cour(Request $request, UserPasswordEncoderInterface $passwordEncoder)
@@ -63,8 +99,8 @@ class AdminPageController extends AbstractController
 
         #Form Cours
         if ($coursForm->isSubmitted() && $coursForm->isValid()) {
-            $idInter = isset($_POST['intervenant'])    ? $_POST['intervenant']    : null;
-            if($idInter) {
+            $idInter = isset($_POST['intervenant']) ? $_POST['intervenant'] : null;
+            if ($idInter) {
                 $this->createCours($cours, $idInter);
                 $this->addFlash('success', "Le cour a été créé");
                 unset($cours);
@@ -73,7 +109,7 @@ class AdminPageController extends AbstractController
                 $coursForm = $this->createCoursform($cours);
             } else {
                 $coursForm->addError(new FormError("L'intervenant n'existe déjà"));
-        }
+            }
 
         }
         $inters = $this->getAllIntervenants();
@@ -103,6 +139,16 @@ class AdminPageController extends AbstractController
             ->add('fin')
             ->getForm();
         return $coursForm;
+    }
+
+    public function createMatiereform(Matiere $matiere)
+    {
+        $matiereForm = $this->createFormBuilder($matiere)
+            ->add('intitule')
+            ->add('duree')
+            ->add('isSpecialite')
+            ->getForm();
+        return $matiereForm;
     }
 
     public function createIntervenant(Utilisateurs $user)
@@ -141,6 +187,19 @@ class AdminPageController extends AbstractController
         $entityManager = $this->getDoctrine()->getManager();
         //informer Doctrine qu'on peut persister ces données
         $entityManager->persist($cours);
+        //Executer la requête
+        $entityManager->flush();
+    }
+
+    public function createMatiere(Matiere $matiere,$idInter)
+    {
+        $intervenant = $this->getDoctrine()
+            ->getRepository(Intervenant::class)
+            ->find($idInter);
+        $matiere->setFkIntervenant($intervenant);
+        $entityManager = $this->getDoctrine()->getManager();
+        //informer Doctrine qu'on peut persister ces données
+        $entityManager->persist($matiere);
         //Executer la requête
         $entityManager->flush();
     }
@@ -185,6 +244,14 @@ class AdminPageController extends AbstractController
         return $inter;
     }
 
+    public function getAllMatieres()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $matieres = $em->getRepository(Matiere::class)
+            ->findAll();
+        return $matieres;
+    }
+
     /**
      * @Route("/delete_User/{id}", name="app_delete_user")
      */
@@ -201,10 +268,19 @@ class AdminPageController extends AbstractController
         return $this->redirect($this->generateUrl('app_admin_intervenant'));
     }
 
-    function console_log($data)
+    /**
+     * @Route("/delete_matiere/{id}", name="app_delete_matiere")
+     */
+    public function deleteMatiere($id)
     {
-        echo '<script>';
-        echo 'console.log(' . json_encode($data) . ')';
-        echo '</script>';
+        $em = $this->getDoctrine()->getManager();
+        $matiere = $em->getRepository(Matiere::class)
+            ->find($id);
+        if ($matiere) {
+            $em->remove($matiere);
+            $em->flush();
+            $this->addFlash('success', "La matière a été supprimée");
+        }
+        return $this->redirect($this->generateUrl('app_admin_matiere'));
     }
 }
