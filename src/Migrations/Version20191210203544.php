@@ -22,7 +22,7 @@ final class Version20191210203544 extends AbstractMigration
         // this up() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('ALTER TABLE utilisateurs ADD telephone INT DEFAULT NULL, ADD is_admin TINYINT(1) NOT NULL, ADD fk_intervenant_id INT NOT NULL');
+        $this->addSql('ALTER TABLE utilisateurs ADD telephone INT DEFAULT NULL, ADD is_admin TINYINT(1) NOT NULL, ADD fk_intervenant_id INT DEFAULT NULL');
     }
 
     public function down(Schema $schema) : void
