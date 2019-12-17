@@ -15,7 +15,7 @@ html {height:100%}
     background: #484848;
     border-radius: 5px;
     box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
-    margin-bottom: 10px!important;
+    margin-bottom: 0px!important;
 }
 
 .dropdown-menu, .dropdown-menu.show {
@@ -590,8 +590,8 @@ th {
 }
 
 button.red {
-    background-color: #dd0808;
-    /* padding: 10px; */
+    /* background-color: #dd0808;
+    padding: 10px; */
     border-radius: 70px;
     text-align: center;
     width: 36px;
@@ -675,6 +675,11 @@ button.days {
 .arrowNav {
     border-radius: 50px;
     border: none;
+    transition: box-shadow .3s;
+}
+
+.arrowNav:hover {
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
 }
 
 td.intitule {
@@ -770,4 +775,12 @@ th.month {
 
 .jour {
 
+}
+
+.buttonOff {
+    color: #ff5200;
+}
+
+.buttonOff:hover {
+    color: red;
 }

@@ -86,7 +86,11 @@
     </div>
     <div id="containerNavCalendar">
         {% for i in 1..52 %}
-        <button class="weeks" onclick="document.location.href='/week/{{ noAnn }}/{{ i }}';">{{ i }}</button>
+            {% if i == noSem %}
+                <button class="weeks" onclick="document.location.href='/week/{{ noAnn }}/{{ i }}';"><b>{{ i }}</b></button>
+            {% else %}
+                <button class="weeks" onclick="document.location.href='/week/{{ noAnn }}/{{ i }}';">{{ i }}</button>
+            {% endif %}
         {% endfor %}
         {% for i in 1..4 %}
             <button class="weeks" onclick="document.location.href='/week/{{ noAnn + 1 }}/{{ i }}';">{{ i }}</button>
@@ -137,8 +141,8 @@
                     {% if cours[0][0]['intitule'] != " " %}
                     <button class="red modalTrigger" type="button" data-toggle="modal" data-target="#myModal"
                             data-myvalue="{{ tab[0][1] ~ ";" ~ tab[0][2] ~ ";" ~  noAnn}};9;{{ noSem }}">
-                        <i class="material-icons" style="color: white; font-size: 19px">
-                            delete_forever
+                        <i class="material-icons" style="color: red; font-size: 19px">
+                            cancel
                         </i>
                     </button>
                     {% endif %}
@@ -155,8 +159,8 @@
                     {% if cours[0][1]['intitule'] != " " %}
                         <button class="red modalTrigger" type="button" data-toggle="modal" data-target="#myModal"
                                 data-myvalue="{{ tab[0][1] ~ ";" ~ tab[0][2] ~ ";" ~  noAnn}};10;{{ noSem }}">
-                            <i class="material-icons" style="color: white; font-size: 19px">
-                                delete_forever
+                            <i class="material-icons" style="color: red; font-size: 19px">
+                                cancel
                             </i>
                         </button>
                     {% endif %}
@@ -173,8 +177,8 @@
                     {% if cours[0][2]['intitule'] != " " %}
                         <button class="red modalTrigger" type="button" data-toggle="modal" data-target="#myModal"
                                 data-myvalue="{{ tab[0][1] ~ ";" ~ tab[0][2] ~ ";" ~  noAnn}};11;{{ noSem }}">
-                            <i class="material-icons" style="color: white; font-size: 19px">
-                                delete_forever
+                            <i class="material-icons" style="color: red; font-size: 19px">
+                                cancel
                             </i>
                         </button>
                     {% endif %}
@@ -192,8 +196,8 @@
                     {% if cours[0][3]['intitule'] != " " %}
                         <button class="red modalTrigger" type="button" data-toggle="modal" data-target="#myModal"
                                 data-myvalue="{{ tab[0][1] ~ ";" ~ tab[0][2] ~ ";" ~  noAnn}};12;{{ noSem }}">
-                            <i class="material-icons" style="color: white; font-size: 19px">
-                                delete_forever
+                            <i class="material-icons" style="color: red; font-size: 19px">
+                                cancel
                             </i>
                         </button>
                     {% endif %}
@@ -211,8 +215,8 @@
                     {% if cours[0][4]['intitule'] != " " %}
                         <button class="red modalTrigger" type="button" data-toggle="modal" data-target="#myModal"
                                 data-myvalue="{{ tab[0][1] ~ ";" ~ tab[0][2] ~ ";" ~  noAnn}};13;{{ noSem }}">
-                            <i class="material-icons" style="color: white; font-size: 19px">
-                                delete_forever
+                            <i class="material-icons" style="color: red; font-size: 19px">
+                                cancel
                             </i>
                         </button>
                     {% endif %}
@@ -228,8 +232,8 @@
                     {% if cours[0][5]['intitule'] != " " %}
                         <button class="red modalTrigger" type="button" data-toggle="modal" data-target="#myModal"
                                 data-myvalue="{{ tab[0][1] ~ ";" ~ tab[0][2] ~ ";" ~  noAnn}};14;{{ noSem }}">
-                            <i class="material-icons" style="color: white; font-size: 19px">
-                                delete_forever
+                            <i class="material-icons" style="color: red; font-size: 19px">
+                                cancel
                             </i>
                         </button>
                     {% endif %}
@@ -246,8 +250,8 @@
                     {% if cours[0][6]['intitule'] != " " %}
                         <button class="red modalTrigger" type="button" data-toggle="modal" data-target="#myModal"
                                 data-myvalue="{{ tab[0][1] ~ ";" ~ tab[0][2] ~ ";" ~  noAnn}};15;{{ noSem }}">
-                            <i class="material-icons" style="color: white; font-size: 19px">
-                                delete_forever
+                            <i class="material-icons" style="color: red; font-size: 19px">
+                                cancel
                             </i>
                         </button>
                     {% endif %}
@@ -264,8 +268,8 @@
                     {% if cours[0][7]['intitule'] != " " %}
                         <button class="red modalTrigger" type="button" data-toggle="modal" data-target="#myModal"
                                 data-myvalue="{{ tab[0][1] ~ ";" ~ tab[0][2] ~ ";" ~  noAnn}};16;{{ noSem }}">
-                            <i class="material-icons" style="color: white; font-size: 19px">
-                                delete_forever
+                            <i class="material-icons" style="color: red; font-size: 19px">
+                                cancel
                             </i>
                         </button>
                     {% endif %}
@@ -282,8 +286,8 @@
                     {% if cours[0][8]['intitule'] != " " %}
                         <button class="red modalTrigger" type="button" data-toggle="modal" data-target="#myModal"
                                 data-myvalue="{{ tab[0][1] ~ ";" ~ tab[0][2] ~ ";" ~  noAnn}};17;{{ noSem }}">
-                            <i class="material-icons" style="color: white; font-size: 19px">
-                                delete_forever
+                            <i class="material-icons" style="color: red; font-size: 19px">
+                                cancel
                             </i>
                         </button>
                     {% endif %}
@@ -304,8 +308,8 @@
                     {% if cours[1][0]['intitule'] != " " %}
                         <button class="red modalTrigger" type="button" data-toggle="modal" data-target="#myModal"
                                 data-myvalue="{{ tab[1][1] ~ ";" ~ tab[1][2] ~ ";" ~  noAnn}};9;{{ noSem }}">
-                            <i class="material-icons" style="color: white; font-size: 19px">
-                                delete_forever
+                            <i class="material-icons" style="color: red; font-size: 19px">
+                                cancel
                             </i>
                         </button>
                     {% endif %}
@@ -322,8 +326,8 @@
                     {% if cours[1][1]['intitule'] != " " %}
                         <button class="red modalTrigger" type="button" data-toggle="modal" data-target="#myModal"
                                 data-myvalue="{{ tab[1][1] ~ ";" ~ tab[1][2] ~ ";" ~  noAnn}};10;{{ noSem }}">
-                            <i class="material-icons" style="color: white; font-size: 19px">
-                                delete_forever
+                            <i class="material-icons" style="color: red; font-size: 19px">
+                                cancel
                             </i>
                         </button>
                     {% endif %}
@@ -340,8 +344,8 @@
                     {% if cours[1][2]['intitule'] != " " %}
                         <button class="red modalTrigger" type="button" data-toggle="modal" data-target="#myModal"
                                 data-myvalue="{{ tab[1][1] ~ ";" ~ tab[1][2] ~ ";" ~  noAnn}};11;{{ noSem }}">
-                            <i class="material-icons" style="color: white; font-size: 19px">
-                                delete_forever
+                            <i class="material-icons" style="color: red; font-size: 19px">
+                                cancel
                             </i>
                         </button>
                     {% endif %}
@@ -359,8 +363,8 @@
                     {% if cours[1][3]['intitule'] != " " %}
                         <button class="red modalTrigger" type="button" data-toggle="modal" data-target="#myModal"
                                 data-myvalue="{{ tab[1][1] ~ ";" ~ tab[1][2] ~ ";" ~  noAnn}};12;{{ noSem }}">
-                            <i class="material-icons" style="color: white; font-size: 19px">
-                                delete_forever
+                            <i class="material-icons" style="color: red; font-size: 19px">
+                                cancel
                             </i>
                         </button>
                     {% endif %}
@@ -378,8 +382,8 @@
                     {% if cours[1][4]['intitule'] != " " %}
                         <button class="red modalTrigger" type="button" data-toggle="modal" data-target="#myModal"
                                 data-myvalue="{{ tab[1][1] ~ ";" ~ tab[1][2] ~ ";" ~  noAnn}};13;{{ noSem }}">
-                            <i class="material-icons" style="color: white; font-size: 19px">
-                                delete_forever
+                            <i class="material-icons" style="color: red; font-size: 19px">
+                                cancel
                             </i>
                         </button>
                     {% endif %}
@@ -395,8 +399,8 @@
                     {% if cours[1][5]['intitule'] != " " %}
                         <button class="red modalTrigger" type="button" data-toggle="modal" data-target="#myModal"
                                 data-myvalue="{{ tab[1][1] ~ ";" ~ tab[1][2] ~ ";" ~  noAnn}};14;{{ noSem }}">
-                            <i class="material-icons" style="color: white; font-size: 19px">
-                                delete_forever
+                            <i class="material-icons" style="color: red; font-size: 19px">
+                                cancel
                             </i>
                         </button>
                     {% endif %}
@@ -413,8 +417,8 @@
                     {% if cours[1][6]['intitule'] != " " %}
                         <button class="red modalTrigger" type="button" data-toggle="modal" data-target="#myModal"
                                 data-myvalue="{{ tab[1][1] ~ ";" ~ tab[1][2] ~ ";" ~  noAnn}};15;{{ noSem }}">
-                            <i class="material-icons" style="color: white; font-size: 19px">
-                                delete_forever
+                            <i class="material-icons" style="color: red; font-size: 19px">
+                                cancel
                             </i>
                         </button>
                     {% endif %}
@@ -431,8 +435,8 @@
                     {% if cours[1][7]['intitule'] != " " %}
                         <button class="red modalTrigger" type="button" data-toggle="modal" data-target="#myModal"
                                 data-myvalue="{{ tab[1][1] ~ ";" ~ tab[1][2] ~ ";" ~  noAnn}};16;{{ noSem }}">
-                            <i class="material-icons" style="color: white; font-size: 19px">
-                                delete_forever
+                            <i class="material-icons" style="color: red; font-size: 19px">
+                                cancel
                             </i>
                         </button>
                     {% endif %}
@@ -449,8 +453,8 @@
                     {% if cours[1][8]['intitule'] != " " %}
                         <button class="red modalTrigger" type="button" data-toggle="modal" data-target="#myModal"
                                 data-myvalue="{{ tab[1][1] ~ ";" ~ tab[1][2] ~ ";" ~  noAnn}};17;{{ noSem }}">
-                            <i class="material-icons" style="color: white; font-size: 19px">
-                                delete_forever
+                            <i class="material-icons" style="color: red; font-size: 19px">
+                                cancel
                             </i>
                         </button>
                     {% endif %}
@@ -471,8 +475,8 @@
                     {% if cours[2][0]['intitule'] != " " %}
                         <button class="red modalTrigger" type="button" data-toggle="modal" data-target="#myModal"
                                 data-myvalue="{{ tab[2][1] ~ ";" ~ tab[2][2] ~ ";" ~  noAnn}};9;{{ noSem }}">
-                            <i class="material-icons" style="color: white; font-size: 19px">
-                                delete_forever
+                            <i class="material-icons" style="color: red; font-size: 19px">
+                                cancel
                             </i>
                         </button>
                     {% endif %}
@@ -489,8 +493,8 @@
                     {% if cours[2][1]['intitule'] != " " %}
                         <button class="red modalTrigger" type="button" data-toggle="modal" data-target="#myModal"
                                 data-myvalue="{{ tab[2][1] ~ ";" ~ tab[2][2] ~ ";" ~  noAnn}};10;{{ noSem }}">
-                            <i class="material-icons" style="color: white; font-size: 19px">
-                                delete_forever
+                            <i class="material-icons" style="color: red; font-size: 19px">
+                                cancel
                             </i>
                         </button>
                     {% endif %}
@@ -507,8 +511,8 @@
                     {% if cours[2][2]['intitule'] != " " %}
                         <button class="red modalTrigger" type="button" data-toggle="modal" data-target="#myModal"
                                 data-myvalue="{{ tab[2][1] ~ ";" ~ tab[2][2] ~ ";" ~  noAnn}};11;{{ noSem }}">
-                            <i class="material-icons" style="color: white; font-size: 19px">
-                                delete_forever
+                            <i class="material-icons" style="color: red; font-size: 19px">
+                                cancel
                             </i>
                         </button>
                     {% endif %}
@@ -526,8 +530,8 @@
                     {% if cours[2][3]['intitule'] != " " %}
                         <button class="red modalTrigger" type="button" data-toggle="modal" data-target="#myModal"
                                 data-myvalue="{{ tab[2][1] ~ ";" ~ tab[2][2] ~ ";" ~  noAnn}};12;{{ noSem }}">
-                            <i class="material-icons" style="color: white; font-size: 19px">
-                                delete_forever
+                            <i class="material-icons" style="color: red; font-size: 19px">
+                                cancel
                             </i>
                         </button>
                     {% endif %}
@@ -545,8 +549,8 @@
                     {% if cours[2][4]['intitule'] != " " %}
                         <button class="red modalTrigger" type="button" data-toggle="modal" data-target="#myModal"
                                 data-myvalue="{{ tab[2][1] ~ ";" ~ tab[2][2] ~ ";" ~  noAnn}};13;{{ noSem }}">
-                            <i class="material-icons" style="color: white; font-size: 19px">
-                                delete_forever
+                            <i class="material-icons" style="color: red; font-size: 19px">
+                                cancel
                             </i>
                         </button>
                     {% endif %}
@@ -562,8 +566,8 @@
                     {% if cours[2][5]['intitule'] != " " %}
                         <button class="red modalTrigger" type="button" data-toggle="modal" data-target="#myModal"
                                 data-myvalue="{{ tab[2][1] ~ ";" ~ tab[2][2] ~ ";" ~  noAnn}};14;{{ noSem }}">
-                            <i class="material-icons" style="color: white; font-size: 19px">
-                                delete_forever
+                            <i class="material-icons" style="color: red; font-size: 19px">
+                                cancel
                             </i>
                         </button>
                     {% endif %}
@@ -580,8 +584,8 @@
                     {% if cours[2][6]['intitule'] != " " %}
                         <button class="red modalTrigger" type="button" data-toggle="modal" data-target="#myModal"
                                 data-myvalue="{{ tab[2][1] ~ ";" ~ tab[2][2] ~ ";" ~  noAnn}};15;{{ noSem }}">
-                            <i class="material-icons" style="color: white; font-size: 19px">
-                                delete_forever
+                            <i class="material-icons" style="color: red; font-size: 19px">
+                                cancel
                             </i>
                         </button>
                     {% endif %}
@@ -598,8 +602,8 @@
                     {% if cours[2][7]['intitule'] != " " %}
                         <button class="red modalTrigger" type="button" data-toggle="modal" data-target="#myModal"
                                 data-myvalue="{{ tab[2][1] ~ ";" ~ tab[2][2] ~ ";" ~  noAnn}};16;{{ noSem }}">
-                            <i class="material-icons" style="color: white; font-size: 19px">
-                                delete_forever
+                            <i class="material-icons" style="color: red; font-size: 19px">
+                                cancel
                             </i>
                         </button>
                     {% endif %}
@@ -616,8 +620,8 @@
                     {% if cours[2][8]['intitule'] != " " %}
                         <button class="red modalTrigger" type="button" data-toggle="modal" data-target="#myModal"
                                 data-myvalue="{{ tab[2][1] ~ ";" ~ tab[2][2] ~ ";" ~  noAnn}};17;{{ noSem }}">
-                            <i class="material-icons" style="color: white; font-size: 19px">
-                                delete_forever
+                            <i class="material-icons" style="color: red; font-size: 19px">
+                                cancel
                             </i>
                         </button>
                     {% endif %}
@@ -638,8 +642,8 @@
                     {% if cours[3][0]['intitule'] != " " %}
                         <button class="red modalTrigger" type="button" data-toggle="modal" data-target="#myModal"
                                 data-myvalue="{{ tab[3][1] ~ ";" ~ tab[3][2] ~ ";" ~  noAnn}};9;{{ noSem }}">
-                            <i class="material-icons" style="color: white; font-size: 19px">
-                                delete_forever
+                            <i class="material-icons" style="color: red; font-size: 19px">
+                                cancel
                             </i>
                         </button>
                     {% endif %}
@@ -656,8 +660,8 @@
                     {% if cours[3][1]['intitule'] != " " %}
                         <button class="red modalTrigger" type="button" data-toggle="modal" data-target="#myModal"
                                 data-myvalue="{{ tab[3][1] ~ ";" ~ tab[3][2] ~ ";" ~  noAnn}};10;{{ noSem }}">
-                            <i class="material-icons" style="color: white; font-size: 19px">
-                                delete_forever
+                            <i class="material-icons" style="color: red; font-size: 19px">
+                                cancel
                             </i>
                         </button>
                     {% endif %}
@@ -674,8 +678,8 @@
                     {% if cours[3][2]['intitule'] != " " %}
                         <button class="red modalTrigger" type="button" data-toggle="modal" data-target="#myModal"
                                 data-myvalue="{{ tab[3][1] ~ ";" ~ tab[3][2] ~ ";" ~  noAnn}};11;{{ noSem }}">
-                            <i class="material-icons" style="color: white; font-size: 19px">
-                                delete_forever
+                            <i class="material-icons" style="color: red; font-size: 19px">
+                                cancel
                             </i>
                         </button>
                     {% endif %}
@@ -693,8 +697,8 @@
                     {% if cours[3][3]['intitule'] != " " %}
                         <button class="red modalTrigger" type="button" data-toggle="modal" data-target="#myModal"
                                 data-myvalue="{{ tab[3][1] ~ ";" ~ tab[3][2] ~ ";" ~  noAnn}};12;{{ noSem }}">
-                            <i class="material-icons" style="color: white; font-size: 19px">
-                                delete_forever
+                            <i class="material-icons" style="color: red; font-size: 19px">
+                                cancel
                             </i>
                         </button>
                     {% endif %}
@@ -712,8 +716,8 @@
                     {% if cours[3][4]['intitule'] != " " %}
                         <button class="red modalTrigger" type="button" data-toggle="modal" data-target="#myModal"
                                 data-myvalue="{{ tab[3][1] ~ ";" ~ tab[3][2] ~ ";" ~  noAnn}};13;{{ noSem }}">
-                            <i class="material-icons" style="color: white; font-size: 19px">
-                                delete_forever
+                            <i class="material-icons" style="color: red; font-size: 19px">
+                                cancel
                             </i>
                         </button>
                     {% endif %}
@@ -729,8 +733,8 @@
                     {% if cours[3][5]['intitule'] != " " %}
                         <button class="red modalTrigger" type="button" data-toggle="modal" data-target="#myModal"
                                 data-myvalue="{{ tab[3][1] ~ ";" ~ tab[3][2] ~ ";" ~  noAnn}};14;{{ noSem }}">
-                            <i class="material-icons" style="color: white; font-size: 19px">
-                                delete_forever
+                            <i class="material-icons" style="color: red; font-size: 19px">
+                                cancel
                             </i>
                         </button>
                     {% endif %}
@@ -747,8 +751,8 @@
                     {% if cours[3][6]['intitule'] != " " %}
                         <button class="red modalTrigger" type="button" data-toggle="modal" data-target="#myModal"
                                 data-myvalue="{{ tab[3][1] ~ ";" ~ tab[3][2] ~ ";" ~  noAnn}};15;{{ noSem }}">
-                            <i class="material-icons" style="color: white; font-size: 19px">
-                                delete_forever
+                            <i class="material-icons" style="color: red; font-size: 19px">
+                                cancel
                             </i>
                         </button>
                     {% endif %}
@@ -765,8 +769,8 @@
                     {% if cours[3][7]['intitule'] != " " %}
                         <button class="red modalTrigger" type="button" data-toggle="modal" data-target="#myModal"
                                 data-myvalue="{{ tab[3][1] ~ ";" ~ tab[3][2] ~ ";" ~  noAnn}};16;{{ noSem }}">
-                            <i class="material-icons" style="color: white; font-size: 19px">
-                                delete_forever
+                            <i class="material-icons" style="color: red; font-size: 19px">
+                                cancel
                             </i>
                         </button>
                     {% endif %}
@@ -783,8 +787,8 @@
                     {% if cours[3][8]['intitule'] != " " %}
                         <button class="red modalTrigger" type="button" data-toggle="modal" data-target="#myModal"
                                 data-myvalue="{{ tab[3][1] ~ ";" ~ tab[3][2] ~ ";" ~  noAnn}};17;{{ noSem }}">
-                            <i class="material-icons" style="color: white; font-size: 19px">
-                                delete_forever
+                            <i class="material-icons" style="color: red; font-size: 19px">
+                                cancel
                             </i>
                         </button>
                     {% endif %}
@@ -805,8 +809,8 @@
                     {% if cours[4][0]['intitule'] != " " %}
                         <button class="red modalTrigger" type="button" data-toggle="modal" data-target="#myModal"
                                 data-myvalue="{{ tab[4][1] ~ ";" ~ tab[4][2] ~ ";" ~  noAnn}};9;{{ noSem }}">
-                            <i class="material-icons" style="color: white; font-size: 19px">
-                                delete_forever
+                            <i class="material-icons" style="color: red; font-size: 19px">
+                                cancel
                             </i>
                         </button>
                     {% endif %}
@@ -823,8 +827,8 @@
                     {% if cours[4][1]['intitule'] != " " %}
                         <button class="red modalTrigger" type="button" data-toggle="modal" data-target="#myModal"
                                 data-myvalue="{{ tab[4][1] ~ ";" ~ tab[4][2] ~ ";" ~  noAnn}};10;{{ noSem }}">
-                            <i class="material-icons" style="color: white; font-size: 19px">
-                                delete_forever
+                            <i class="material-icons" style="color: red; font-size: 19px">
+                                cancel
                             </i>
                         </button>
                     {% endif %}
@@ -841,8 +845,8 @@
                     {% if cours[4][2]['intitule'] != " " %}
                         <button class="red modalTrigger" type="button" data-toggle="modal" data-target="#myModal"
                                 data-myvalue="{{ tab[4][1] ~ ";" ~ tab[4][2] ~ ";" ~  noAnn}};11;{{ noSem }}">
-                            <i class="material-icons" style="color: white; font-size: 19px">
-                                delete_forever
+                            <i class="material-icons" style="color: red; font-size: 19px">
+                                cancel
                             </i>
                         </button>
                     {% endif %}
@@ -860,8 +864,8 @@
                     {% if cours[4][3]['intitule'] != " " %}
                         <button class="red modalTrigger" type="button" data-toggle="modal" data-target="#myModal"
                                 data-myvalue="{{ tab[4][1] ~ ";" ~ tab[4][2] ~ ";" ~  noAnn}};12;{{ noSem }}">
-                            <i class="material-icons" style="color: white; font-size: 19px">
-                                delete_forever
+                            <i class="material-icons" style="color: red; font-size: 19px">
+                                cancel
                             </i>
                         </button>
                     {% endif %}
@@ -879,8 +883,8 @@
                     {% if cours[4][4]['intitule'] != " " %}
                         <button class="red modalTrigger" type="button" data-toggle="modal" data-target="#myModal"
                                 data-myvalue="{{ tab[4][1] ~ ";" ~ tab[4][2] ~ ";" ~  noAnn}};13;{{ noSem }}">
-                            <i class="material-icons" style="color: white; font-size: 19px">
-                                delete_forever
+                            <i class="material-icons" style="color: red; font-size: 19px">
+                                cancel
                             </i>
                         </button>
                     {% endif %}
@@ -896,8 +900,8 @@
                     {% if cours[4][5]['intitule'] != " " %}
                         <button class="red modalTrigger" type="button" data-toggle="modal" data-target="#myModal"
                                 data-myvalue="{{ tab[4][1] ~ ";" ~ tab[4][2] ~ ";" ~  noAnn}};14;{{ noSem }}">
-                            <i class="material-icons" style="color: white; font-size: 19px">
-                                delete_forever
+                            <i class="material-icons" style="color: red; font-size: 19px">
+                                cancel
                             </i>
                         </button>
                     {% endif %}
@@ -914,8 +918,8 @@
                     {% if cours[4][6]['intitule'] != " " %}
                         <button class="red modalTrigger" type="button" data-toggle="modal" data-target="#myModal"
                                 data-myvalue="{{ tab[4][1] ~ ";" ~ tab[4][2] ~ ";" ~  noAnn}};15;{{ noSem }}">
-                            <i class="material-icons" style="color: white; font-size: 19px">
-                                delete_forever
+                            <i class="material-icons" style="color: red; font-size: 19px">
+                                cancel
                             </i>
                         </button>
                     {% endif %}
@@ -932,8 +936,8 @@
                     {% if cours[4][7]['intitule'] != " " %}
                         <button class="red modalTrigger" type="button" data-toggle="modal" data-target="#myModal"
                                 data-myvalue="{{ tab[4][1] ~ ";" ~ tab[4][2] ~ ";" ~  noAnn}};16;{{ noSem }}">
-                            <i class="material-icons" style="color: white; font-size: 19px">
-                                delete_forever
+                            <i class="material-icons" style="color: red; font-size: 19px">
+                                cancel
                             </i>
                         </button>
                     {% endif %}
@@ -950,8 +954,8 @@
                     {% if cours[4][8]['intitule'] != " " %}
                         <button class="red modalTrigger" type="button" data-toggle="modal" data-target="#myModal"
                                 data-myvalue="{{ tab[4][1] ~ ";" ~ tab[4][2] ~ ";" ~  noAnn}};17;{{ noSem }}">
-                            <i class="material-icons" style="color: white; font-size: 19px">
-                                delete_forever
+                            <i class="material-icons" style="color: red; font-size: 19px">
+                                cancel
                             </i>
                         </button>
                     {% endif %}
