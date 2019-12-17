@@ -1,0 +1,69 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gestion de planning{% endblock %}
+    {% block stylesheets %}
+        {{ parent() }}
+        <link rel="stylesheet" href="{{ asset('css/admin.css') }}" xmlns="http://www.w3.org/1999/html">
+    {% endblock %}
+
+{% form_theme userForm 'bootstrap_4_layout.html.twig' %}
+
+{% block body %}
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
+    <div id="containerAdmin">
+        <!-- form Intervenant -->
+        <div id="formAdmin">
+            <div class="containerAdmin">
+                <h2>Ajouter un Intervenant</h2>
+                {{ form_start(userForm) }}
+                <div class="my-custom-class-for-errors">
+                    {{ form_errors(userForm) }}
+                </div>
+                {{ form_row(userForm.nom) }}
+                {{ form_row(userForm.prenom) }}
+                {{ form_row(userForm.email) }}
+                {{ form_row(userForm.password) }}
+                {{ form_row(userForm.specialiteprofessionnelle) }}
+                <button type="submit" name="user" value="addUser" class="btn btn-success" onclick="return confirm('Vous êtes sur ?')">
+                    Créer
+                </button>
+                {{ form_end(userForm) }}
+            </div>
+            <br>
+            <h2>Liste des Intervenants</h2>
+            {% for user in users %}
+                <div class="containerAdmin">
+                    <div>Nom: <b>{{ user.nom }}</b></div>
+                    <div>Prénom: <b>{{ user.prenom }}</b></div>
+                    <div>Email: <b>{{ user.email }}</b></div>
+                    <div>Spécialité: <b>{{ user.specialiteprofessionnelle }}</b></div>
+                    <div class="deleteAdmin"><a href="/delete_User/{{ user.id }}"
+                                                style="text-align: right;width: 100%;">
+                            <i class="material-icons deleteIcon" onclick="return confirm('Vous êtes sur ?')">
+                                delete_forever
+                            </i>
+                        </a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    {% block javascripts %}
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"
+                integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"
+                integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+                crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"
+                integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+                crossorigin="anonymous"></script>
+        <script>
+            $('.dropdown-toggle').dropdown();
+        </script>
+    {% endblock %}
+{% endblock %}

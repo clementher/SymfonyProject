@@ -1,5 +1,8 @@
 <?php
+
 namespace App\Controller;
+
+use App\Entity\Cours;
 use App\Entity\Intervenant;
 use App\Entity\Utilisateurs;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -7,54 +10,101 @@ use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\FormError;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
-use Symfony\Component\Security\Core\Tests\Encoder\PasswordEncoder;
+
 class AdminPageController extends AbstractController
 {
     private $passwordEncoder;
-    private $user;
-    private $form;
+
     /**
-     * @Route("/admin", name="app_admin")
+     * @Route("/admin/intervenant", name="app_admin_intervenant")
      */
     public function index(Request $request, UserPasswordEncoderInterface $passwordEncoder)
     {
         $this->passwordEncoder = $passwordEncoder;
-        $this->form = $this->createformUtilisateur();
-        $this->form->handleRequest($request);
-        if ($this->form->isSubmitted() && $this->form->isValid()) {
-            $isUserValid = $this->getUserByEmail($this->user->getEmail());
-            $isIntervenantValid = $this->getIntervenantByEmail($this->user->getEmail());
-            if(!$isUserValid || !$isIntervenantValid) {
-                $id = $this->createIntervenant($this->user);
-                $this->createUser($this->user, $id);
+        $user = new Utilisateurs();
+        $userForm = $this->createUserform($user);
+        $userForm->handleRequest($request);
+
+        #Form User
+        if ($userForm->isSubmitted() && $userForm->isValid()) {
+            $isUserValid = $this->getUserByEmail($user->getEmail());
+            $isIntervenantValid = $this->getIntervenantByEmail($user->getEmail());
+            if (!$isUserValid || !$isIntervenantValid) {
+                $id = $this->createIntervenant($user);
+                $this->createUser($user, $id);
                 $this->addFlash('success', "L'utilisateur a été créé");
-                unset($this->user);
-                unset($form);
-                $this->form = $this->createformUtilisateur();
-            }else{
-                $this->form->addError(new FormError("L'utilisateur existe déjà"));
+                unset($user);
+                unset($userForm);
+                $user = new Utilisateurs();
+                $userForm = $this->createUserform($user);
+            } else {
+                $userForm->addError(new FormError("L'utilisateur existe déjà"));
             }
         }
         $users = $this->getAllUsers();
-        return $this->render('admin.html.twig', [
-            'formUser' => $this->form->createView(),
-            'users' => $users
+
+        return $this->render('admin_user.html.twig', [
+            'userForm' => $userForm->createView(),
+            'users' => $users,
         ]);
     }
-    public function createformUtilisateur(){
-        $this->user = new Utilisateurs();
-        $this->form = $this->createFormBuilder($this->user)
+
+    /**
+     * @Route("/admin/cour", name="app_admin_cour")
+     */
+    public function Cour(Request $request, UserPasswordEncoderInterface $passwordEncoder)
+    {
+        $this->passwordEncoder = $passwordEncoder;
+        $cours = new Cours();
+        $coursForm = $this->createCoursform($cours);
+        $coursForm->handleRequest($request);
+
+        #Form Cours
+        if ($coursForm->isSubmitted() && $coursForm->isValid()) {
+            $idInter = isset($_POST['intervenant'])    ? $_POST['intervenant']    : null;
+            if($idInter) {
+                $this->createCours($cours, $idInter);
+                $this->addFlash('success', "Le cour a été créé");
+                unset($cours);
+                unset($coursForm);
+                $cours = new Cours();
+                $coursForm = $this->createCoursform($cours);
+            } else {
+                $coursForm->addError(new FormError("L'intervenant n'existe déjà"));
+        }
+
+        }
+        $inters = $this->getAllIntervenants();
+
+        return $this->render('admin_cour.html.twig', [
+            'coursForm' => $coursForm->createView(),
+            'inters' => $inters
+        ]);
+    }
+
+    public function createUserform(Utilisateurs $user)
+    {
+        $userForm = $this->createFormBuilder($user)
             ->add('nom')
             ->add('prenom')
             ->add('email', EmailType::class)
             ->add('password', PasswordType::class)
             ->add('specialiteprofessionnelle')
             ->getForm();
-        return $this->form;
+        return $userForm;
     }
+
+    public function createCoursform(Cours $cours)
+    {
+        $coursForm = $this->createFormBuilder($cours)
+            ->add('debut')
+            ->add('fin')
+            ->getForm();
+        return $coursForm;
+    }
+
     public function createIntervenant(Utilisateurs $user)
     {
         $entityManager = $this->getDoctrine()->getManager();
@@ -69,6 +119,7 @@ class AdminPageController extends AbstractController
         $entityManager->flush();
         return $intervenant->getId();
     }
+
     public function createUser(Utilisateurs $user, $id)
     {
         $entityManager = $this->getDoctrine()->getManager();
@@ -80,6 +131,20 @@ class AdminPageController extends AbstractController
         //Executer la requête
         $entityManager->flush();
     }
+
+    public function createCours(Cours $cours, $idInter)
+    {
+        $intervenant = $this->getDoctrine()
+            ->getRepository(Intervenant::class)
+            ->find($idInter);
+        $cours->setFkIntervenantId($intervenant);
+        $entityManager = $this->getDoctrine()->getManager();
+        //informer Doctrine qu'on peut persister ces données
+        $entityManager->persist($cours);
+        //Executer la requête
+        $entityManager->flush();
+    }
+
     public function getIntervenantByEmail($email)
     {
         $intervenant = $this->getDoctrine()
@@ -91,6 +156,7 @@ class AdminPageController extends AbstractController
             return false;
         }
     }
+
     public function getUserByEmail($email)
     {
         $user = $this->getDoctrine()
@@ -102,24 +168,43 @@ class AdminPageController extends AbstractController
             return false;
         }
     }
-    public function getAllUsers(){
+
+    public function getAllUsers()
+    {
         $em = $this->getDoctrine()->getManager();
         $users = $em->getRepository(Utilisateurs::class)
             ->findAll();
         return $users;
     }
+
+    public function getAllIntervenants()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $inter = $em->getRepository(Intervenant::class)
+            ->findAll();
+        return $inter;
+    }
+
     /**
-     * @Route("/delete/{id}", name="app_delete")
+     * @Route("/delete_User/{id}", name="app_delete_user")
      */
-    public function deleteUser($id){
+    public function deleteUser($id)
+    {
         $em = $this->getDoctrine()->getManager();
         $user = $em->getRepository(Utilisateurs::class)
             ->find($id);
-        if($user) {
+        if ($user) {
             $em->remove($user);
             $em->flush();
             $this->addFlash('success', "L'utilisateur a été supprimé");
         }
-        return $this->redirect($this->generateUrl('app_admin'));
+        return $this->redirect($this->generateUrl('app_admin_intervenant'));
+    }
+
+    function console_log($data)
+    {
+        echo '<script>';
+        echo 'console.log(' . json_encode($data) . ')';
+        echo '</script>';
     }
 }
