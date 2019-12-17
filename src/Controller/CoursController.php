@@ -436,8 +436,8 @@ class CoursController extends AbstractController
         $inter = new Intervenant();
         $inter = $this->entityManager->find(Intervenant::class,$idIntervenant);
         $jour = mktime($heure,0,0,$noMon,$date[0],$date[2]);
-        $this->console_log('DELETE App\Entity\Cours c WHERE c.debut >='.date('YmdGis', $jour).'and c.fin <'. date('YmdGis', $jour + 14400));
-        $query1 = $this->entityManager->createQuery('DELETE App\Entity\Cours c WHERE c.debut >='.date('YmdGis', $jour).'and c.fin <'. date('YmdGis', $jour + 14400));
+        $this->console_log('DELETE App\Entity\Cours c WHERE c.debut >='.date('YmdHis', $jour).'and c.fin <'. date('YmdHis', $jour + 14400));
+        $query1 = $this->entityManager->createQuery('DELETE App\Entity\Cours c WHERE c.debut >='.date('YmdHis', $jour).'and c.fin <'. date('YmdHis', $jour + 14400));
         $query1->execute();
         $query3 = $this->entityManager->createQuery('SELECT i.prenom as prenom, i.nom as nom from App\Entity\Intervenant i where i.id = '.$idIntervenant);
         $tabRetQuery = $query3->getResult();
