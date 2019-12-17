@@ -37,7 +37,8 @@
                     <h4 class="modal-title" id="myModalLabel">Suppression du cours</h4>
                 </div>
                 <div class="modal-body">
-                    <span id="modal-myvalue"></span> <span id="modal-myvar"></span> <span id="modal-bb"></span>
+                    <p>Voulez-vous supprimer ce cours ?</p>
+                    <span id="modal-myvalue" style="color: #fff; font-size: 0px"></span> <span id="modal-myvar"></span> <span id="modal-bb"></span>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
@@ -132,7 +133,7 @@
                             {%  endif %}
                         {% endif %}
                         {% if tabJours[0][1][1] != " "%}
-                            <button class="red" type="button" data-toggle="modal" data-target="#myModal"
+                            <button class="red modalTrigger" type="button" data-toggle="modal" data-target="#myModal"
                                     data-myvalue="{{ tabJours[0][1][0] }}">
                                 <i class="material-icons" style="color: white; font-size: 19px">
                                     delete_forever
@@ -157,7 +158,7 @@
                             {%  endif %}
                         {% endif %}
                         {% if tabJours[1][1][1] != " "%}
-                            <button class="red" type="button" data-toggle="modal" data-target="#myModal"
+                            <button class="red modalTrigger" type="button" data-toggle="modal" data-target="#myModal"
                                     data-myvalue="{{ tabJours[1][1][0] }}">
                                 <i class="material-icons" style="color: white; font-size: 19px">
                                     delete_forever
@@ -182,7 +183,7 @@
                             {%  endif %}
                         {% endif %}
                         {% if tabJours[2][1][1] != " "%}
-                            <button class="red" type="button" data-toggle="modal" data-target="#myModal"
+                            <button class="red modalTrigger" type="button" data-toggle="modal" data-target="#myModal"
                                     data-myvalue="{{ tabJours[2][1][0] }}">
                                 <i class="material-icons" style="color: white; font-size: 19px">
                                     delete_forever
@@ -207,7 +208,7 @@
                             {%  endif %}
                         {% endif %}
                         {% if tabJours[3][1][1] != " "%}
-                            <button class="red" type="button" data-toggle="modal" data-target="#myModal"
+                            <button class="red modalTrigger" type="button" data-toggle="modal" data-target="#myModal"
                                     data-myvalue="{{ tabJours[3][1][0] }}">
                                 <i class="material-icons" style="color: white; font-size: 19px">
                                     delete_forever
@@ -232,7 +233,7 @@
                             {%  endif %}
                         {% endif %}
                         {% if tabJours[4][1][1] != " "%}
-                            <button class="red" type="button" data-toggle="modal" data-target="#myModal"
+                            <button class="red modalTrigger" type="button" data-toggle="modal" data-target="#myModal"
                                     data-myvalue="{{ tabJours[4][1][0] }}">
                                 <i class="material-icons" style="color: white; font-size: 19px">
                                     delete_forever
@@ -261,7 +262,7 @@
                             {%  endif %}
                         {% endif %}
                         {% if tabJours[0][2][1] != " "%}
-                            <button class="red" type="button" data-toggle="modal" data-target="#myModal"
+                            <button class="red modalTrigger" type="button" data-toggle="modal" data-target="#myModal"
                                     data-myvalue="{{ tabJours[0][2][0] }}">
                                 <i class="material-icons" style="color: white; font-size: 19px">
                                     delete_forever
@@ -286,7 +287,7 @@
                             {%  endif %}
                         {% endif %}
                         {% if tabJours[1][2][1] != " "%}
-                            <button class="red" type="button" data-toggle="modal" data-target="#myModal"
+                            <button class="red modalTrigger" type="button" data-toggle="modal" data-target="#myModal"
                                     data-myvalue="{{ tabJours[1][2][0] }}">
                                 <i class="material-icons" style="color: white; font-size: 19px">
                                     delete_forever
@@ -311,7 +312,7 @@
                             {%  endif %}
                         {% endif %}
                         {% if tabJours[2][2][1] != " "%}
-                            <button class="red" type="button" data-toggle="modal" data-target="#myModal"
+                            <button class="red modalTrigger" type="button" data-toggle="modal" data-target="#myModal"
                                     data-myvalue="{{ tabJours[2][2][0] }}">
                                 <i class="material-icons" style="color: white; font-size: 19px">
                                     delete_forever
@@ -336,7 +337,7 @@
                             {%  endif %}
                         {% endif %}
                         {% if tabJours[3][2][1] != " "%}
-                            <button class="red" type="button" data-toggle="modal" data-target="#myModal"
+                            <button class="red modalTrigger" type="button" data-toggle="modal" data-target="#myModal"
                                     data-myvalue="{{ tabJours[3][2][0] }}">
                                 <i class="material-icons" style="color: white; font-size: 19px">
                                     delete_forever
@@ -361,7 +362,7 @@
                             {%  endif %}
                         {% endif %}
                         {% if tabJours[4][2][1] != " "%}
-                            <button class="red" type="button" data-toggle="modal" data-target="#myModal"
+                            <button class="red modalTrigger" type="button" data-toggle="modal" data-target="#myModal"
                                     data-myvalue="{{ tabJours[4][2][0] }}">
                                 <i class="material-icons" style="color: white; font-size: 19px">
                                     delete_forever
@@ -390,7 +391,7 @@
                             {%  endif %}
                         {% endif %}
                         {% if tabJours[0][3][1] != " "%}
-                            <button class="red" type="button" data-toggle="modal" data-target="#myModal"
+                            <button class="red modalTrigger" type="button" data-toggle="modal" data-target="#myModal"
                                     data-myvalue="{{ tabJours[0][3][0] }}">
                                 <i class="material-icons" style="color: white; font-size: 19px">
                                     delete_forever
@@ -415,7 +416,7 @@
                             {%  endif %}
                         {% endif %}
                         {% if tabJours[0][3][1] != " "%}
-                            <button class="red" type="button" data-toggle="modal" data-target="#myModal"
+                            <button class="red modalTrigger" type="button" data-toggle="modal" data-target="#myModal"
                                     data-myvalue="{{ tabJours[0][3][0] }}">
                                 <i class="material-icons" style="color: white; font-size: 19px">
                                     delete_forever
@@ -440,7 +441,7 @@
                             {%  endif %}
                         {% endif %}
                         {% if tabJours[1][3][1] != " "%}
-                            <button class="red" type="button" data-toggle="modal" data-target="#myModal"
+                            <button class="red modalTrigger" type="button" data-toggle="modal" data-target="#myModal"
                                     data-myvalue="{{ tabJours[1][3][0] }}">
                                 <i class="material-icons" style="color: white; font-size: 19px">
                                     delete_forever
@@ -465,7 +466,7 @@
                             {%  endif %}
                         {% endif %}
                         {% if tabJours[2][3][1] != " "%}
-                            <button class="red" type="button" data-toggle="modal" data-target="#myModal"
+                            <button class="red modalTrigger" type="button" data-toggle="modal" data-target="#myModal"
                                     data-myvalue="{{ tabJours[2][3][0] }}">
                                 <i class="material-icons" style="color: white; font-size: 19px">
                                     delete_forever
@@ -490,7 +491,7 @@
                             {%  endif %}
                         {% endif %}
                         {% if tabJours[4][3][1] != " "%}
-                            <button class="red" type="button" data-toggle="modal" data-target="#myModal"
+                            <button class="red modalTrigger" type="button" data-toggle="modal" data-target="#myModal"
                                     data-myvalue="{{ tabJours[4][3][0] }}">
                                 <i class="material-icons" style="color: white; font-size: 19px">
                                     delete_forever
@@ -519,7 +520,7 @@
                             {%  endif %}
                         {% endif %}
                         {% if tabJours[0][4][1] != " "%}
-                            <button class="red" type="button" data-toggle="modal" data-target="#myModal"
+                            <button class="red modalTrigger" type="button" data-toggle="modal" data-target="#myModal"
                                     data-myvalue="{{ tabJours[0][4][0] }}">
                                 <i class="material-icons" style="color: white; font-size: 19px">
                                     delete_forever
@@ -544,7 +545,7 @@
                             {%  endif %}
                         {% endif %}
                         {% if tabJours[1][4][1] != " "%}
-                            <button class="red" type="button" data-toggle="modal" data-target="#myModal"
+                            <button class="red modalTrigger" type="button" data-toggle="modal" data-target="#myModal"
                                     data-myvalue="{{ tabJours[1][4][0] }}">
                                 <i class="material-icons" style="color: white; font-size: 19px">
                                     delete_forever
@@ -569,7 +570,7 @@
                             {%  endif %}
                         {% endif %}
                         {% if tabJours[2][4][1] != " "%}
-                            <button class="red" type="button" data-toggle="modal" data-target="#myModal"
+                            <button class="red modalTrigger" type="button" data-toggle="modal" data-target="#myModal"
                                     data-myvalue="{{ tabJours[2][4][0] }}">
                                 <i class="material-icons" style="color: white; font-size: 19px">
                                     delete_forever
@@ -594,7 +595,7 @@
                             {%  endif %}
                         {% endif %}
                         {% if tabJours[3][4][1] != " "%}
-                            <button class="red" type="button" data-toggle="modal" data-target="#myModal"
+                            <button class="red modalTrigger" type="button" data-toggle="modal" data-target="#myModal"
                                     data-myvalue="{{ tabJours[3][4][0] }}">
                                 <i class="material-icons" style="color: white; font-size: 19px">
                                     delete_forever
@@ -619,7 +620,7 @@
                             {%  endif %}
                         {% endif %}
                         {% if tabJours[4][4][1] != " "%}
-                            <button class="red" type="button" data-toggle="modal" data-target="#myModal"
+                            <button class="red modalTrigger" type="button" data-toggle="modal" data-target="#myModal"
                                     data-myvalue="{{ tabJours[4][4][0] }} ">
                                 <i class="material-icons" style="color: white; font-size: 19px">
                                     delete_forever
@@ -648,7 +649,7 @@
                             {%  endif %}
                         {% endif %}
                         {% if tabJours[0][5][1] != " "%}
-                            <button class="red" type="button" data-toggle="modal" data-target="#myModal"
+                            <button class="red modalTrigger" type="button" data-toggle="modal" data-target="#myModal"
                                     data-myvalue="{{ tabJours[0][5][0] }}">
                                 <i class="material-icons" style="color: white; font-size: 19px">
                                     delete_forever
@@ -673,7 +674,7 @@
                             {%  endif %}
                         {% endif %}
                         {% if tabJours[1][5][1] != " "%}
-                            <button class="red" type="button" data-toggle="modal" data-target="#myModal"
+                            <button class="red modalTrigger" type="button" data-toggle="modal" data-target="#myModal"
                                     data-myvalue="{{ tabJours[1][5][0] }}">
                                 <i class="material-icons" style="color: white; font-size: 19px">
                                     delete_forever
@@ -698,7 +699,7 @@
                             {%  endif %}
                         {% endif %}
                         {% if tabJours[2][5][1] != " "%}
-                            <button class="red" type="button" data-toggle="modal" data-target="#myModal"
+                            <button class="red modalTrigger" type="button" data-toggle="modal" data-target="#myModal"
                                     data-myvalue="{{ tabJours[2][5][0] }}">
                                 <i class="material-icons" style="color: white; font-size: 19px">
                                     delete_forever
@@ -723,7 +724,7 @@
                             {%  endif %}
                         {% endif %}
                         {% if tabJours[3][5][1] != " "%}
-                            <button class="red" type="button" data-toggle="modal" data-target="#myModal"
+                            <button class="red modalTrigger" type="button" data-toggle="modal" data-target="#myModal"
                                     data-myvalue="{{ tabJours[3][5][0] }}">
                                 <i class="material-icons" style="color: white; font-size: 19px">
                                     delete_forever
@@ -748,7 +749,7 @@
                             {%  endif %}
                         {% endif %}
                         {% if tabJours[4][5][1] != " "%}
-                            <button class="red" type="button" data-toggle="modal" data-target="#myModal"
+                            <button class="red modalTrigger" type="button" data-toggle="modal" data-target="#myModal"
                                     data-myvalue="{{ tabJours[4][5][0] }}">
                                 <i class="material-icons" style="color: white; font-size: 19px">
                                     delete_forever
@@ -762,17 +763,14 @@
     </div>
 
     <script>
-        var att = ['myvalue'];
-
-        $('[data-toggle="modal"]').on('click', function (e) {
-            var $target = $(e.target);
-            var modalSelector = $target.data('target');
-
-            att.forEach(function (attributeName) {
-                var $modalAttribute = $(modalSelector + ' #modal-' + attributeName);
-                var dataValue = $target.data(attributeName);
-                $modalAttribute.text(dataValue || '');
-            });
+        $('.modalTrigger').on('click', function (e) {
+            e.preventDefault();
+            const url= $(this).attr('data-target');
+            var myModalValue = $(this).attr('data-myvalue');
+            $.get(url, function (data) {
+                $('#modal-myvalue').html(myModalValue);
+                $('#myModal').modal.show();
+            })
         });
     </script>
 {% endblock %}

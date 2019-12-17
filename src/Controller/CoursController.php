@@ -500,6 +500,11 @@ class CoursController extends AbstractController
         return $this->redirectToRoute("creneauDetailMois", array('nomon' => $noMon, 'noann' => $date[2]));
     }
 
-
-
+    /**
+     * @Route("/deleteEvent", name="deleteEvent")
+     */
+    function deleteEvent()
+    {
+        return $this->render("popUp.html.twig");
+    }
 }
