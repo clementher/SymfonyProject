@@ -14,41 +14,45 @@
             {{ message }}
         </div>
     {% endfor %}
-    <div id="containerAdmin">
-        <!-- form Cour -->
-        <div id="formAdmin">
-            <div class="containerAdmin">
-                <h2>Ajouter un Cours</h2>
-                {{ form_start(coursForm) }}
-                <div class="my-custom-class-for-errors">
-                    {{ form_errors(coursForm) }}
-                </div>
-                <h4>Intervenant</h4>
-                <select name="intervenant">
-                    {% for inter in inters %}
-                    <option value="{{ inter.id }}">{{ inter.nom}}</option>
-                    {% endfor %}
-                </select>
-                <br>
-                <h4>Matière</h4>
-                <select name="matiere">
-                    {% for matiere in matieres %}
-                        <option value="{{ matiere.id }}">{{ matiere.intitule }}</option>
-                    {% endfor %}
-                </select>
-                {{ form_row(coursForm.debut) }}
-                {{ form_row(coursForm.fin) }}
-                <button type="submit" name="cour" value="addCour" class="btn btn-success" onclick="return confirm('Vous êtes sur ?')">
+    <div class="containerForm">
+    <!-- form Cour -->
+    <div id="formAdmin">
+        <h2>Ajouter un Cours</h2>
+        <div class="containerAdmin">
+            {{ form_start(coursForm) }}
+            <div class="my-custom-class-for-errors">
+                {{ form_errors(coursForm) }}
+            </div>
+            <h4>Intervenant</h4>
+            <select name="intervenant">
+                {% for inter in inters %}
+                    <option value="{{ inter.id }}">{{ inter.nom }}</option>
+                {% endfor %}
+            </select>
+            <br>
+            <h4>Matière</h4>
+            <select name="matiere">
+                {% for matiere in matieres %}
+                    <option value="{{ matiere.id }}">{{ matiere.intitule }}</option>
+                {% endfor %}
+            </select>
+            <div class="formulaires">{{ form_row(coursForm.debut) }}</div>
+            <div class="formulaires">{{ form_row(coursForm.fin) }}</div>
+            <div class="formulairesButton">
+                <button type="submit" name="cour" value="addCour" class="btn btn-primary"
+                        onclick="return confirm('Vous êtes sur ?')">
                     Créer
                 </button>
-                {{ form_end(coursForm) }}
             </div>
+            {{ form_end(coursForm) }}
         </div>
+    </div>
+    <div id="formAdmin">
         <h2 class="titleAdmin">Liste de mes disponibilités</h2>
         {% if nb > 0 %}
             {% for i in 0..nb-1 %}
                 <div class="containerAdmin">
-                        Du {{arraydate[2*i]}} au {{arraydate[2*i+1]}}
+                    Du {{ arraydate[2*i] }} au {{ arraydate[2*i+1] }}
                 </div>
             {% endfor %}
         {% endif %}
