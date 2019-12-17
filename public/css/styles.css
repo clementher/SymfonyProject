@@ -646,6 +646,12 @@ button.hour {
     justify-content: space-between;
 }
 
+#containerNavLegende {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+}
+
 #choice {
     display: flex;
     flex-wrap: nowrap;
@@ -742,7 +748,8 @@ th.month {
     text-align: center;
     border-radius: 200px;
     max-width: 17px;
-    min-width: 15px;
+    min-width: 17px;
+    height: 16px;
 }
 
 .enterpriseNumber {
@@ -754,6 +761,17 @@ th.month {
     text-align: center;
     border-radius: 200px;
     max-width: 17px;
+    min-width: 17px;
+    height: 16px;
+}
+
+.legende {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: left;
+    flex-direction: row;
+    align-items: center;
+    margin: 1px 20px;
 }
 
 .noneNumber {
