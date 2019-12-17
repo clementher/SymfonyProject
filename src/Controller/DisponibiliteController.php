@@ -54,4 +54,19 @@ class DisponibiliteController extends AbstractController
         echo 'console.log(' . json_encode($data) . ')';
         echo '</script>';
     }
+
+        /**
+         * @Route("/delDispo/{var}")
+         */
+        function delDispo($var)
+        {
+            $dates = explode(";",$var);
+            $jour1 = mktime(0,0,0,$dates[1],$dates[0],$dates[2]);
+            $jour2 = mktime(0,0,0,$dates[4],$dates[3],$dates[5]);
+            $user = $this->getUser();
+            $idIntervenant = $user->getFkIntervenantId();
+            $query2 = 'DELETE from Disponibilite where debut ='.date('Ymd', $jour1).' and fin ='.date('Ymd', $jour2).' and fk_intervenant_id_id ='.$idIntervenant;
+            $this->entityManager->getConnection()->executeUpdate($query2);
+            return $this->redirectToRoute("dispo");
+        }
 }

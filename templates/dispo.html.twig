@@ -1,5 +1,5 @@
 {% extends 'base.html.twig' %}
-{% block title %}Gestion de planning{% endblock %}
+{% block title %}Saisie des disponibilités{% endblock %}
 
 
     {% block stylesheets %}
@@ -88,13 +88,13 @@
             </div>
         </div>
         <h2 class="titleAdmin">Liste de mes disponibilités</h2>
-
+        {% if nb > 0 %}
         {% for i in 0..nb-1 %}
         <div class="listDispo">
             <div style="margin-left: 5px">
                 Du {{dates[2*i]}} au {{dates[2*i+1]}}
             </div>
-            <div class="delete">
+            <div class="delete" onclick="document.location.href='/delDispo/{{dates[2*i]|replace({'/':';'})}};{{dates[2*i+1]|replace({'/':';'})}}'">
                 <div>Supprimer&nbsp;</div>
                 <i class="material-icons deleteIcon">
                     delete_forever
@@ -102,6 +102,7 @@
             </div>
         </div>
         {% endfor %}
+        {% endif %}
     </div>
 </div>
 
