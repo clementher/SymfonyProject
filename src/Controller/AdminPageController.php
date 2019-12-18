@@ -6,6 +6,7 @@ use App\Entity\Cours;
 use App\Entity\Disponibilite;
 use App\Entity\Intervenant;
 use App\Entity\Matiere;
+use App\Entity\Notification;
 use App\Entity\Utilisateurs;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
@@ -112,6 +113,7 @@ class AdminPageController extends AbstractController
         }
         $inters = $this->getAllIntervenants();
         $dispo = $this->getAllDispo();
+        $notifs = $this->getAllNotifications();
         $arraydate = array();
         #dd($dispo);
         for($i=0;$i<count($dispo);$i++){
@@ -125,7 +127,8 @@ class AdminPageController extends AbstractController
             'inters' => $inters,
             'arraydate' => $arraydate,
             'nb'=>$nb,
-            'matieres' => $matieres
+            'matieres' => $matieres,
+            'notifs' => $notifs
         ]);
     }
 
@@ -271,6 +274,14 @@ class AdminPageController extends AbstractController
         $dispo = $em->getRepository(Disponibilite::class)
             ->findAll();
         return $dispo;
+    }
+
+    public function getAllNotifications()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $notif = $em->getRepository(Notification::class)
+            ->findAll();
+        return $notif;
     }
 
     /**
