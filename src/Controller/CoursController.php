@@ -433,7 +433,8 @@ class CoursController extends AbstractController
     {
         $date = explode(";", $var);
         $noMon = $this->deterNumMois($date[1]);
-        if ($date[3] >= 9 && $date[3] <= 12) {
+        $this->console_log($date);
+        if ($date[3] >= 9 && $date[3] <= 13) {
             $heure = 9;
         } else if ($date[3] >= 15 && $date[3] <= 17) {
             $heure = 15;
@@ -442,9 +443,9 @@ class CoursController extends AbstractController
         $idIntervenant = $user->getFkIntervenantId();
         $isAdmin = $user->getIsAdmin();
         $jour = mktime($heure, 0, 0, $noMon, $date[0], $date[2]);
-        $this->console_log('DELETE App\Entity\Cours c WHERE c.debut >=' . date('YmdHis', $jour) . 'and c.fin <' . date('YmdHis', $jour + 14400));
+        //$this->console_log('DELETE App\Entity\Cours c WHERE c.debut >=' . date('YmdHis', $jour) . 'and c.fin <' . date('YmdHis', $jour + 14400));
         if ($isAdmin == 1) {
-            $query1 = $this->entityManager->createQuery('DELETE App\Entity\Cours c WHERE c.debut >=' . date('YmdHis', $jour) . 'and c.fin <' . date('YmdHis', $jour + 14400));
+            $query1 = $this->entityManager->createQuery('DELETE App\Entity\Cours c WHERE c.debut >=' . date('YmdHis', $jour) . 'and c.fin <' . date('YmdHis', $jour + 18000));
             $libNotif = '"Le cours du ' . $date[0] . '/' . $noMon . '/' . $date[2] . ' a ' . $heure . 'h a été annulé par un administrateur."';
             $query2 = 'INSERT INTO Notification (libelle, is_read) VALUES (' . $libNotif . ', 0)';
         } else {
