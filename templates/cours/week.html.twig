@@ -131,6 +131,14 @@
         <tr class="column1">
             <th>{{tab[0][0] ~ " " ~ tab[0][1] ~ " " ~ tab[0][2]}}</th>
             <td>
+                {% if cours[0][0]['intitule'] != " " and cours[0][0]['intitule'] != "ENTREPRISE" %}
+                    <button class="red modalTrigger" type="button" data-toggle="modal" data-target="#myModal"
+                            data-myvalue="{{ tab[0][1] ~ ";" ~ tab[0][2] ~ ";" ~  noAnn}};10;{{ noSem }}">
+                        <i class="material-icons" style="color: red; font-size: 19px">
+                            cancel
+                        </i>
+                    </button>
+                {% endif %}
                 <div class="down">
                     {{cours[0][0]['intitule']}}
                 </div>
