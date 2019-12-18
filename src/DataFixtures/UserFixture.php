@@ -2,6 +2,8 @@
 
 namespace App\DataFixtures;
 
+use App\Entity\Intervenant;
+use App\Entity\Matiere;
 use App\Entity\Utilisateurs;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
@@ -28,6 +30,23 @@ class UserFixture extends Fixture
         $admin->setPassword($this->passwordEncoder->encodePassword($admin, "admin*"));
         $admin->setIsAdmin(1);
         $manager->persist($admin);
+
+        $inte = new Intervenant();
+        $inte->setPrenom("ENTREPRISE");
+        $inte->setNom("ENTREPRISE");
+        $inte->setSpecialiteprofessionnelle("ENTREPRISE");
+        $inte->setEmail("entreprise@example.fr");
+        $manager->persist($inte);
+
+        $manager->flush();
+
+        $mat = new Matiere();
+        $mat->setFkIntervenant($inte);
+        $mat->setIntitule("ENTREPRISE");
+        $mat->setIsSpecialite(0);
+        $mat->setDuree(0);
+
+        $manager->persist($mat);
 
         $manager->flush();
     }
