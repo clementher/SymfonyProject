@@ -22,7 +22,7 @@
                 <div class="flexible">
                     <div class="flexible">
                         <h4>Intervenant &nbsp;</h4>
-                        <select name="intervenant">
+                        <select class="form-control" name="intervenant">
                             {% for inter in inters %}
                                 <option value="{{ inter.id }}">{{ inter.nom }}</option>
                             {% endfor %}
@@ -30,7 +30,7 @@
                     </div>
                     <div class="flexible">
                         <h4>Matière &nbsp;</h4>
-                        <select name="matiere">
+                        <select class="form-control" name="matiere">
                             {% for matiere in matieres %}
                                 <option value="{{ matiere.id }}">{{ matiere.intitule }}</option>
                             {% endfor %}

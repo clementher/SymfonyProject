@@ -21,7 +21,8 @@
                     {{ form_errors(matiereForm) }}
                 </div>
                 <div class="formulairesButton">
-                    <select name="intervenant">
+                    <h5>Sélectionner un intervenant</h5>
+                    <select class="form-control" name="intervenant">
                         {% for inter in inters %}
                             <option value="{{ inter.id }}">{{ inter.nom }}</option>
                         {% endfor %}
@@ -30,7 +31,7 @@
                 {{ form_row(matiereForm.intitule) }}
                 {{ form_row(matiereForm.duree) }}
                 <div class="formulairesButton">
-                    {{ form_row(matiereForm.isSpecialite) }}
+                    {{ form_row(matiereForm.isSpecialite, {'label': "C'est une Spécialitée ?"})  }}
                 </div>
 
                 <div class="formulairesButton">
