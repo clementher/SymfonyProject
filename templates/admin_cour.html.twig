@@ -22,7 +22,6 @@
                 <div class="flexible">
                     <div class="flexible">
                         <h4>Intervenant &nbsp;</h4>
-                        <h5>Sélectionner un intervenant</h5>
                         <select class="form-control" name="intervenant">
                             {% for inter in inters %}
                                 <option value="{{ inter.id }}">{{ inter.nom }}</option>
@@ -31,7 +30,6 @@
                     </div>
                     <div class="flexible">
                         <h4>Matière &nbsp;</h4>
-                        <h5>Sélectionner un intervenant</h5>
                         <select class="form-control" name="matiere">
                             {% for matiere in matieres %}
                                 <option value="{{ matiere.id }}">{{ matiere.intitule }}</option>
