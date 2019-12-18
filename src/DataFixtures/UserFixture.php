@@ -33,7 +33,7 @@ class UserFixture extends Fixture
 
         $inte = new Intervenant();
         $inte->setPrenom("ENTREPRISE");
-        $inte->setNom("ENTREPRISE");
+        $inte->setNom("");
         $inte->setSpecialiteprofessionnelle("ENTREPRISE");
         $inte->setEmail("entreprise@example.fr");
         $manager->persist($inte);
