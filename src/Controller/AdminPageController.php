@@ -42,7 +42,7 @@ class AdminPageController extends AbstractController
                 $user = new Utilisateurs();
                 $userForm = $this->createUserform($user);
             } else {
-                $userForm->addError(new FormError("L'utilisateur existe déjà"));
+                $userForm->addError(new FormError("L'utilisateur éxiste déjà"));
             }
         }
         $users = $this->getAllUsers();
@@ -103,7 +103,7 @@ class AdminPageController extends AbstractController
             $idInter = isset($_POST['intervenant']) ? $_POST['intervenant'] : null;
             $matiere = isset($_POST['matiere']) ? $_POST['matiere'] : null;
             $this->createCours($cours, $idInter, $matiere);
-            $this->addFlash('success', "Le cour a été créé");
+            $this->addFlash('success', "Le cours a été créé");
             unset($cours);
             unset($coursForm);
             $cours = new Cours();
