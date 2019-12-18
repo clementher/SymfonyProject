@@ -20,16 +20,16 @@
                     {{ form_errors(coursForm) }}
                 </div>
                 <div class="flexible">
-                    <div class="flexible">
-                        <h4>Intervenant &nbsp;</h4>
+                    <div class="flexible" style="align-items: initial">
+                        <h4 style="margin-right: 10px">Intervenant &nbsp;</h4>
                         <select class="form-control" name="intervenant">
                             {% for inter in inters %}
                                 <option value="{{ inter.id }}">{{ inter.nom }}</option>
                             {% endfor %}
                         </select>
                     </div>
-                    <div class="flexible">
-                        <h4>Matière &nbsp;</h4>
+                    <div class="flexible" style="align-items: initial">
+                        <h4 style="margin-right: 10px; margin-left: 20px">Matière &nbsp;</h4>
                         <select class="form-control" name="matiere">
                             {% for matiere in matieres %}
                                 <option value="{{ matiere.id }}">{{ matiere.intitule }}</option>
