@@ -32,8 +32,8 @@ class UserFixture extends Fixture
         $manager->persist($admin);
 
         $inte = new Intervenant();
-        $inte->setPrenom("ENTREPRISE");
-        $inte->setNom("");
+        $inte->setPrenom("");
+        $inte->setNom("ENTREPRISE");
         $inte->setSpecialiteprofessionnelle("ENTREPRISE");
         $inte->setEmail("entreprise@example.fr");
         $manager->persist($inte);

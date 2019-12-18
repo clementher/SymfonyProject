@@ -70,8 +70,8 @@ class CoursController extends AbstractController
     }
 
     /**
- * @Route("/month")
- */
+     * @Route("/month")
+     */
     function afficherMois()
     {
         $nomon = date("m");
@@ -82,20 +82,21 @@ class CoursController extends AbstractController
     /**
      * @Route("/month/{noann}/{nomon}", name="creneauDetailMois")
      */
-    function afficherCreneauMois($noann, $nomon){
-        if ($nomon >=1 && $nomon<=12) {
+    function afficherCreneauMois($noann, $nomon)
+    {
+        if ($nomon >= 1 && $nomon <= 12) {
             $jour = mktime(0, 0, 0, $nomon, 1, $noann);
             $tabJours = $this->setDaysMonth($nomon, $noann);
             $this->console_log($tabJours);
             return $this->render('/cours/month.html.twig', ['tabJours' => $tabJours, 'nomon' => $nomon, 'noann' => $noann]);
-        }elseif($nomon == 13 || $nomon == 0) {
-            if($nomon == 13){
+        } elseif ($nomon == 13 || $nomon == 0) {
+            if ($nomon == 13) {
                 return $this->redirectToRoute("creneauDetailMois", array('nomon' => 1, 'noann' => $noann + 1));
             }
-            if($nomon == 0){
+            if ($nomon == 0) {
                 return $this->redirectToRoute("creneauDetailMois", array('nomon' => 12, 'noann' => $noann - 1));
             }
-        }else{
+        } else {
             throw $this->createNotFoundException("Ce numéro de semaine n'existe pas.");
         }
     }
@@ -121,12 +122,13 @@ class CoursController extends AbstractController
     /**
      * @Route("/year/{noann}", name="creneauDetailAnnee")
      */
-    function afficherCreneauAnnee($noann){
+    function afficherCreneauAnnee($noann)
+    {
         $this->console_log($noann);
         $bisex = date("L", mktime(0, 0, 0, 1, 1, $noann));
         $tabCours = $this->setTabYear($noann);
         $this->console_log($tabCours);
-        return $this->render('/cours/year.html.twig',array('bisex' => $bisex, 'noann'=> $noann, 'tabCours'=> $tabCours));
+        return $this->render('/cours/year.html.twig', array('bisex' => $bisex, 'noann' => $noann, 'tabCours' => $tabCours));
     }
 
     /**
@@ -202,16 +204,14 @@ class CoursController extends AbstractController
         $user = $this->getUser();
         $idIntervenant = $user->getFkIntervenantId();
         $isAdmin = $user->getIsAdmin();
-        $this->console_log("ID :".$idIntervenant);
+        $this->console_log("ID :" . $idIntervenant);
         for ($i = 0; $i <= 4; $i++) {
-            if ($isAdmin == 1)
-            {
+            if ($isAdmin == 1) {
                 $query1 = $this->entityManager->createQuery('SELECT m.intitule AS intitule, i.nom as nom, i.prenom as prenom, c.debut as debut, c.fin as fin, m.isSpecialite as spe FROM App\Entity\Matiere m, App\Entity\Intervenant i, App\Entity\Cours c
                         WHERE m.id = c.fk_matiere_id AND i.id = c.fk_intervenant_id and c.debut >= ' . date('Ymd', $tabjour[$i]) . ' AND c.debut < ' . date('Ymd', $tabjour[$i] + 86400) . ' ORDER BY c.debut');
-            }
-            else {
+            } else {
                 $query1 = $this->entityManager->createQuery('SELECT m.intitule AS intitule, i.nom as nom, i.prenom as prenom, c.debut as debut, c.fin as fin, m.isSpecialite as spe FROM App\Entity\Matiere m, App\Entity\Intervenant i, App\Entity\Cours c
-                        WHERE m.id = c.fk_matiere_id AND i.id = c.fk_intervenant_id and c.fk_intervenant_id = '.$idIntervenant.' and c.debut >= ' . date('Ymd', $tabjour[$i]) . ' AND c.debut < ' . date('Ymd', $tabjour[$i] + 86400) . ' ORDER BY c.debut');
+                        WHERE m.id = c.fk_matiere_id AND i.id = c.fk_intervenant_id and c.fk_intervenant_id = ' . $idIntervenant . ' and c.debut >= ' . date('Ymd', $tabjour[$i]) . ' AND c.debut < ' . date('Ymd', $tabjour[$i] + 86400) . ' ORDER BY c.debut');
             }
             array_push($tabRet, $query1->getResult());
         }
@@ -279,7 +279,8 @@ class CoursController extends AbstractController
         echo '</script>';
     }
 
-    function weeksPerMonth($month, $year) {
+    function weeksPerMonth($month, $year)
+    {
         $day = mktime(1, 1, 1, $month, 1, $year);
         $nday = mktime(1, 1, 1, $month, date('t', $day), $year);
         $week = date('W', $day);
@@ -291,7 +292,8 @@ class CoursController extends AbstractController
         return $res + 1;
     }
 
-    function setDaysMonth($nomon, $noann){
+    function setDaysMonth($nomon, $noann)
+    {
         $jour = mktime(0, 0, 0, $nomon, 1, $noann);
         $nb = 0;
         $jourASauter = 0;
@@ -299,53 +301,53 @@ class CoursController extends AbstractController
         $nbSem = $this->weeksPerMonth($nomon, $noann);
         $tabJours = array(array(), array(), array(), array(), array());
         if (date("N", $jour) < 6) {
-            array_push($tabJours[$nb], array("Semaine " . $sem," "));
+            array_push($tabJours[$nb], array("Semaine " . $sem, " "));
         } else {
             switch (date("N", $jour)) {
                 case 6:
                     $jour += 86400 * 2;
                     $sem++;
-                    array_push($tabJours[$nb], array("Semaine " . $sem," "));
+                    array_push($tabJours[$nb], array("Semaine " . $sem, " "));
                     $jourASauter = 2;
                     break;
                 case 7:
                     $jour += 86400;
                     $sem++;
-                    array_push($tabJours[$nb], array("Semaine " . $sem," "));
+                    array_push($tabJours[$nb], array("Semaine " . $sem, " "));
                     $jourASauter = 1;
                     break;
             }
         }
         for ($j = 1; $j < date("N", $jour); $j++) {
-            array_push($tabJours[$nb], array(" "," "));
+            array_push($tabJours[$nb], array(" ", " "));
         }
         $nbjour = date("t", $jour);
         for ($j = 1; $j <= $nbjour - $jourASauter; $j++) {
             if (date("W", $jour) != $sem) {
                 $nb = $nb + 1;
                 $sem = date("W", $jour);
-                array_push($tabJours[$nb], array("Semaine " . $sem," "));
+                array_push($tabJours[$nb], array("Semaine " . $sem, " "));
             }
             if (date("N", $jour) < 6) {
                 $user = new Utilisateurs();
                 $user = $this->getUser();
                 $idIntervenant = $user->getFkIntervenantId();
                 $isAdmin = $user->getIsAdmin();
-                if ($isAdmin == 1){
+                if ($isAdmin == 1) {
                     $query1 = $this->entityManager->createQuery('SELECT m.intitule AS intitule FROM App\Entity\Matiere m, App\Entity\Cours c
                         WHERE m.id = c.fk_matiere_id and c.debut >= ' . date('Ymd', $jour) . ' AND c.debut < ' . date('Ymd', $jour + 86400) . ' ORDER BY c.debut');
-                }else {
+                } else {
                     $query1 = $this->entityManager->createQuery('SELECT m.intitule AS intitule FROM App\Entity\Matiere m, App\Entity\Cours c
-                        WHERE m.id = c.fk_matiere_id and c.fk_intervenant_id = '.$idIntervenant.' and c.debut >= ' . date('Ymd', $jour) . ' AND c.debut < ' . date('Ymd', $jour + 86400) . ' ORDER BY c.debut');
+                        WHERE m.id = c.fk_matiere_id and c.fk_intervenant_id = ' . $idIntervenant . ' and c.debut >= ' . date('Ymd', $jour) . ' AND c.debut < ' . date('Ymd', $jour + 86400) . ' ORDER BY c.debut');
                 }
                 $tabRetQuery = $query1->getResult();
-                if (count($tabRetQuery) >0) {
+                if (count($tabRetQuery) > 0) {
                     if ($tabRetQuery[0]['intitule'] == "ENTREPRISE") {
                         array_push($tabJours[$nb], array(date("j", $jour) . " " . $this->deterMois(date("n", $jour)) . " " . date("Y", $jour), "E"));
                     } else {
                         array_push($tabJours[$nb], array(date("j", $jour) . " " . $this->deterMois(date("n", $jour)) . " " . date("Y", $jour), "C"));
                     }
-                }else {
+                } else {
                     array_push($tabJours[$nb], array(date("j", $jour) . " " . $this->deterMois(date("n", $jour)) . " " . date("Y", $jour), " "));
                 }
             }
@@ -353,42 +355,43 @@ class CoursController extends AbstractController
         }
         for ($nbTab = $nb; $nbTab < 5; $nbTab++) {
             for ($posTab = count($tabJours[$nbTab]); $posTab < 6; $posTab++) {
-                array_push($tabJours[$nbTab], array(" "," "));
+                array_push($tabJours[$nbTab], array(" ", " "));
             }
         }
         return $tabJours;
     }
 
-    function setTabYear($noann){
-        $tabRet = array(array(), array(), array(), array(), array(),array(),array(),array(),array(),array(),array(),array());
+    function setTabYear($noann)
+    {
+        $tabRet = array(array(), array(), array(), array(), array(), array(), array(), array(), array(), array(), array(), array());
 
-        for($i=0;$i<12;$i++){
-            $jour = mktime(0, 0, 0, $i+1, 1, $noann);
-            for($j=1;$j<=date("t",$jour);$j++){
+        for ($i = 0; $i < 12; $i++) {
+            $jour = mktime(0, 0, 0, $i + 1, 1, $noann);
+            for ($j = 1; $j <= date("t", $jour); $j++) {
                 if (date("N", $jour) < 6) {
                     $user = new Utilisateurs();
                     $user = $this->getUser();
                     $idIntervenant = $user->getFkIntervenantId();
                     $isAdmin = $user->getIsAdmin();
-                    if ($isAdmin == 1){
+                    if ($isAdmin == 1) {
                         $query1 = $this->entityManager->createQuery('SELECT m.intitule AS intitule FROM App\Entity\Matiere m, App\Entity\Cours c
                         WHERE m.id = c.fk_matiere_id and c.debut >= ' . date('Ymd', $jour) . ' AND c.debut < ' . date('Ymd', $jour + 86400) . ' ORDER BY c.debut');
-                    }else {
+                    } else {
                         $query1 = $this->entityManager->createQuery('SELECT m.intitule AS intitule FROM App\Entity\Matiere m, App\Entity\Cours c
-                        WHERE m.id = c.fk_matiere_id and c.fk_intervenant_id = '.$idIntervenant.' and c.debut >= ' . date('Ymd', $jour) . ' AND c.debut < ' . date('Ymd', $jour + 86400) . ' ORDER BY c.debut');
+                        WHERE m.id = c.fk_matiere_id and c.fk_intervenant_id = ' . $idIntervenant . ' and c.debut >= ' . date('Ymd', $jour) . ' AND c.debut < ' . date('Ymd', $jour + 86400) . ' ORDER BY c.debut');
                     }
                     $tabRetQuery = $query1->getResult();
-                    if (count($tabRetQuery) >0) {
+                    if (count($tabRetQuery) > 0) {
                         if ($tabRetQuery[0]['intitule'] == "ENTREPRISE") {
-                            array_push($tabRet[$i],array(substr($this->deterJour(date("N",$jour)),0,3) , "ENTREPRISE"));
+                            array_push($tabRet[$i], array(substr($this->deterJour(date("N", $jour)), 0, 3), "ENTREPRISE"));
                         } else {
-                            array_push($tabRet[$i], array(substr($this->deterJour(date("N",$jour)),0,3),"ECOLE"));
+                            array_push($tabRet[$i], array(substr($this->deterJour(date("N", $jour)), 0, 3), "ECOLE"));
                         }
-                    }else {
-                        array_push($tabRet[$i],array(substr($this->deterJour(date("N",$jour)),0,3), " "));
+                    } else {
+                        array_push($tabRet[$i], array(substr($this->deterJour(date("N", $jour)), 0, 3), " "));
                     }
-                }else {
-                    array_push($tabRet[$i], array(substr($this->deterJour(date("N",$jour)),0,3)," "));
+                } else {
+                    array_push($tabRet[$i], array(substr($this->deterJour(date("N", $jour)), 0, 3), " "));
                 }
                 $jour += 86400;
             }
@@ -401,19 +404,24 @@ class CoursController extends AbstractController
      */
     function deleteCoursYear($var)
     {
-        $date = explode(";",$var);
+        $date = explode(";", $var);
         $user = $this->getUser();
         $idIntervenant = $user->getFkIntervenantId();
         $inter = new Intervenant();
-        $inter = $this->entityManager->find(Intervenant::class,$idIntervenant);
-        $this->console_log($date[2].$date[1].$date[0]);
-        $jour = mktime(0,0,0,$date[1],$date[0],$date[2]);
-        $query1 = $this->entityManager->createQuery('DELETE App\Entity\Cours c WHERE c.debut >='.date('Ymd', $jour).'and c.fin <'. date('Ymd', $jour + 86400));
+        $inter = $this->entityManager->find(Intervenant::class, $idIntervenant);
+        $this->console_log($date[2] . $date[1] . $date[0]);
+        $jour = mktime(0, 0, 0, $date[1], $date[0], $date[2]);
+        $isAdmin = $user->getIsAdmin();
+        if ($isAdmin == 1) {
+            $query1 = $this->entityManager->createQuery('DELETE App\Entity\Cours c WHERE c.debut >=' . date('Ymd', $jour) . 'and c.fin <' . date('Ymd', $jour + 86400));
+        } else {
+            $query1 = $this->entityManager->createQuery('DELETE App\Entity\Cours c WHERE c.fk_intervenant_id = ' . $idIntervenant . ' and c.debut >=' . date('Ymd', $jour) . 'and c.fin <' . date('Ymd', $jour + 86400));
+        }
         $query1->execute();
-        $query3 = $this->entityManager->createQuery('SELECT i.prenom as prenom, i.nom as nom from App\Entity\Intervenant i where i.id = '.$idIntervenant);
+        $query3 = $this->entityManager->createQuery('SELECT i.prenom as prenom, i.nom as nom from App\Entity\Intervenant i where i.id = ' . $idIntervenant);
         $tabRetQuery = $query3->getResult();
-        $libNotif = '"Le cours de '.$tabRetQuery[0]['nom'].' '.$tabRetQuery[0]['prenom']. ' du '. $date[0].'/'.$date[1].'/'.$date[2].' a été annulé par cet intervenant"';
-        $query2 = 'INSERT INTO Notification (libelle, fk_intervenant_id_id, is_read) VALUES ('.$libNotif.','.$idIntervenant.', 0)';
+        $libNotif = '"Le cours de ' . $tabRetQuery[0]['nom'] . ' ' . $tabRetQuery[0]['prenom'] . ' du ' . $date[0] . '/' . $date[1] . '/' . $date[2] . ' a été annulé par cet intervenant"';
+        $query2 = 'INSERT INTO Notification (libelle, fk_intervenant_id_id, is_read) VALUES (' . $libNotif . ',' . $idIntervenant . ', 0)';
         $this->entityManager->getConnection()->executeUpdate($query2);
         return $this->redirectToRoute("creneauDetailAnnee", array('noann' => $date[2]));
     }
@@ -423,25 +431,30 @@ class CoursController extends AbstractController
      */
     function deleteCoursWeek($var)
     {
-        $date = explode(";",$var);
+        $date = explode(";", $var);
         $noMon = $this->deterNumMois($date[1]);
-        if ($date[3]>=9 && $date[3]<=12){
+        if ($date[3] >= 9 && $date[3] <= 12) {
             $heure = 9;
-        } else if ($date[3]>=15 && $date[3]<=17){
+        } else if ($date[3] >= 15 && $date[3] <= 17) {
             $heure = 15;
         }
         $user = $this->getUser();
         $idIntervenant = $user->getFkIntervenantId();
+        $isAdmin = $user->getIsAdmin();
         $inter = new Intervenant();
-        $inter = $this->entityManager->find(Intervenant::class,$idIntervenant);
-        $jour = mktime($heure,0,0,$noMon,$date[0],$date[2]);
-        $this->console_log('DELETE App\Entity\Cours c WHERE c.debut >='.date('YmdHis', $jour).'and c.fin <'. date('YmdHis', $jour + 14400));
-        $query1 = $this->entityManager->createQuery('DELETE App\Entity\Cours c WHERE c.debut >='.date('YmdHis', $jour).'and c.fin <'. date('YmdHis', $jour + 14400));
+        $inter = $this->entityManager->find(Intervenant::class, $idIntervenant);
+        $jour = mktime($heure, 0, 0, $noMon, $date[0], $date[2]);
+        $this->console_log('DELETE App\Entity\Cours c WHERE c.debut >=' . date('YmdHis', $jour) . 'and c.fin <' . date('YmdHis', $jour + 14400));
+        if ($isAdmin == 1) {
+            $query1 = $this->entityManager->createQuery('DELETE App\Entity\Cours c WHERE c.debut >=' . date('YmdHis', $jour) . 'and c.fin <' . date('YmdHis', $jour + 14400));
+        } else {
+            $query1 = $this->entityManager->createQuery('DELETE App\Entity\Cours c WHERE c.fk_intervenant_id = ' . $idIntervenant . ' and c.debut >=' . date('YmdHis', $jour) . 'and c.fin <' . date('YmdHis', $jour + 14400));
+        }
         $query1->execute();
-        $query3 = $this->entityManager->createQuery('SELECT i.prenom as prenom, i.nom as nom from App\Entity\Intervenant i where i.id = '.$idIntervenant);
+        $query3 = $this->entityManager->createQuery('SELECT i.prenom as prenom, i.nom as nom from App\Entity\Intervenant i where i.id = ' . $idIntervenant);
         $tabRetQuery = $query3->getResult();
-        $libNotif = '"Le cours de '.$tabRetQuery[0]['nom'].' '.$tabRetQuery[0]['prenom']. ' du '. $date[0].'/'.$noMon.'/'.$date[2].' a '.$heure.'h a été annulé par cet intervenant"';
-        $query2 = 'INSERT INTO Notification (libelle, fk_intervenant_id_id, is_read) VALUES ('.$libNotif.','.$idIntervenant.', 0)';
+        $libNotif = '"Le cours de ' . $tabRetQuery[0]['nom'] . ' ' . $tabRetQuery[0]['prenom'] . ' du ' . $date[0] . '/' . $noMon . '/' . $date[2] . ' a ' . $heure . 'h a été annulé par cet intervenant"';
+        $query2 = 'INSERT INTO Notification (libelle, fk_intervenant_id_id, is_read) VALUES (' . $libNotif . ',' . $idIntervenant . ', 0)';
         $this->entityManager->getConnection()->executeUpdate($query2);
         return $this->redirectToRoute("creneauDetailSemaine", array('nosem' => $date[4], 'noann' => $date[2]));
     }
@@ -483,19 +496,24 @@ class CoursController extends AbstractController
      */
     function deleteCoursMonth($var)
     {
-        $date = explode(" ",$var);
+        $date = explode(" ", $var);
         $noMon = $this->deterNumMois($date[1]);
         $user = $this->getUser();
+        $isAdmin = $user->getIsAdmin();
         $idIntervenant = $user->getFkIntervenantId();
         $inter = new Intervenant();
-        $inter = $this->entityManager->find(Intervenant::class,$idIntervenant);
-        $jour = mktime(0,0,0,$noMon,$date[0],$date[2]);
-        $query1 = $this->entityManager->createQuery('DELETE App\Entity\Cours c WHERE c.debut >='.date('Ymd', $jour).'and c.fin <'. date('Ymd', $jour + 86400));
+        $inter = $this->entityManager->find(Intervenant::class, $idIntervenant);
+        $jour = mktime(0, 0, 0, $noMon, $date[0], $date[2]);
+        if ($isAdmin == 1) {
+            $query1 = $this->entityManager->createQuery('DELETE App\Entity\Cours c WHERE c.debut >=' . date('Ymd', $jour) . 'and c.fin <' . date('Ymd', $jour + 86400));
+        } else {
+            $query1 = $this->entityManager->createQuery('DELETE App\Entity\Cours c WHERE c.fk_intervenant_id = ' . $idIntervenant . ' and c.debut >=' . date('Ymd', $jour) . 'and c.fin <' . date('Ymd', $jour + 86400));
+        }
         $query1->execute();
-        $query3 = $this->entityManager->createQuery('SELECT i.prenom as prenom, i.nom as nom from App\Entity\Intervenant i where i.id = '.$idIntervenant);
+        $query3 = $this->entityManager->createQuery('SELECT i.prenom as prenom, i.nom as nom from App\Entity\Intervenant i where i.id = ' . $idIntervenant);
         $tabRetQuery = $query3->getResult();
-        $libNotif = '"Le cours de '.$tabRetQuery[0]['nom'].' '.$tabRetQuery[0]['prenom']. ' du '. $date[0].'/'.$noMon.'/'.$date[2].'h a été annulé par cet intervenant"';
-        $query2 = 'INSERT INTO Notification (libelle, fk_intervenant_id_id, is_read) VALUES ('.$libNotif.','.$idIntervenant.', 0)';
+        $libNotif = '"Le cours de ' . $tabRetQuery[0]['nom'] . ' ' . $tabRetQuery[0]['prenom'] . ' du ' . $date[0] . '/' . $noMon . '/' . $date[2] . 'h a été annulé par cet intervenant"';
+        $query2 = 'INSERT INTO Notification (libelle, fk_intervenant_id_id, is_read) VALUES (' . $libNotif . ',' . $idIntervenant . ', 0)';
         $this->entityManager->getConnection()->executeUpdate($query2);
         return $this->redirectToRoute("creneauDetailMois", array('nomon' => $noMon, 'noann' => $date[2]));
     }
