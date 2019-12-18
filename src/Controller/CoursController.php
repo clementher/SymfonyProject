@@ -407,21 +407,21 @@ class CoursController extends AbstractController
         $date = explode(";", $var);
         $user = $this->getUser();
         $idIntervenant = $user->getFkIntervenantId();
-        $inter = new Intervenant();
-        $inter = $this->entityManager->find(Intervenant::class, $idIntervenant);
         $this->console_log($date[2] . $date[1] . $date[0]);
         $jour = mktime(0, 0, 0, $date[1], $date[0], $date[2]);
         $isAdmin = $user->getIsAdmin();
         if ($isAdmin == 1) {
             $query1 = $this->entityManager->createQuery('DELETE App\Entity\Cours c WHERE c.debut >=' . date('Ymd', $jour) . 'and c.fin <' . date('Ymd', $jour + 86400));
+            $libNotif = '"Le cours du ' . $date[0] . '/' . $date[1] . '/' . $date[2] . ' a été annulé par un administrateur"';
+            $query2 = 'INSERT INTO Notification (libelle, is_read) VALUES (' . $libNotif . ', 0)';
         } else {
             $query1 = $this->entityManager->createQuery('DELETE App\Entity\Cours c WHERE c.fk_intervenant_id = ' . $idIntervenant . ' and c.debut >=' . date('Ymd', $jour) . 'and c.fin <' . date('Ymd', $jour + 86400));
+            $query3 = $this->entityManager->createQuery('SELECT i.prenom as prenom, i.nom as nom from App\Entity\Intervenant i where i.id = ' . $idIntervenant);
+            $tabRetQuery = $query3->getResult();
+            $libNotif = '"Le cours de ' . $tabRetQuery[0]['nom'] . ' ' . $tabRetQuery[0]['prenom'] . ' du ' . $date[0] . '/' . $date[1] . '/' . $date[2] . ' a été annulé par cet intervenant"';
+            $query2 = 'INSERT INTO Notification (libelle, fk_intervenant_id_id, is_read) VALUES (' . $libNotif . ',' . $idIntervenant . ', 0)';
         }
         $query1->execute();
-        $query3 = $this->entityManager->createQuery('SELECT i.prenom as prenom, i.nom as nom from App\Entity\Intervenant i where i.id = ' . $idIntervenant);
-        $tabRetQuery = $query3->getResult();
-        $libNotif = '"Le cours de ' . $tabRetQuery[0]['nom'] . ' ' . $tabRetQuery[0]['prenom'] . ' du ' . $date[0] . '/' . $date[1] . '/' . $date[2] . ' a été annulé par cet intervenant"';
-        $query2 = 'INSERT INTO Notification (libelle, fk_intervenant_id_id, is_read) VALUES (' . $libNotif . ',' . $idIntervenant . ', 0)';
         $this->entityManager->getConnection()->executeUpdate($query2);
         return $this->redirectToRoute("creneauDetailAnnee", array('noann' => $date[2]));
     }
@@ -441,20 +441,20 @@ class CoursController extends AbstractController
         $user = $this->getUser();
         $idIntervenant = $user->getFkIntervenantId();
         $isAdmin = $user->getIsAdmin();
-        $inter = new Intervenant();
-        $inter = $this->entityManager->find(Intervenant::class, $idIntervenant);
         $jour = mktime($heure, 0, 0, $noMon, $date[0], $date[2]);
         $this->console_log('DELETE App\Entity\Cours c WHERE c.debut >=' . date('YmdHis', $jour) . 'and c.fin <' . date('YmdHis', $jour + 14400));
         if ($isAdmin == 1) {
             $query1 = $this->entityManager->createQuery('DELETE App\Entity\Cours c WHERE c.debut >=' . date('YmdHis', $jour) . 'and c.fin <' . date('YmdHis', $jour + 14400));
+            $libNotif = '"Le cours du ' . $date[0] . '/' . $noMon . '/' . $date[2] . ' a ' . $heure . 'h a été annulé par un administrateur."';
+            $query2 = 'INSERT INTO Notification (libelle, is_read) VALUES (' . $libNotif . ', 0)';
         } else {
             $query1 = $this->entityManager->createQuery('DELETE App\Entity\Cours c WHERE c.fk_intervenant_id = ' . $idIntervenant . ' and c.debut >=' . date('YmdHis', $jour) . 'and c.fin <' . date('YmdHis', $jour + 14400));
+            $query3 = $this->entityManager->createQuery('SELECT i.prenom as prenom, i.nom as nom from App\Entity\Intervenant i where i.id = ' . $idIntervenant);
+            $tabRetQuery = $query3->getResult();
+            $libNotif = '"Le cours de ' . $tabRetQuery[0]['nom'] . ' ' . $tabRetQuery[0]['prenom'] . ' du ' . $date[0] . '/' . $noMon . '/' . $date[2] . ' a ' . $heure . 'h a été annulé par cet intervenant"';
+            $query2 = 'INSERT INTO Notification (libelle, fk_intervenant_id_id, is_read) VALUES (' . $libNotif . ',' . $idIntervenant . ', 0)';
         }
         $query1->execute();
-        $query3 = $this->entityManager->createQuery('SELECT i.prenom as prenom, i.nom as nom from App\Entity\Intervenant i where i.id = ' . $idIntervenant);
-        $tabRetQuery = $query3->getResult();
-        $libNotif = '"Le cours de ' . $tabRetQuery[0]['nom'] . ' ' . $tabRetQuery[0]['prenom'] . ' du ' . $date[0] . '/' . $noMon . '/' . $date[2] . ' a ' . $heure . 'h a été annulé par cet intervenant"';
-        $query2 = 'INSERT INTO Notification (libelle, fk_intervenant_id_id, is_read) VALUES (' . $libNotif . ',' . $idIntervenant . ', 0)';
         $this->entityManager->getConnection()->executeUpdate($query2);
         return $this->redirectToRoute("creneauDetailSemaine", array('nosem' => $date[4], 'noann' => $date[2]));
     }
@@ -501,19 +501,19 @@ class CoursController extends AbstractController
         $user = $this->getUser();
         $isAdmin = $user->getIsAdmin();
         $idIntervenant = $user->getFkIntervenantId();
-        $inter = new Intervenant();
-        $inter = $this->entityManager->find(Intervenant::class, $idIntervenant);
         $jour = mktime(0, 0, 0, $noMon, $date[0], $date[2]);
         if ($isAdmin == 1) {
             $query1 = $this->entityManager->createQuery('DELETE App\Entity\Cours c WHERE c.debut >=' . date('Ymd', $jour) . 'and c.fin <' . date('Ymd', $jour + 86400));
+            $libNotif = '"Le cours du ' . $date[0] . '/' . $noMon . '/' . $date[2] . 'h a été annulé par un administrateur."';
+            $query2 = 'INSERT INTO Notification (libelle, is_read) VALUES (' . $libNotif . ', 0)';
         } else {
             $query1 = $this->entityManager->createQuery('DELETE App\Entity\Cours c WHERE c.fk_intervenant_id = ' . $idIntervenant . ' and c.debut >=' . date('Ymd', $jour) . 'and c.fin <' . date('Ymd', $jour + 86400));
+            $query3 = $this->entityManager->createQuery('SELECT i.prenom as prenom, i.nom as nom from App\Entity\Intervenant i where i.id = ' . $idIntervenant);
+            $tabRetQuery = $query3->getResult();
+            $libNotif = '"Le cours de ' . $tabRetQuery[0]['nom'] . ' ' . $tabRetQuery[0]['prenom'] . ' du ' . $date[0] . '/' . $noMon . '/' . $date[2] . 'h a été annulé par cet intervenant"';
+            $query2 = 'INSERT INTO Notification (libelle, fk_intervenant_id_id, is_read) VALUES (' . $libNotif . ',' . $idIntervenant . ', 0)';
         }
         $query1->execute();
-        $query3 = $this->entityManager->createQuery('SELECT i.prenom as prenom, i.nom as nom from App\Entity\Intervenant i where i.id = ' . $idIntervenant);
-        $tabRetQuery = $query3->getResult();
-        $libNotif = '"Le cours de ' . $tabRetQuery[0]['nom'] . ' ' . $tabRetQuery[0]['prenom'] . ' du ' . $date[0] . '/' . $noMon . '/' . $date[2] . 'h a été annulé par cet intervenant"';
-        $query2 = 'INSERT INTO Notification (libelle, fk_intervenant_id_id, is_read) VALUES (' . $libNotif . ',' . $idIntervenant . ', 0)';
         $this->entityManager->getConnection()->executeUpdate($query2);
         return $this->redirectToRoute("creneauDetailMois", array('nomon' => $noMon, 'noann' => $date[2]));
     }
